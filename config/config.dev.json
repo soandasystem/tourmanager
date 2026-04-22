@@ -1,0 +1,6 @@
+{
+    "Async": {
+        "Run": true,
+        "Interval": "24h"
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "Address": "http://localhost",
+    "PostgresMigrationsDir": "infrastructure/postgres/migrations",
+    "JWTSecret": "Z3VnaWQtbmV2ZXItZ2l2ZS1kb2dzLWFjY2Vzcw==",
+    "Timeout": "5s",
+    "Async": {
+        "Run": true,
+        "Interval": "2m"
+    }
+}
