@@ -46,7 +46,7 @@ type ProgramsListResponse struct {
 }
 
 func (ProgramsResp) TableName() string {
-	return "programas" // Nombre de la tabla en la base de datos
+	return "programs" // Nombre de la tabla en la base de datos
 }
 
 type CreateProgramsReq struct {
@@ -67,7 +67,7 @@ type CreateProgramsReq struct {
 }
 
 func (CreateProgramsReq) TableName() string {
-	return "programas" // Nombre de la tabla en la base de datos
+	return "programs" // Nombre de la tabla en la base de datos
 }
 
 type UpdateProgramsReq struct {
@@ -88,7 +88,7 @@ type UpdateProgramsReq struct {
 }
 
 func (UpdateProgramsReq) TableName() string {
-	return "programas" // Nombre de la tabla en la base de datos
+	return "programs" // Nombre de la tabla en la base de datos
 }
 
 type ProgramsReport struct {
