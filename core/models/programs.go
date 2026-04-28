@@ -108,3 +108,17 @@ type ProgramsReport struct {
 func (ProgramsReport) TableName() string {
 	return "programs" // Nombre de la tabla en la base de datos
 }
+
+type ProgramsOthers struct {
+	ID        int64   `json:"id"`
+	Code      string  `json:"code"`
+	Name      string  `json:"name"`
+	Reserva   float32 `json:"reserva"`
+	Active    int     `json:"active"`
+	Author    string  `json:"author"`
+	CompanyId int64   `json:"company_id"`
+}
+
+func (ProgramsOthers) TableName() string {
+	return "programs" // Nombre de la tabla en la base de datos
+}

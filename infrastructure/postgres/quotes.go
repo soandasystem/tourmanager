@@ -244,7 +244,7 @@ func (s *quotesRepository) Get(ctx context.Context, filter map[string]interface{
 	}
 
 	// Ejecuta la consulta
-	if err := query.Order("id ASC").Find(&registro).Error; err != nil {
+	if err := query.Preload("Users").Preload("Colegios").Preload("Programs").Order("id ASC").Find(&registro).Error; err != nil {
 		return nil, err
 	}
 
