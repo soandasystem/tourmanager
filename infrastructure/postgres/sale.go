@@ -132,7 +132,7 @@ func (s *saleRepository) GetInf(ctx context.Context, filter map[string]interface
 		Joins("LEFT JOIN (SELECT c.sale_id, COUNT(*) AS total_curso FROM cursos c GROUP BY c.sale_id) c ON c.sale_id = s.id").
 		Joins("LEFT JOIN establecimientos e ON e.id = s.establecimiento_id").
 		Joins("LEFT JOIN users u ON u.id = s.seller_id").
-		Joins("LEFT JOIN programac p ON p.id = s.program_id").
+		Joins("LEFT JOIN programs p ON p.id = s.program_id").
 		Table("sales s")
 
 	// Aplica filtros si existen
