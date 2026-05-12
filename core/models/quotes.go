@@ -15,6 +15,7 @@ type Quote struct {
 	Subtotal          int       `json:"subtotal"`
 	Desc              int       `json:"desc"`
 	Vprograma         int       `json:"vprograma"`
+	Liberados         int       `json:"liberados"`
 	Tipocambio        float32   `json:"tipocambio"`
 	Contacto          string    `json:"contacto"`
 	Contactofono      string    `json:"contactofono"`
@@ -46,6 +47,7 @@ type QuoteResp struct {
 	Subtotal          int            `json:"subtotal"`
 	Desc              int            `json:"desc"`
 	Vprograma         int            `json:"vprograma"`
+	Liberados         int            `json:"liberados"`
 	Tipocambio        float32        `json:"tipocambio"`
 	Contacto          string         `json:"contacto"`
 	Contactofono      string         `json:"contactofono"`
@@ -83,6 +85,7 @@ type CreateQuoteReq struct {
 	Subtotal          int       `json:"subtotal"`
 	Desc              int       `json:"desc"`
 	Vprograma         int       `json:"vprograma"`
+	Liberados         int       `json:"liberados"`
 	Tipocambio        float32   `json:"tipocambio"`
 	Contacto          string    `json:"contacto"`
 	Contactofono      string    `json:"contactofono"`
@@ -115,6 +118,7 @@ type UpdateQuoteReq struct {
 	Subtotal          *int       `json:"subtotal"`
 	Desc              *int       `json:"desc"`
 	Vprograma         *int       `json:"vprograma"`
+	Liberados         int        `json:"liberados"`
 	Tipocambio        *float32   `json:"tipocambio"`
 	Contacto          *string    `json:"contacto"`
 	Contactofono      *string    `json:"contactofono"`
@@ -150,6 +154,7 @@ type QuoteInforme struct {
 	Subtotal          int            `json:"subtotal"`
 	Desc              int            `json:"desc"`
 	Vprograma         int            `json:"vprograma"`
+	Liberados         int            `json:"liberados"`
 	Tipocambio        float32        `json:"tipocambio"`
 	Contacto          string         `json:"contacto"`
 	Contactofono      string         `json:"contactofono"`
