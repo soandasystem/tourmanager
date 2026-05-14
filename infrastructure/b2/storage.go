@@ -21,14 +21,7 @@ type b2Storage struct {
 }
 
 func NewB2Storage(ctx context.Context, keyID, applicationKey, bucket, region, endpoint string) ports.UploadStorage {
-	customResolver := aws.EndpointResolverWithOptionsFunc(func(service, region string, options ...interface{}) (aws.Endpoint, error) {
-		return aws.Endpoint{
-			URL: endpoint,
-		}, nil
-	})
-
 	cfg, err := config.LoadDefaultConfig(ctx,
-		config.WithEndpointResolverWithOptions(customResolver),
 		config.WithCredentialsProvider(credentials.NewStaticCredentialsProvider(keyID, applicationKey, "")),
 		config.WithRegion(region),
 	)
@@ -36,7 +29,11 @@ func NewB2Storage(ctx context.Context, keyID, applicationKey, bucket, region, en
 		log.Fatalf("no se pudo cargar la config de b2: %v", err)
 	}
 
-	client := s3.NewFromConfig(cfg)
+	// La forma correcta y moderna de forzar el endpoint en el SDK v2 para S3 (Backblaze B2)
+	client := s3.NewFromConfig(cfg, func(o *s3.Options) {
+		o.BaseEndpoint = aws.String(endpoint)
+		o.UsePathStyle = true
+	})
 
 	return &b2Storage{
 		client:   client,
