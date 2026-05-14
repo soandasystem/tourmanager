@@ -10,6 +10,7 @@ import (
 	"tourmanager/config"
 	"tourmanager/core/ports"
 	"tourmanager/core/services"
+	"tourmanager/infrastructure/b2"
 	"tourmanager/infrastructure/postgres"
 	"tourmanager/util"
 
@@ -47,6 +48,7 @@ type svs struct {
 	airports   ports.AirportsService
 	country    ports.CountryService
 	programs   ports.ProgramsService
+	upload     ports.UploadService
 }
 
 // New creates a new API
@@ -125,6 +127,19 @@ func New(ctx context.Context, cfg config.Config) (a api) {
 	a.services.country = services.NewCountryService(a.config, countryRepo)
 	a.services.programs = services.NewProgramsService(a.config, programsRepo)
 
+	// Inicializar B2 Storage y Upload Service
+	if a.config.B2Endpoint != "" {
+		b2Storage := b2.NewB2Storage(
+			ctx,
+			a.config.B2KeyID,
+			a.config.B2Application,
+			a.config.B2Bucket,
+			a.config.B2Region,
+			a.config.B2Endpoint,
+		)
+		a.services.upload = services.NewUploadService(a.config, b2Storage)
+	}
+
 	return a
 }
 
@@ -166,6 +181,10 @@ func (a *api) Run(ctx context.Context, cancel context.CancelFunc) func() error {
 		handlers.SetAirportsRoutes(ctx, a.config, router, a.services.airports)
 		handlers.SetCountryRoutes(ctx, a.config, router, a.services.country)
 		handlers.SetProgramsRoutes(ctx, a.config, router, a.services.programs)
+
+		if a.services.upload != nil {
+			handlers.SetUploadRoutes(ctx, a.config, router, a.services.upload)
+		}
 
 		log.Printf("Version: %s", a.config.Version)
 		log.Printf("Environment: %s", a.config.Environment)
