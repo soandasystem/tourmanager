@@ -88,11 +88,11 @@ func ReadConfig(version, env string, port int, database, dsn string) (Config, er
 	// Asignar la configuración cargada al campo config
 	c.config = cfg
 
-	c.config.B2KeyID = "da435c192e07"                                     //os.Getenv("B2_KEY_ID")
-	c.config.B2Application = "00541a30c28c056a2403e4a8fb27a4fdcce45331fb" //os.Getenv("B2_APPLICATION_KEY")
-	c.config.B2Bucket = "tourmanagerdocument"                             //os.Getenv("B2_BUCKET")
-	c.config.B2Region = "us-east-005"                                     //os.Getenv("B2_REGION")
-	c.config.B2Endpoint = "https://s3.us-east-005.backblazeb2.com"        //os.Getenv("B2_ENDPOINT")
+	c.config.B2KeyID = "005da435c192e070000000002"                 //os.Getenv("B2_KEY_ID")
+	c.config.B2Application = "K005eBNeG6W0VP/MWnRiOs1poeHtu8M"     //os.Getenv("B2_APPLICATION_KEY")
+	c.config.B2Bucket = "tourmanagerdocument"                      //os.Getenv("B2_BUCKET")
+	c.config.B2Region = "us-east-005"                              //os.Getenv("B2_REGION")
+	c.config.B2Endpoint = "https://s3.us-east-005.backblazeb2.com" //os.Getenv("B2_ENDPOINT")
 
 	return c, nil
 }
