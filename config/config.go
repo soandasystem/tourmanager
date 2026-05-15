@@ -2,6 +2,7 @@ package config
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/antoniomarfa/hexatools/api/utils"
 )
@@ -88,11 +89,11 @@ func ReadConfig(version, env string, port int, database, dsn string) (Config, er
 	// Asignar la configuración cargada al campo config
 	c.config = cfg
 
-	c.config.B2KeyID = "005da435c192e070000000003"                 //os.Getenv("B2_KEY_ID")
-	c.config.B2Application = "K0059On0rvTtMgMzVRl4QrXlWvC98xs"     //os.Getenv("B2_APPLICATION_KEY")
-	c.config.B2Bucket = "tourmanagerdocument"                      //os.Getenv("B2_BUCKET")
-	c.config.B2Region = "us-east-005"                              //os.Getenv("B2_REGION")
-	c.config.B2Endpoint = "https://s3.us-east-005.backblazeb2.com" //os.Getenv("B2_ENDPOINT")
+	c.config.B2KeyID = os.Getenv("B2_KEY_ID")
+	c.config.B2Application = os.Getenv("B2_APPLICATION_KEY")
+	c.config.B2Bucket = os.Getenv("B2_BUCKET")
+	c.config.B2Region = os.Getenv("B2_REGION")
+	c.config.B2Endpoint = os.Getenv("B2_ENDPOINT")
 
 	return c, nil
 }
