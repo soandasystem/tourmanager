@@ -2,10 +2,7 @@ package services
 
 import (
 	"context"
-	"fmt"
 	"io"
-	"path/filepath"
-	"time"
 
 	"tourmanager/config"
 	"tourmanager/core/ports"
@@ -24,9 +21,7 @@ func NewUploadService(cfg config.Config, storage ports.UploadStorage) ports.Uplo
 }
 
 func (s *uploadService) UploadFile(ctx context.Context, file io.Reader, filename string, contentType string) (string, error) {
-	ext := filepath.Ext(filename)
-	uniqueFilename := fmt.Sprintf("%d%s", time.Now().UnixNano(), ext)
-	objectKey := "uploads/" + uniqueFilename
+	objectKey := "uploads/" + filename
 
 	return s.storage.Upload(ctx, file, objectKey, contentType)
 }

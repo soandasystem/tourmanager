@@ -94,6 +94,5 @@ func ReadConfig(version, env string, port int, database, dsn string) (Config, er
 	c.config.B2Bucket = os.Getenv("B2_BUCKET")
 	c.config.B2Region = os.Getenv("B2_REGION")
 	c.config.B2Endpoint = os.Getenv("B2_ENDPOINT")
-
 	return c, nil
 }
