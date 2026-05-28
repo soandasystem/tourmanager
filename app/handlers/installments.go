@@ -14,28 +14,28 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// SetUserRoutes creates sale routes
-func SetSaleRoutes(ctx context.Context, cfg config.Config, r *gin.Engine, p ports.SaleService) {
+// SetInstallmentsRoutes creates installment routes
+func SetInstallmentsRoutes(ctx context.Context, cfg config.Config, r *gin.Engine, p ports.InstallmentsService) {
 	//	r.Use(middlewares.Recover())
 
-	r.POST("/api/v3.5/sale", createSale(ctx, cfg, p))
-	r.GET("/api/v3.5/sale", getAllSale(ctx, cfg, p))
-	r.GET("/api/v3.5/sale/informe", getInfSale(ctx, cfg, p))
-	r.GET("/api/v3.5/sale/:id", getSaleByID(ctx, cfg, p))
-	r.PATCH("/api/v3.5/sale/:id", updateSale(ctx, cfg, p))
-	r.DELETE("/api/v3.5/sale/:id", deleteSale(ctx, cfg, p))
+	r.POST("/api/v3.5/installment", createInstallment(ctx, cfg, p))
+	r.GET("/api/v3.5/installment", getAllInstallment(ctx, cfg, p))
+	r.GET("/api/v3.5/installment/informe", getInfInstallment(ctx, cfg, p))
+	r.GET("/api/v3.5/installment/:id", getInstallmentByID(ctx, cfg, p))
+	r.PATCH("/api/v3.5/installment/:id", updateInstallment(ctx, cfg, p))
+	r.DELETE("/api/v3.5/installment/:id", deleteInstallment(ctx, cfg, p))
 }
 
-// @Summary Create sale
-// @Description Creates a new sale
-// @Tags sale
-// @Param user body models.CreateSaleReq true "New sale to be created"
-// @Success 201 {object} models.SaleResp "OK"
+// @Summary Create installment
+// @Description Creates a new installment
+// @Tags installment
+// @Param user body models.CreateInstallmentReq true "New installment to be created"
+// @Success 201 {object} models.InstallmentResp "OK"
 // @Failure 400 {object} object
 // @Failure 408 {object} object
 // @Failure 500 {object} object
-// @Router /api/v3.5/sale [post]
-func createSale(ctx context.Context, cfg config.Config, p ports.SaleService) gin.HandlerFunc {
+// @Router /api/v3.5/installment [post]
+func createInstallment(ctx context.Context, cfg config.Config, p ports.InstallmentsService) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		// El ctx ya tiene timeout + schema
 		ctx := c.Request.Context()
@@ -49,16 +49,16 @@ func createSale(ctx context.Context, cfg config.Config, p ports.SaleService) gin
 		}
 
 		// Parsear el JSON al modelo adecuado
-		var sale models.CreateSaleReq
-		err = json.Unmarshal(body, &sale)
+		var ingreso models.CreateInstallmentReq
+		err = json.Unmarshal(body, &ingreso)
 		if err != nil {
 			response := util.NewErrorResponse(err, http.StatusInternalServerError)
 			c.JSON(response.StatusCode, response)
 			return
 		}
 
-		// Llamar al servicio para crear los sale
-		id, err := p.Create(ctx, sale)
+		// Llamar al servicio para crear los ingreso
+		id, err := p.Create(ctx, ingreso)
 		if err != nil {
 			response := util.NewErrorResponse(err, http.StatusInternalServerError)
 			c.JSON(response.StatusCode, response)
@@ -73,16 +73,16 @@ func createSale(ctx context.Context, cfg config.Config, p ports.SaleService) gin
 	}
 }
 
-// @Summary Get inf all ingreso
-// @Description Gets all the ingreso
-// @Tags ingreso
-// @Success 200 {array} models.SaleResp "OK"
+// @Summary Get inf all installment
+// @Description Gets all the installment
+// @Tags installment
+// @Success 200 {array} models.InstallmentResp "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
 // @Failure 408 {object} object
 // @Failure 500 {object} object
 // @Router /api/v3.5/ingreso [get]
-func getInfSale(ctx context.Context, cfg config.Config, p ports.SaleService) gin.HandlerFunc {
+func getInfInstallment(ctx context.Context, cfg config.Config, p ports.InstallmentsService) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		// El ctx ya tiene timeout + schema
 		ctx := c.Request.Context()
@@ -101,7 +101,6 @@ func getInfSale(ctx context.Context, cfg config.Config, p ports.SaleService) gin
 				filter[key] = values[0]
 			}
 		}
-
 		result, err := p.GetInforme(ctx, filter)
 		if err != nil {
 			response := util.NewErrorResponse(err, http.StatusInternalServerError)
@@ -118,16 +117,16 @@ func getInfSale(ctx context.Context, cfg config.Config, p ports.SaleService) gin
 
 }
 
-// @Summary Get all sale
-// @Description Gets all the sale
-// @Tags sale
-// @Success 200 {array} models.SaleResp "OK"
+// @Summary Get all installment
+// @Description Gets all the installment
+// @Tags installment
+// @Success 200 {array} models.InstallmentResp "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
 // @Failure 408 {object} object
 // @Failure 500 {object} object
-// @Router /api/v3.5/sale [get]
-func getAllSale(ctx context.Context, cfg config.Config, p ports.SaleService) gin.HandlerFunc {
+// @Router /api/v3.5/installment [get]
+func getAllInstallment(ctx context.Context, cfg config.Config, p ports.InstallmentsService) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		// El ctx ya tiene timeout + schema
 		ctx := c.Request.Context()
@@ -146,7 +145,6 @@ func getAllSale(ctx context.Context, cfg config.Config, p ports.SaleService) gin
 				filter[key] = values[0]
 			}
 		}
-
 		result, err := p.GetAll(ctx, filter)
 		if err != nil {
 			response := util.NewErrorResponse(err, http.StatusInternalServerError)
@@ -162,17 +160,17 @@ func getAllSale(ctx context.Context, cfg config.Config, p ports.SaleService) gin
 	}
 }
 
-// @Summary Get sale by ID
-// @Description Gets a sale by ID
-// @Tags sale
+// @Summary Get installment by ID
+// @Description Gets a installment by ID
+// @Tags installment
 // @Param id path string true "ID"
-// @Success 200 {object} models.SaleResp "OK"
+// @Success 200 {object} models.InstallmentResp "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
 // @Failure 408 {object} object
 // @Failure 500 {object} object
-// @Router /api/v3.5/sale/{id} [get]
-func getSaleByID(ctx context.Context, cfg config.Config, p ports.SaleService) gin.HandlerFunc {
+// @Router /api/v3.5/installment/{id} [get]
+func getInstallmentByID(ctx context.Context, cfg config.Config, p ports.InstallmentsService) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		// El ctx ya tiene timeout + schema
 		ctx := c.Request.Context()
@@ -190,18 +188,18 @@ func getSaleByID(ctx context.Context, cfg config.Config, p ports.SaleService) gi
 	}
 }
 
-// @Summary Update sale
-// @Description Updates a sale
-// @Tags sale
+// @Summary Update installment
+// @Description Updates a installment
+// @Tags installment
 // @Param id path string true "ID"
-// @Param User body models.UpdateSaleReq true "sale"
+// @Param User body models.UpdateInstallmentReq true "installment"
 // @Success 200 "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
 // @Failure 408 {object} object
 // @Failure 500 {object} object
-// @Router /api/v3.5/users/{id} [patch]
-func updateSale(ctx context.Context, cfg config.Config, p ports.SaleService) gin.HandlerFunc {
+// @Router /api/v3.5/installment/{id} [patch]
+func updateInstallment(ctx context.Context, cfg config.Config, p ports.InstallmentsService) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		// El ctx ya tiene timeout + schema
 		ctx := c.Request.Context()
@@ -214,15 +212,15 @@ func updateSale(ctx context.Context, cfg config.Config, p ports.SaleService) gin
 		}
 
 		params := c.Params
-		var sale models.UpdateSaleReq
-		err = json.Unmarshal(body, &sale)
+		var ingreso models.UpdateInstallmentReq
+		err = json.Unmarshal(body, &ingreso)
 		if err != nil {
 			response := util.NewErrorResponse(err, http.StatusInternalServerError)
 			c.JSON(response.StatusCode, response)
 			return
 		}
 		id := params.ByName("id")
-		err = p.Update(ctx, params.ByName("id"), sale)
+		err = p.Update(ctx, params.ByName("id"), ingreso)
 		if err != nil {
 			response := util.NewErrorResponse(err, http.StatusInternalServerError)
 			c.JSON(response.StatusCode, response)
@@ -235,17 +233,17 @@ func updateSale(ctx context.Context, cfg config.Config, p ports.SaleService) gin
 	}
 }
 
-// @Summary Delete sale
-// @Description Delete a sale
-// @Tags sale
+// @Summary Delete installment
+// @Description Delete a installment
+// @Tags installment
 // @Param id path string true "ID"
 // @Success 200 "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
 // @Failure 408 {object} object
 // @Failure 500 {object} object
-// @Router /api/v3.5/sale/{id} [delete]
-func deleteSale(ctx context.Context, cfg config.Config, p ports.SaleService) gin.HandlerFunc {
+// @Router /api/v3.5/installment/{id} [delete]
+func deleteInstallment(ctx context.Context, cfg config.Config, p ports.InstallmentsService) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		// El ctx ya tiene timeout + schema
 		ctx := c.Request.Context()

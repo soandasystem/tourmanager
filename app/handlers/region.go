@@ -28,8 +28,8 @@ func SetRegionRoutes(ctx context.Context, cfg config.Config, r *gin.Engine, p po
 // @Summary Create region
 // @Description Creates a new region
 // @Tags region
-// @Param user body models.CreateregionReq true "New region to be created"
-// @Success 201 {object} models.regionResp "OK"
+// @Param user body models.CreateRegionReq true "New region to be created"
+// @Success 201 {object} models.RegionResp "OK"
 // @Failure 400 {object} object
 // @Failure 408 {object} object
 // @Failure 500 {object} object
@@ -75,7 +75,7 @@ func createRegion(p ports.RegionService) gin.HandlerFunc {
 // @Summary Get all region
 // @Description Gets all the region
 // @Tags region
-// @Success 200 {array} models.regionResp "OK"
+// @Success 200 {array} models.RegionResp "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
 // @Failure 408 {object} object
@@ -106,7 +106,7 @@ func getAllRegion(p ports.RegionService) gin.HandlerFunc {
 // @Description Gets a region by ID
 // @Tags region
 // @Param id path string true "ID"
-// @Success 200 {object} models.regionResp "OK"
+// @Success 200 {object} models.RegionResp "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
 // @Failure 408 {object} object
@@ -133,7 +133,7 @@ func getRegionByID(p ports.RegionService) gin.HandlerFunc {
 // @Description Updates a region
 // @Tags region
 // @Param id path string true "ID"
-// @Param User body models.UpdateregionReq true "region"
+// @Param User body models.UpdateRegionReq true "region"
 // @Success 200 "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object

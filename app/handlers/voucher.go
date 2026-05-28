@@ -29,8 +29,8 @@ func SetVoucherRoutes(ctx context.Context, cfg config.Config, r *gin.Engine, p p
 // @Summary Create voucher
 // @Description Creates a new voucher
 // @Tags voucher
-// @Param user body models.CreatevoucherReq true "New voucher to be created"
-// @Success 201 {object} models.voucherResp "OK"
+// @Param user body models.CreateVoucherReq true "New voucher to be created"
+// @Success 201 {object} models.VoucherResp "OK"
 // @Failure 400 {object} object
 // @Failure 408 {object} object
 // @Failure 500 {object} object
@@ -76,7 +76,7 @@ func createVoucher(p ports.VoucherService) gin.HandlerFunc {
 // @Summary Get all voucher
 // @Description Gets all the voucher
 // @Tags voucher
-// @Success 200 {array} models.voucherResp "OK"
+// @Success 200 {array} models.VoucherResp "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
 // @Failure 408 {object} object
@@ -121,7 +121,7 @@ func getAllVoucher(p ports.VoucherService) gin.HandlerFunc {
 // @Description Gets a voucher by ID
 // @Tags voucher
 // @Param id path string true "ID"
-// @Success 200 {object} models.voucherResp "OK"
+// @Success 200 {object} models.VoucherResp "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
 // @Failure 408 {object} object
@@ -149,7 +149,7 @@ func getVoucherByID(p ports.VoucherService) gin.HandlerFunc {
 // @Description Updates a voucher
 // @Tags voucher
 // @Param id path string true "ID"
-// @Param User body models.UpdatevoucherReq true "voucher"
+// @Param User body models.UpdateVoucherReq true "voucher"
 // @Success 200 "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object

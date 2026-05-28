@@ -28,8 +28,8 @@ func SetCompanyRoutes(ctx context.Context, cfg config.Config, r *gin.Engine, p p
 // @Summary Create company
 // @Description Creates a new company
 // @Tags company
-// @Param user body models.CreatecompanyReq true "New company to be created"
-// @Success 201 {object} models.companyResp "OK"
+// @Param user body models.CreateCompanyReq true "New company to be created"
+// @Success 201 {object} models.CompanyResp "OK"
 // @Failure 400 {object} object
 // @Failure 408 {object} object
 // @Failure 500 {object} object
@@ -74,7 +74,7 @@ func createCompany(p ports.CompanyService) gin.HandlerFunc {
 // @Summary Get all company
 // @Description Gets all the company
 // @Tags company
-// @Success 200 {array} models.companyResp "OK"
+// @Success 200 {array} models.CompanyResp "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
 // @Failure 408 {object} object
@@ -121,7 +121,7 @@ func getAllCompany(p ports.CompanyService) gin.HandlerFunc {
 // @Description Gets a company by ID
 // @Tags company
 // @Param id path string true "ID"
-// @Success 200 {object} models.companyResp "OK"
+// @Success 200 {object} models.CompanyResp "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
 // @Failure 408 {object} object
@@ -148,7 +148,7 @@ func getCompanyByID(p ports.CompanyService) gin.HandlerFunc {
 // @Description Updates a company
 // @Tags company
 // @Param id path string true "ID"
-// @Param User body models.UpdatecompanyReq true "company"
+// @Param User body models.UpdateCompanyReq true "company"
 // @Success 200 "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object

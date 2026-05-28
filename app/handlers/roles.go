@@ -28,8 +28,8 @@ func SetRolesRoutes(ctx context.Context, cfg config.Config, r *gin.Engine, p por
 // @Summary Create roles
 // @Description Creates a new roles
 // @Tags roles
-// @Param user body models.CreaterolesReq true "New roles to be created"
-// @Success 201 {object} models.rolesResp "OK"
+// @Param user body models.CreateRolesReq true "New roles to be created"
+// @Success 201 {object} models.RolesResp "OK"
 // @Failure 400 {object} object
 // @Failure 408 {object} object
 // @Failure 500 {object} object
@@ -75,7 +75,7 @@ func createRoles(p ports.RolesService) gin.HandlerFunc {
 // @Summary Get all roles
 // @Description Gets all the roles
 // @Tags roles
-// @Success 200 {array} models.rolesResp "OK"
+// @Success 200 {array} models.RolesResp "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
 // @Failure 408 {object} object
@@ -121,7 +121,7 @@ func getAllRoles(p ports.RolesService) gin.HandlerFunc {
 // @Description Gets a roles by ID
 // @Tags roles
 // @Param id path string true "ID"
-// @Success 200 {object} models.rolesResp "OK"
+// @Success 200 {object} models.RolesResp "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
 // @Failure 408 {object} object
@@ -148,7 +148,7 @@ func getRolesByID(p ports.RolesService) gin.HandlerFunc {
 // @Description Updates a roles
 // @Tags roles
 // @Param id path string true "ID"
-// @Param User body models.UpdaterolesReq true "roles"
+// @Param User body models.UpdateRolesReq true "roles"
 // @Success 200 "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object

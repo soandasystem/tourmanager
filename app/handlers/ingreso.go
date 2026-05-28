@@ -29,8 +29,8 @@ func SetIngresoRoutes(ctx context.Context, cfg config.Config, r *gin.Engine, p p
 // @Summary Create ingreso
 // @Description Creates a new ingreso
 // @Tags ingreso
-// @Param user body models.CreateingresoReq true "New colegio to be created"
-// @Success 201 {object} models.ingresoResp "OK"
+// @Param user body models.CreateIngresoReq true "New colegio to be created"
+// @Success 201 {object} models.IngresoResp "OK"
 // @Failure 400 {object} object
 // @Failure 408 {object} object
 // @Failure 500 {object} object
@@ -76,7 +76,7 @@ func createIngreso(ctx context.Context, cfg config.Config, p ports.IngresoServic
 // @Summary Get inf all ingreso
 // @Description Gets all the ingreso
 // @Tags ingreso
-// @Success 200 {array} models.ingresoResp "OK"
+// @Success 200 {array} models.IngresoResp "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
 // @Failure 408 {object} object
@@ -120,7 +120,7 @@ func getInfIngreso(ctx context.Context, cfg config.Config, p ports.IngresoServic
 // @Summary Get all ingreso
 // @Description Gets all the ingreso
 // @Tags ingreso
-// @Success 200 {array} models.ingresoResp "OK"
+// @Success 200 {array} models.IngresoResp "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
 // @Failure 408 {object} object
@@ -164,7 +164,7 @@ func getAllIngreso(ctx context.Context, cfg config.Config, p ports.IngresoServic
 // @Description Gets a ingreso by ID
 // @Tags ingreso
 // @Param id path string true "ID"
-// @Success 200 {object} models.ingresoResp "OK"
+// @Success 200 {object} models.IngresoResp "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
 // @Failure 408 {object} object
@@ -192,7 +192,7 @@ func getIngresoByID(ctx context.Context, cfg config.Config, p ports.IngresoServi
 // @Description Updates a ingreso
 // @Tags ingreso
 // @Param id path string true "ID"
-// @Param User body models.UpdateingresoReq true "ingreso"
+// @Param User body models.UpdateIngresoReq true "ingreso"
 // @Success 200 "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object

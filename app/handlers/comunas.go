@@ -28,8 +28,8 @@ func SetComunasRoutes(ctx context.Context, cfg config.Config, r *gin.Engine, p p
 // @Summary Create comunas
 // @Description Creates a new comunas
 // @Tags comunas
-// @Param user body models.CreatecomunasReq true "New comunas to be created"
-// @Success 201 {object} models.comunasResp "OK"
+// @Param user body models.CreateComunasReq true "New comunas to be created"
+// @Success 201 {object} models.ComunasResp "OK"
 // @Failure 400 {object} object
 // @Failure 408 {object} object
 // @Failure 500 {object} object
@@ -75,7 +75,7 @@ func createComunas(p ports.ComunasService) gin.HandlerFunc {
 // @Summary Get all comunas
 // @Description Gets all the comunas
 // @Tags comunas
-// @Success 200 {array} models.comunasResp "OK"
+// @Success 200 {array} models.ComunasResp "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
 // @Failure 408 {object} object
@@ -115,7 +115,7 @@ func getAllComunas(p ports.ComunasService) gin.HandlerFunc {
 // @Description Gets a comunas by ID
 // @Tags comunas
 // @Param id path string true "ID"
-// @Success 200 {object} models.comunasResp "OK"
+// @Success 200 {object} models.ComunasResp "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
 // @Failure 408 {object} object
@@ -142,7 +142,7 @@ func getComunasByID(p ports.ComunasService) gin.HandlerFunc {
 // @Description Updates a comunas
 // @Tags comunas
 // @Param id path string true "ID"
-// @Param User body models.UpdatecomunasReq true "comunas"
+// @Param User body models.UpdateComunasReq true "comunas"
 // @Success 200 "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object

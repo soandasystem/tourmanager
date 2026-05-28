@@ -28,8 +28,8 @@ func SetColegiosRoutes(ctx context.Context, cfg config.Config, r *gin.Engine, p 
 // @Summary Create colegios
 // @Description Creates a new colegios
 // @Tags colegion
-// @Param user body models.CreatecolegiosReq true "New colegio to be created"
-// @Success 201 {object} models.colegiosResp "OK"
+// @Param user body models.CreateColegiosReq true "New colegio to be created"
+// @Success 201 {object} models.ColegiosResp "OK"
 // @Failure 400 {object} object
 // @Failure 408 {object} object
 // @Failure 500 {object} object

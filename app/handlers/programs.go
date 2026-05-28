@@ -77,7 +77,7 @@ func createPrograms(p ports.ProgramsService) gin.HandlerFunc {
 // @Summary Get all program
 // @Description Gets all the program
 // @Tags program
-// @Success 200 {array} models.programResp "OK"
+// @Success 200 {array} models.ProgramsResp "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
 // @Failure 408 {object} object
@@ -120,7 +120,7 @@ func getAllPrograms(p ports.ProgramsService) gin.HandlerFunc {
 // @Description Gets a program by ID
 // @Tags program
 // @Param id path string true "ID"
-// @Success 200 {object} models.programResp "OK"
+// @Success 200 {object} models.ProgramsResp "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
 // @Failure 408 {object} object
@@ -147,7 +147,7 @@ func getProgramsByID(p ports.ProgramsService) gin.HandlerFunc {
 // @Description Updates a program
 // @Tags program
 // @Param id path string true "ID"
-// @Param User body models.UpdateprogramReq true "program"
+// @Param User body models.UpdateProgramsReq true "program"
 // @Success 200 "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object

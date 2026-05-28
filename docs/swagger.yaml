@@ -1,0 +1,5389 @@
+definitions:
+  models.AirportsResp:
+    properties:
+      _id:
+        type: string
+      city:
+        type: string
+      country:
+        type: string
+      elevation:
+        type: integer
+      iata:
+        type: string
+      icao:
+        type: string
+      lat:
+        type: number
+      lon:
+        type: number
+      name:
+        type: string
+      state:
+        type: string
+      tz:
+        type: string
+    type: object
+  models.ColegiosReport:
+    properties:
+      codigo:
+        type: string
+      id:
+        type: integer
+      nombre:
+        type: string
+    type: object
+  models.ColegiosResp:
+    properties:
+      codigo:
+        type: string
+      company_id:
+        type: integer
+      comuna:
+        type: string
+      comuna_id:
+        type: integer
+      direccion:
+        type: string
+      id:
+        type: string
+      latitiud:
+        type: integer
+      longitud:
+        type: integer
+      nombre:
+        type: string
+      region_id:
+        type: integer
+    type: object
+  models.CompanyResp:
+    properties:
+      active:
+        type: integer
+      additionaluser:
+        type: integer
+      author:
+        type: string
+      comuna_id:
+        type: integer
+      contrato:
+        type: string
+      contrato_vg:
+        type: string
+      createdDate:
+        type: string
+      direccion:
+        type: string
+      email:
+        type: string
+      emailcontacto1:
+        type: string
+      emailcontacto2:
+        type: string
+      fonocontacto1:
+        type: string
+      fonocontacto2:
+        type: string
+      id:
+        type: string
+      identificador:
+        type: string
+      iniciooperacion:
+        type: string
+      maxquote:
+        type: integer
+      maxsales:
+        type: integer
+      maxusers:
+        type: integer
+      nombrecontacto1:
+        type: string
+      nombrecontacto2:
+        type: string
+      nomfantasia:
+        type: string
+      nomreplegal:
+        type: string
+      plancode_id:
+        type: integer
+      politicasdeuso:
+        type: integer
+      razonsocial:
+        type: string
+      region_id:
+        type: integer
+      rut:
+        type: string
+      rutreplegal:
+        type: string
+      schema_name:
+        type: string
+      terminoscondiciones:
+        type: integer
+      updatedDate:
+        type: string
+      website:
+        type: string
+    type: object
+  models.ComunasResp:
+    properties:
+      active:
+        type: integer
+      author:
+        type: string
+      code:
+        type: string
+      createdDate:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+      regions_id:
+        type: integer
+      updatedDate:
+        type: string
+    type: object
+  models.CountryResp:
+    properties:
+      _id:
+        type: string
+      code:
+        type: string
+      country:
+        type: string
+      countrycode:
+        type: string
+    type: object
+  models.CreateAirportsReq:
+    properties:
+      _id:
+        type: string
+      city:
+        type: string
+      country:
+        type: string
+      elevation:
+        type: integer
+      iata:
+        type: string
+      icao:
+        type: string
+      lat:
+        type: number
+      lon:
+        type: number
+      name:
+        type: string
+      state:
+        type: string
+      tz:
+        type: string
+    type: object
+  models.CreateColegiosReq:
+    properties:
+      codigo:
+        type: string
+      company_id:
+        type: integer
+      comuna:
+        type: string
+      comuna_id:
+        type: integer
+      direccion:
+        type: string
+      id:
+        type: string
+      latitiud:
+        type: number
+      longitud:
+        type: number
+      nombre:
+        type: string
+      region_id:
+        type: integer
+    type: object
+  models.CreateCompanyReq:
+    properties:
+      active:
+        type: integer
+      additionaluser:
+        type: integer
+      author:
+        type: string
+      comuna_id:
+        type: integer
+      contrato:
+        type: string
+      contrato_vg:
+        type: string
+      createdDate:
+        type: string
+      direccion:
+        type: string
+      email:
+        type: string
+      emailcontacto1:
+        type: string
+      emailcontacto2:
+        type: string
+      fonocontacto1:
+        type: string
+      fonocontacto2:
+        type: string
+      id:
+        type: string
+      identificador:
+        type: string
+      iniciooperacion:
+        type: string
+      maxquote:
+        type: integer
+      maxsales:
+        type: integer
+      maxusers:
+        type: integer
+      nombrecontacto1:
+        type: string
+      nombrecontacto2:
+        type: string
+      nomfantasia:
+        type: string
+      nomreplegal:
+        type: string
+      plancode_id:
+        type: integer
+      politicasdeuso:
+        type: integer
+      razonsocial:
+        type: string
+      region_id:
+        type: integer
+      rut:
+        type: string
+      rutreplegal:
+        type: string
+      schema_name:
+        type: string
+      terminoscondiciones:
+        type: integer
+      updatedDate:
+        type: string
+      website:
+        type: string
+    type: object
+  models.CreateComunasReq:
+    properties:
+      active:
+        type: integer
+      author:
+        type: string
+      code:
+        type: string
+      createdDate:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+      regions_id:
+        type: integer
+      updatedDate:
+        type: string
+    type: object
+  models.CreateCountryReq:
+    properties:
+      _id:
+        type: string
+      code:
+        type: string
+      country:
+        type: string
+      countrycode:
+        type: string
+    type: object
+  models.CreateCursoReq:
+    properties:
+      acepta_contrato:
+        type: integer
+      apagar:
+        type: number
+      author:
+        type: string
+      celular:
+        type: string
+      company_id:
+        type: integer
+      comuna_id:
+        type: integer
+      correo:
+        type: string
+      createdDate:
+        type: string
+      descto:
+        type: number
+      dircalle:
+        type: string
+      dirnumero:
+        type: string
+      enviado:
+        type: string
+      estado:
+        type: string
+      fechanac:
+        type: string
+      fono:
+        type: string
+      id:
+        type: string
+      liberado:
+        type: integer
+      nombrealumno:
+        type: string
+      nombreapod:
+        type: string
+      nrodepto:
+        type: string
+      pasaporte:
+        type: string
+      password:
+        type: string
+      region_id:
+        type: integer
+      rutalumno:
+        type: string
+      rutapod:
+        type: string
+      sale_id:
+        type: integer
+      signature:
+        type: string
+      updatedDate:
+        type: string
+      vpagar:
+        type: number
+    type: object
+  models.CreateFmedicaReq:
+    properties:
+      company_id:
+        type: integer
+      dato1:
+        type: string
+      dato2:
+        type: string
+      dato4:
+        type: string
+      dato5:
+        type: string
+      dato6:
+        type: string
+      dato7:
+        type: string
+      dato8:
+        type: string
+      dato9:
+        type: string
+      dato10:
+        type: string
+      dato11:
+        type: string
+      dato12:
+        type: string
+      dato13:
+        type: string
+      dato17:
+        type: string
+      dato18:
+        type: string
+      dato19:
+        type: string
+      dato20:
+        type: string
+      dato21:
+        type: string
+      dato22:
+        type: string
+      dato31:
+        type: string
+      dato32:
+        type: string
+      dato91:
+        type: string
+      dato92:
+        type: string
+      dato101:
+        type: string
+      dato111:
+        type: string
+      dato141:
+        type: string
+      dato142:
+        type: string
+      dato151:
+        type: string
+      dato152:
+        type: string
+      dato161:
+        type: string
+      dato162:
+        type: string
+      id:
+        type: string
+      rutalumn:
+        type: string
+      sale_id:
+        type: integer
+    type: object
+  models.CreateGatewaysReq:
+    properties:
+      Gateway_id:
+        type: integer
+      active:
+        type: integer
+      additional_config:
+        allOf:
+        - $ref: '#/definitions/models.GatewayAdditionalConfig'
+        description: GORM serializa automáticamente
+      company_id:
+        type: integer
+      createdDate:
+        type: string
+      id:
+        type: string
+      updatedDate:
+        type: string
+    type: object
+  models.CreateGatewayscReq:
+    properties:
+      active:
+        type: integer
+      createdDate:
+        type: string
+      gateway_description:
+        type: string
+      gateway_image:
+        type: string
+      gateway_type:
+        type: string
+      gateway_url:
+        type: string
+      id:
+        type: string
+      updatedDate:
+        type: string
+    type: object
+  models.CreateIngresoReq:
+    properties:
+      activo:
+        type: integer
+      author:
+        type: string
+      company_id:
+        type: integer
+      createdDate:
+        type: string
+      curso_id:
+        type: integer
+      fecha:
+        type: string
+      fechainicial:
+        type: string
+      fpago:
+        type: string
+      id:
+        type: string
+      identificador:
+        type: string
+      monto:
+        type: number
+      nrocuotas:
+        type: integer
+      reserva:
+        type: integer
+      rutalum:
+        type: string
+      rutapo:
+        type: string
+      sale_id:
+        type: integer
+      status_pago:
+        type: string
+      tipocomp:
+        type: string
+      token_flow:
+        type: string
+      updatedDate:
+        type: string
+      valorcuota:
+        type: number
+    type: object
+  models.CreateInstallmentReq:
+    properties:
+      amount:
+        type: number
+      balance:
+        type: number
+      createdDate:
+        type: string
+      due_date:
+        type: string
+      id:
+        type: string
+      paid_amount:
+        type: number
+      passenger_id:
+        type: integer
+      quota_number:
+        type: integer
+      status:
+        type: string
+      updatedDate:
+        type: string
+    type: object
+  models.CreatePagosReq:
+    properties:
+      activo:
+        type: integer
+      author:
+        type: string
+      codigoauto:
+        type: string
+      company_id:
+        type: integer
+      createdDate:
+        type: string
+      cuotafecha:
+        type: string
+      cuotapagada:
+        type: integer
+      fecha:
+        type: string
+      fechaauto:
+        type: string
+      fechatransac:
+        type: string
+      id:
+        type: string
+      identificador:
+        type: string
+      ingreso_id:
+        type: integer
+      monto:
+        type: number
+      nrocuota:
+        type: integer
+      nrotarjeta:
+        type: string
+      rutalumn:
+        type: string
+      sale_id:
+        type: integer
+      tipo:
+        type: string
+      tipocom:
+        type: string
+      tipopago:
+        type: string
+      transaccion:
+        type: string
+      updatedDate:
+        type: string
+    type: object
+  models.CreatePaymentInstallmentReq:
+    properties:
+      applied_amount:
+        type: number
+      createdDate:
+        type: string
+      id:
+        type: string
+      installment_id:
+        type: integer
+      payment_id:
+        type: integer
+      updatedDate:
+        type: string
+    type: object
+  models.CreatePaymentReq:
+    properties:
+      amount:
+        type: number
+      createdDate:
+        type: string
+      id:
+        type: string
+      notes:
+        type: string
+      passenger_id:
+        type: integer
+      payment_date:
+        type: string
+      payment_method:
+        type: string
+      reference:
+        type: string
+      updatedDate:
+        type: string
+    type: object
+  models.CreateProgramacReq:
+    properties:
+      active:
+        type: integer
+      author:
+        type: string
+      code:
+        type: string
+      company_id:
+        type: integer
+      createdDate:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      reserva:
+        type: number
+      updateDate:
+        type: string
+    type: object
+  models.CreateProgramadReq:
+    properties:
+      desde:
+        type: integer
+      hasta:
+        type: integer
+      id:
+        type: string
+      liberado:
+        type: integer
+      programa_id:
+        type: integer
+      valor:
+        type: number
+    type: object
+  models.CreateProgramsReq:
+    properties:
+      active:
+        type: integer
+      author:
+        type: string
+      code:
+        type: string
+      company_id:
+        type: integer
+      createdDate:
+        type: string
+      destination:
+        type: string
+      destination_code:
+        type: string
+      id:
+        type: string
+      matrix:
+        type: object
+      name:
+        type: string
+      origin:
+        type: string
+      origin_code:
+        type: string
+      reserva:
+        type: number
+      updateDate:
+        type: string
+    type: object
+  models.CreateQuoteReq:
+    properties:
+      author:
+        type: string
+      company_id:
+        type: integer
+      contacto:
+        type: string
+      contactoemail:
+        type: string
+      contactofono:
+        type: string
+      createdDate:
+        type: string
+      curso:
+        type: integer
+      desc:
+        type: integer
+      establecimiento_id:
+        type: integer
+      estado:
+        type: string
+      fecha:
+        type: string
+      from_quote:
+        type: integer
+      id:
+        type: string
+      idcurso:
+        type: string
+      identificador:
+        type: string
+      liberados:
+        type: integer
+      obsestado:
+        type: string
+      pasajeros:
+        type: integer
+      programa_id:
+        type: integer
+      sale_id:
+        type: integer
+      seller_id:
+        type: integer
+      subtotal:
+        type: integer
+      tipocambio:
+        type: number
+      type_sale:
+        type: string
+      updatedDate:
+        type: string
+      vprograma:
+        type: integer
+    type: object
+  models.CreateRegionReq:
+    properties:
+      active:
+        type: integer
+      author:
+        type: string
+      code:
+        type: string
+      code_internal:
+        type: string
+      company_id:
+        type: integer
+      createdDate:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+      position:
+        type: integer
+      updatedDate:
+        type: string
+    type: object
+  models.CreateRolesReq:
+    properties:
+      active:
+        type: integer
+      author:
+        type: string
+      company_id:
+        type: integer
+      createdDate:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+      permissions:
+        type: object
+      updatedDate:
+        type: string
+    type: object
+  models.CreateSaleReq:
+    properties:
+      accesscode:
+        type: string
+      activo:
+        type: integer
+      author:
+        type: string
+      comision:
+        type: number
+      comision_pagada:
+        type: integer
+      company_id:
+        type: integer
+      correo_encargado:
+        type: string
+      createdDate:
+        type: string
+      cuotas:
+        type: integer
+      curso:
+        type: integer
+      descm:
+        type: integer
+      descrition:
+        type: string
+      encargado:
+        type: string
+      establecimiento_id:
+        type: integer
+      fecha:
+        type: string
+      fecha_cierre:
+        type: string
+      fecha_ultpag:
+        type: string
+      fechacuota:
+        type: string
+      fechasalida:
+        type: string
+      id:
+        type: string
+      idcurso:
+        type: string
+      identificador:
+        type: string
+      liberados:
+        type: integer
+      nroalumno:
+        type: integer
+      obs:
+        type: string
+      password:
+        type: string
+      program_id:
+        type: integer
+      seller_id:
+        type: integer
+      sendemail:
+        type: integer
+      state:
+        type: string
+      subtotal:
+        type: integer
+      tipocambio:
+        type: number
+      type_sale:
+        type: string
+      updatedDate:
+        type: string
+      vprograma:
+        type: integer
+    type: object
+  models.CreateUsersReq:
+    properties:
+      active:
+        type: integer
+      author:
+        type: string
+      company_id:
+        type: integer
+      createdDate:
+        type: string
+      email:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      password:
+        type: string
+      phone:
+        type: string
+      reset_token:
+        type: string
+      reset_token_expira:
+        type: string
+      roles_id:
+        type: integer
+      updatedDate:
+        type: string
+      username:
+        type: string
+    type: object
+  models.CreateVoucherReq:
+    properties:
+      company_id:
+        type: integer
+      id:
+        type: string
+      sale_id:
+        type: integer
+      used:
+        type: integer
+      voucher:
+        type: string
+    type: object
+  models.CursoInf:
+    properties:
+      acepta_contrato:
+        type: integer
+      apagar:
+        type: number
+      author:
+        type: string
+      celular:
+        type: string
+      company_id:
+        type: integer
+      comuna_id:
+        type: integer
+      correo:
+        type: string
+      created_date:
+        type: string
+      descto:
+        type: number
+      dircalle:
+        type: string
+      dirnumero:
+        type: string
+      enviado:
+        type: string
+      estado:
+        type: string
+      fechanac:
+        type: string
+      fono:
+        type: string
+      id:
+        type: integer
+      liberado:
+        type: integer
+      nombrealumno:
+        type: string
+      nombreapod:
+        type: string
+      nrodepto:
+        type: string
+      pago:
+        items:
+          $ref: '#/definitions/models.IngresoReport'
+        type: array
+      pasaporte:
+        type: string
+      password:
+        type: string
+      region_id:
+        type: integer
+      rutalumno:
+        type: string
+      rutapod:
+        type: string
+      sale:
+        $ref: '#/definitions/models.SaleCursoReport'
+      sale_id:
+        type: integer
+      signature:
+        type: string
+      updated_date:
+        type: string
+      vpagar:
+        type: number
+    type: object
+  models.CursoResp:
+    properties:
+      acepta_contrato:
+        type: integer
+      apagar:
+        type: number
+      author:
+        type: string
+      celular:
+        type: string
+      company_id:
+        type: integer
+      comuna_id:
+        type: integer
+      correo:
+        type: string
+      created_date:
+        type: string
+      descto:
+        type: number
+      dircalle:
+        type: string
+      dirnumero:
+        type: string
+      enviado:
+        type: string
+      estado:
+        type: string
+      fechanac:
+        type: string
+      fono:
+        type: string
+      id:
+        type: string
+      liberado:
+        type: integer
+      nombrealumno:
+        type: string
+      nombreapod:
+        type: string
+      nrodepto:
+        type: string
+      pasaporte:
+        type: string
+      password:
+        type: string
+      region_id:
+        type: integer
+      rutalumno:
+        type: string
+      rutapod:
+        type: string
+      sale_id:
+        type: integer
+      signature:
+        type: string
+      updated_date:
+        type: string
+      vpagar:
+        type: number
+    type: object
+  models.FmedicaResp:
+    properties:
+      company_id:
+        type: integer
+      dato1:
+        type: string
+      dato2:
+        type: string
+      dato4:
+        type: string
+      dato5:
+        type: string
+      dato6:
+        type: string
+      dato7:
+        type: string
+      dato8:
+        type: string
+      dato9:
+        type: string
+      dato10:
+        type: string
+      dato11:
+        type: string
+      dato12:
+        type: string
+      dato13:
+        type: string
+      dato17:
+        type: string
+      dato18:
+        type: string
+      dato19:
+        type: string
+      dato20:
+        type: string
+      dato21:
+        type: string
+      dato22:
+        type: string
+      dato31:
+        type: string
+      dato32:
+        type: string
+      dato91:
+        type: string
+      dato92:
+        type: string
+      dato101:
+        type: string
+      dato111:
+        type: string
+      dato141:
+        type: string
+      dato142:
+        type: string
+      dato151:
+        type: string
+      dato152:
+        type: string
+      dato161:
+        type: string
+      dato162:
+        type: string
+      id:
+        type: string
+      rutalumn:
+        type: string
+      sale_id:
+        type: integer
+    type: object
+  models.GatewayAdditionalConfig:
+    properties:
+      flow_apikey:
+        type: string
+      flow_secretkey:
+        type: string
+      mp_accesstoken:
+        type: string
+      mp_publickey:
+        type: string
+      mp_usersid:
+        type: string
+      trbk_commercialcode:
+        type: string
+      trbk_keysecret:
+        type: string
+    type: object
+  models.GatewaysResp:
+    properties:
+      active:
+        type: integer
+      additional_config:
+        allOf:
+        - $ref: '#/definitions/models.GatewayAdditionalConfig'
+        description: GORM serializa automáticamente
+      company_id:
+        type: integer
+      createdDate:
+        type: string
+      gateway_id:
+        type: integer
+      id:
+        type: string
+      updatedDate:
+        type: string
+    type: object
+  models.GatewayscResp:
+    properties:
+      active:
+        type: integer
+      createdDate:
+        type: string
+      gateway_description:
+        type: string
+      gateway_image:
+        type: string
+      gateway_type:
+        type: string
+      gateway_url:
+        type: string
+      id:
+        type: string
+      updatedDate:
+        type: string
+    type: object
+  models.IngresoReport:
+    properties:
+      activo:
+        type: integer
+      author:
+        type: string
+      company_id:
+        type: integer
+      curso_id:
+        type: integer
+      fecha:
+        type: string
+      fechainicial:
+        type: string
+      fpago:
+        type: string
+      id:
+        type: integer
+      identificador:
+        type: string
+      monto:
+        type: number
+      nrocuotas:
+        type: integer
+      reserva:
+        type: integer
+      rutalum:
+        type: string
+      rutapo:
+        type: string
+      saleId:
+        type: integer
+      status_pago:
+        type: string
+      tipocomp:
+        type: string
+      token_flow:
+        type: string
+      valorcuota:
+        type: number
+    type: object
+  models.IngresoResp:
+    properties:
+      activo:
+        type: integer
+      author:
+        type: string
+      company_id:
+        type: integer
+      createdDate:
+        type: string
+      curso_id:
+        type: integer
+      fecha:
+        type: string
+      fechainicial:
+        type: string
+      fpago:
+        type: string
+      id:
+        type: string
+      identificador:
+        type: string
+      monto:
+        type: number
+      nrocuotas:
+        type: integer
+      reserva:
+        type: integer
+      rutalum:
+        type: string
+      rutapo:
+        type: string
+      sale_id:
+        type: integer
+      status_pago:
+        type: string
+      tipocomp:
+        type: string
+      token_flow:
+        type: string
+      updatedDate:
+        type: string
+      valorcuota:
+        type: number
+    type: object
+  models.InstallmentResp:
+    properties:
+      amount:
+        type: number
+      balance:
+        type: number
+      createdDate:
+        type: string
+      due_date:
+        type: string
+      id:
+        type: string
+      paid_amount:
+        type: number
+      passenger_id:
+        type: integer
+      quota_number:
+        type: integer
+      status:
+        type: string
+      updatedDate:
+        type: string
+    type: object
+  models.PagosResp:
+    properties:
+      activo:
+        type: integer
+      author:
+        type: string
+      codigoauto:
+        type: string
+      company_id:
+        type: integer
+      createdDate:
+        type: string
+      cuotafecha:
+        type: string
+      cuotapagada:
+        type: integer
+      fecha:
+        type: string
+      fechaauto:
+        type: string
+      fechatransac:
+        type: string
+      id:
+        type: string
+      identificador:
+        type: string
+      ingreso_id:
+        type: integer
+      monto:
+        type: number
+      nrocuota:
+        type: integer
+      nrotarjeta:
+        type: string
+      rutalumn:
+        type: string
+      sale_id:
+        type: integer
+      tipo:
+        type: string
+      tipocom:
+        type: string
+      tipopago:
+        type: string
+      transaccion:
+        type: string
+      updatedDate:
+        type: string
+    type: object
+  models.PaymentInstallmentResp:
+    properties:
+      applied_amount:
+        type: number
+      createdDate:
+        type: string
+      id:
+        type: string
+      installment_id:
+        type: integer
+      payment_id:
+        type: integer
+      updatedDate:
+        type: string
+    type: object
+  models.PaymentResp:
+    properties:
+      amount:
+        type: number
+      createdDate:
+        type: string
+      id:
+        type: string
+      notes:
+        type: string
+      passenger_id:
+        type: integer
+      payment_date:
+        type: string
+      payment_method:
+        type: string
+      reference:
+        type: string
+      updatedDate:
+        type: string
+    type: object
+  models.ProgramacResp:
+    properties:
+      active:
+        type: integer
+      author:
+        type: string
+      code:
+        type: string
+      company_id:
+        type: integer
+      createdDate:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      reserva:
+        type: number
+      updateDate:
+        type: string
+    type: object
+  models.ProgramadResp:
+    properties:
+      desde:
+        type: integer
+      hasta:
+        type: integer
+      id:
+        type: string
+      liberado:
+        type: integer
+      programa_id:
+        type: integer
+      valor:
+        type: number
+    type: object
+  models.ProgramsOthers:
+    properties:
+      active:
+        type: integer
+      author:
+        type: string
+      code:
+        type: string
+      company_id:
+        type: integer
+      id:
+        type: integer
+      name:
+        type: string
+      reserva:
+        type: number
+    type: object
+  models.ProgramsResp:
+    properties:
+      active:
+        type: integer
+      author:
+        type: string
+      code:
+        type: string
+      company_id:
+        type: integer
+      createdDate:
+        type: string
+      destination:
+        type: string
+      destination_code:
+        type: string
+      id:
+        type: string
+      matrix:
+        type: object
+      name:
+        type: string
+      origin:
+        type: string
+      origin_code:
+        type: string
+      reserva:
+        type: number
+      updateDate:
+        type: string
+    type: object
+  models.QuoteResp:
+    properties:
+      author:
+        type: string
+      colegios:
+        $ref: '#/definitions/models.ColegiosReport'
+      company_id:
+        type: integer
+      contacto:
+        type: string
+      contactoemail:
+        type: string
+      contactofono:
+        type: string
+      createdDate:
+        type: string
+      curso:
+        type: integer
+      desc:
+        type: integer
+      establecimiento_id:
+        type: integer
+      estado:
+        type: string
+      fecha:
+        type: string
+      from_quote:
+        type: integer
+      id:
+        type: string
+      idcurso:
+        type: string
+      identificador:
+        type: string
+      liberados:
+        type: integer
+      obsestado:
+        type: string
+      pasajeros:
+        type: integer
+      programa_id:
+        type: integer
+      programs:
+        $ref: '#/definitions/models.ProgramsOthers'
+      sale_id:
+        type: integer
+      seller_id:
+        type: integer
+      subtotal:
+        type: integer
+      tipocambio:
+        type: number
+      type_sale:
+        type: string
+      updatedDate:
+        type: string
+      users:
+        $ref: '#/definitions/models.UsersReport'
+      vprograma:
+        type: integer
+    type: object
+  models.RegionResp:
+    properties:
+      active:
+        type: integer
+      author:
+        type: string
+      code:
+        type: string
+      code_internal:
+        type: string
+      company_id:
+        type: integer
+      createdDate:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+      position:
+        type: integer
+      updatedDate:
+        type: string
+    type: object
+  models.RolesResp:
+    properties:
+      active:
+        type: integer
+      author:
+        type: string
+      company_id:
+        type: integer
+      createdDate:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+      permissions:
+        type: object
+      updatedDate:
+        type: string
+    type: object
+  models.SaleCursoReport:
+    properties:
+      curso:
+        type: integer
+      establecimiento_id:
+        type: string
+      id:
+        type: string
+      idcurso:
+        type: string
+      identificador:
+        type: string
+      program_id:
+        type: string
+      seller_id:
+        type: string
+      type_sale:
+        type: string
+    type: object
+  models.SaleResp:
+    properties:
+      accesscode:
+        type: string
+      activo:
+        type: integer
+      author:
+        type: string
+      comision:
+        type: number
+      comision_pagada:
+        type: integer
+      company_id:
+        type: integer
+      correo_encargado:
+        type: string
+      createdDate:
+        type: string
+      cuotas:
+        type: integer
+      curso:
+        type: integer
+      descm:
+        type: integer
+      descrition:
+        type: string
+      encargado:
+        type: string
+      establecimiento_id:
+        type: integer
+      fecha:
+        type: string
+      fecha_cierre:
+        type: string
+      fecha_ultpag:
+        type: string
+      fechacuota:
+        type: string
+      fechasalida:
+        type: string
+      id:
+        type: string
+      idcurso:
+        type: string
+      identificador:
+        type: string
+      liberados:
+        type: integer
+      nroalumno:
+        type: integer
+      obs:
+        type: string
+      password:
+        type: string
+      program_id:
+        type: integer
+      seller_id:
+        type: integer
+      sendemail:
+        type: integer
+      state:
+        type: string
+      subtotal:
+        type: integer
+      tipocambio:
+        type: number
+      type_sale:
+        type: string
+      updatedDate:
+        type: string
+      vprograma:
+        type: integer
+    type: object
+  models.UpdateAirportsReq:
+    properties:
+      _id:
+        type: string
+      city:
+        type: string
+      country:
+        type: string
+      elevation:
+        type: integer
+      iata:
+        type: string
+      icao:
+        type: string
+      lat:
+        type: number
+      lon:
+        type: number
+      name:
+        type: string
+      state:
+        type: string
+      tz:
+        type: string
+    type: object
+  models.UpdateColegiosReq:
+    properties:
+      codigo:
+        type: string
+      company_id:
+        type: integer
+      comuna:
+        type: string
+      comuna_id:
+        type: integer
+      direccion:
+        type: string
+      latitiud:
+        type: integer
+      longitud:
+        type: integer
+      nombre:
+        type: string
+      region_id:
+        type: integer
+    type: object
+  models.UpdateCompanyReq:
+    properties:
+      active:
+        type: integer
+      additionaluser:
+        type: integer
+      author:
+        type: string
+      comuna_id:
+        type: integer
+      contrato:
+        type: string
+      contrato_vg:
+        type: string
+      createdDate:
+        type: string
+      direccion:
+        type: string
+      email:
+        type: string
+      emailcontacto1:
+        type: string
+      emailcontacto2:
+        type: string
+      fonocontacto1:
+        type: string
+      fonocontacto2:
+        type: string
+      identificador:
+        type: string
+      iniciooperacion:
+        type: string
+      maxquote:
+        type: integer
+      maxsales:
+        type: integer
+      maxusers:
+        type: integer
+      nombrecontacto1:
+        type: string
+      nombrecontacto2:
+        type: string
+      nomfantasia:
+        type: string
+      nomreplegal:
+        type: string
+      plancode_id:
+        type: integer
+      politicasdeuso:
+        type: integer
+      razonsocial:
+        type: string
+      region_id:
+        type: integer
+      rut:
+        type: string
+      rutreplegal:
+        type: string
+      schema_name:
+        type: string
+      terminoscondiciones:
+        type: integer
+      updatedDate:
+        type: string
+      website:
+        type: string
+    type: object
+  models.UpdateComunasReq:
+    properties:
+      active:
+        type: integer
+      author:
+        type: string
+      code:
+        type: string
+      createdDate:
+        type: string
+      description:
+        type: string
+      regions_id:
+        type: integer
+      updatedDate:
+        type: string
+    type: object
+  models.UpdateCountryReq:
+    properties:
+      _id:
+        type: string
+      code:
+        type: string
+      country:
+        type: string
+      countrycode:
+        type: string
+    type: object
+  models.UpdateCursoReq:
+    properties:
+      acepta_contrato:
+        type: integer
+      apagar:
+        type: number
+      author:
+        type: string
+      celular:
+        type: string
+      company_id:
+        type: integer
+      comuna_id:
+        type: integer
+      correo:
+        type: string
+      createdDate:
+        type: string
+      descto:
+        type: number
+      dircalle:
+        type: string
+      dirnumero:
+        type: string
+      enviado:
+        type: string
+      estado:
+        type: string
+      fechanac:
+        type: string
+      fono:
+        type: string
+      liberado:
+        type: integer
+      nombrealumno:
+        type: string
+      nombreapod:
+        type: string
+      nrodepto:
+        type: string
+      pasaporte:
+        type: string
+      password:
+        type: string
+      region_id:
+        type: integer
+      rutalumno:
+        type: string
+      rutapod:
+        type: string
+      sale_id:
+        type: integer
+      signature:
+        type: string
+      updatedDate:
+        type: string
+      vpagar:
+        type: number
+    type: object
+  models.UpdateFmedicaReq:
+    properties:
+      company_id:
+        type: integer
+      dato1:
+        type: string
+      dato2:
+        type: string
+      dato4:
+        type: string
+      dato5:
+        type: string
+      dato6:
+        type: string
+      dato7:
+        type: string
+      dato8:
+        type: string
+      dato9:
+        type: string
+      dato10:
+        type: string
+      dato11:
+        type: string
+      dato12:
+        type: string
+      dato13:
+        type: string
+      dato17:
+        type: string
+      dato18:
+        type: string
+      dato19:
+        type: string
+      dato20:
+        type: string
+      dato21:
+        type: string
+      dato22:
+        type: string
+      dato31:
+        type: string
+      dato32:
+        type: string
+      dato91:
+        type: string
+      dato92:
+        type: string
+      dato101:
+        type: string
+      dato111:
+        type: string
+      dato141:
+        type: string
+      dato142:
+        type: string
+      dato151:
+        type: string
+      dato152:
+        type: string
+      dato161:
+        type: string
+      dato162:
+        type: string
+      rutalumn:
+        type: string
+      sale_id:
+        type: integer
+    type: object
+  models.UpdateGatewayscReq:
+    properties:
+      active:
+        type: integer
+      createdDate:
+        type: string
+      gateway_description:
+        type: string
+      gateway_image:
+        type: string
+      gateway_type:
+        type: string
+      gateway_url:
+        type: string
+      updatedDate:
+        type: string
+    type: object
+  models.UpdateIngresoReq:
+    properties:
+      activo:
+        type: integer
+      author:
+        type: string
+      company_id:
+        type: integer
+      createdDate:
+        type: string
+      curso_id:
+        type: integer
+      fecha:
+        type: string
+      fechainicial:
+        type: string
+      fpago:
+        type: string
+      identificador:
+        type: string
+      monto:
+        type: number
+      nrocuotas:
+        type: integer
+      reserva:
+        type: integer
+      rutalum:
+        type: string
+      rutapo:
+        type: string
+      sale_id:
+        type: integer
+      status_pago:
+        type: string
+      tipocomp:
+        type: string
+      token_flow:
+        type: string
+      updatedDate:
+        type: string
+      valorcuota:
+        type: number
+    type: object
+  models.UpdateInstallmentReq:
+    properties:
+      amount:
+        type: number
+      balance:
+        type: number
+      createdDate:
+        type: string
+      due_date:
+        type: string
+      paid_amount:
+        type: number
+      passenger_id:
+        type: integer
+      quota_number:
+        type: integer
+      status:
+        type: string
+      updatedDate:
+        type: string
+    type: object
+  models.UpdatePagosReq:
+    properties:
+      activo:
+        type: integer
+      author:
+        type: string
+      codigoauto:
+        type: string
+      company_id:
+        type: integer
+      createdDate:
+        type: string
+      cuotafecha:
+        type: string
+      cuotapagada:
+        type: integer
+      fecha:
+        type: string
+      fechaauto:
+        type: string
+      fechatransac:
+        type: string
+      identificador:
+        type: string
+      ingreso_id:
+        type: integer
+      monto:
+        type: number
+      nrocuota:
+        type: integer
+      nrotarjeta:
+        type: string
+      rutalumn:
+        type: string
+      sale_id:
+        type: integer
+      tipo:
+        type: string
+      tipocom:
+        type: string
+      tipopago:
+        type: string
+      transaccion:
+        type: string
+      updatedDate:
+        type: string
+    type: object
+  models.UpdatePaymentInstallmentReq:
+    properties:
+      applied_amount:
+        type: number
+      createdDate:
+        type: string
+      installment_id:
+        type: integer
+      payment_id:
+        type: integer
+      updatedDate:
+        type: string
+    type: object
+  models.UpdatePaymentReq:
+    properties:
+      amount:
+        type: number
+      createdDate:
+        type: string
+      notes:
+        type: string
+      passenger_id:
+        type: integer
+      payment_date:
+        type: string
+      payment_method:
+        type: string
+      reference:
+        type: string
+      updatedDate:
+        type: string
+    type: object
+  models.UpdateProgramacReq:
+    properties:
+      active:
+        type: integer
+      author:
+        type: string
+      code:
+        type: string
+      company_id:
+        type: integer
+      createdDate:
+        type: string
+      name:
+        type: string
+      reserva:
+        type: number
+      updateDate:
+        type: string
+    type: object
+  models.UpdateProgramadReq:
+    properties:
+      desde:
+        type: integer
+      hasta:
+        type: integer
+      liberado:
+        type: integer
+      programa_id:
+        type: integer
+      valor:
+        type: number
+    type: object
+  models.UpdateProgramsReq:
+    properties:
+      active:
+        type: integer
+      author:
+        type: string
+      code:
+        type: string
+      company_id:
+        type: integer
+      createdDate:
+        type: string
+      destination:
+        type: string
+      destination_code:
+        type: string
+      matrix:
+        type: object
+      name:
+        type: string
+      origin:
+        type: string
+      origin_code:
+        type: string
+      reserva:
+        type: number
+      updateDate:
+        type: string
+    type: object
+  models.UpdateQuoteReq:
+    properties:
+      author:
+        type: string
+      company_id:
+        type: integer
+      contacto:
+        type: string
+      contactoemail:
+        type: string
+      contactofono:
+        type: string
+      createdDate:
+        type: string
+      curso:
+        type: integer
+      desc:
+        type: integer
+      establecimiento_id:
+        type: integer
+      estado:
+        type: string
+      fecha:
+        type: string
+      from_quote:
+        type: integer
+      idcurso:
+        type: string
+      identificador:
+        type: string
+      liberados:
+        type: integer
+      obsestado:
+        type: string
+      pasajeros:
+        type: integer
+      programa_id:
+        type: integer
+      sale_id:
+        type: integer
+      seller_id:
+        type: integer
+      subtotal:
+        type: integer
+      tipocambio:
+        type: number
+      type_sale:
+        type: string
+      updatedDate:
+        type: string
+      vprograma:
+        type: integer
+    type: object
+  models.UpdateRegionReq:
+    properties:
+      active:
+        type: integer
+      author:
+        type: string
+      code:
+        type: string
+      code_internal:
+        type: string
+      company_id:
+        type: integer
+      createdDate:
+        type: string
+      description:
+        type: string
+      position:
+        type: integer
+      updatedDate:
+        type: string
+    type: object
+  models.UpdateRolesReq:
+    properties:
+      active:
+        type: integer
+      author:
+        type: string
+      company_id:
+        type: integer
+      createdDate:
+        type: string
+      description:
+        type: string
+      permissions:
+        type: object
+      updatedDate:
+        type: string
+    type: object
+  models.UpdateSaleReq:
+    properties:
+      accesscode:
+        type: string
+      activo:
+        type: integer
+      author:
+        type: string
+      comision:
+        type: number
+      comision_pagada:
+        type: integer
+      company_id:
+        type: integer
+      correo_encargado:
+        type: string
+      createdDate:
+        type: string
+      cuotas:
+        type: integer
+      curso:
+        type: integer
+      descm:
+        type: integer
+      descrition:
+        type: string
+      encargado:
+        type: string
+      establecimiento_id:
+        type: integer
+      fecha:
+        type: string
+      fecha_cierre:
+        type: string
+      fecha_ultpag:
+        type: string
+      fechacuota:
+        type: string
+      fechasalida:
+        type: string
+      idcurso:
+        type: string
+      identificador:
+        type: string
+      liberados:
+        type: integer
+      nroalumno:
+        type: integer
+      obs:
+        type: string
+      password:
+        type: string
+      program_id:
+        type: integer
+      seller_id:
+        type: integer
+      sendemail:
+        type: integer
+      state:
+        type: string
+      subtotal:
+        type: integer
+      tipocambio:
+        type: number
+      type_sale:
+        type: string
+      updatedDate:
+        type: string
+      vprograma:
+        type: integer
+    type: object
+  models.UpdateUsersReq:
+    properties:
+      active:
+        type: integer
+      author:
+        type: string
+      company_id:
+        type: integer
+      createdDate:
+        type: string
+      email:
+        type: string
+      name:
+        type: string
+      password:
+        type: string
+      phone:
+        type: string
+      reset_token:
+        type: string
+      reset_token_expira:
+        type: string
+      roles_id:
+        type: integer
+      updatedDate:
+        type: string
+      username:
+        type: string
+    type: object
+  models.UpdateVoucherReq:
+    properties:
+      company_id:
+        type: integer
+      sale_id:
+        type: integer
+      used:
+        type: integer
+      voucher:
+        type: string
+    type: object
+  models.UsersReport:
+    properties:
+      company_id:
+        type: integer
+      id:
+        type: integer
+      name:
+        type: string
+      username:
+        type: string
+    type: object
+  models.UsersResp:
+    properties:
+      active:
+        type: integer
+      author:
+        type: string
+      company_id:
+        type: integer
+      createdDate:
+        type: string
+      email:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      password:
+        type: string
+      phone:
+        type: string
+      reset_token:
+        type: string
+      reset_token_expira:
+        type: string
+      roles_id:
+        type: integer
+      updatedDate:
+        type: string
+      username:
+        type: string
+    type: object
+  models.VoucherResp:
+    properties:
+      company_id:
+        type: integer
+      id:
+        type: string
+      sale_id:
+        type: string
+      used:
+        type: integer
+      voucher:
+        type: string
+    type: object
+info:
+  contact: {}
+  description: Powered by scv-go-tools - https://github.com/sergicanet9/scv-go-tools
+  title: Go Hexagonal API
+paths:
+  /api/v3.5/Airports:
+    get:
+      description: Gets all the Airports
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.AirportsResp'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get all Airports
+      tags:
+      - Airports
+    post:
+      description: Creates a new Airports
+      parameters:
+      - description: New Airports to be created
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateAirportsReq'
+      responses:
+        "201":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.AirportsResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Create Airports
+      tags:
+      - Airports
+  /api/v3.5/Airports/{id}:
+    delete:
+      description: Delete a Airports
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Delete Airports
+      tags:
+      - Airports
+    patch:
+      description: Updates a Airports
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Airports
+        in: body
+        name: User
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdateAirportsReq'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Update Airports
+      tags:
+      - Airports
+  /api/v3.5/Airports/informe:
+    get:
+      description: Gets all the Airports
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.AirportsResp'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get inf all Airports
+      tags:
+      - Airports
+  /api/v3.5/Airports:{id}:
+    get:
+      description: Gets a Airports by ID
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.AirportsResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get Airports by ID
+      tags:
+      - Airports
+  /api/v3.5/Colegios:
+    get:
+      description: Gets all the Colegios
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.ColegiosResp'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get all Colegios
+      tags:
+      - Colegios
+  /api/v3.5/Colegios/{id}:
+    delete:
+      description: Delete a Colegios
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Delete Colegios
+      tags:
+      - Colegios
+    get:
+      description: Gets a Colegios by ID
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ColegiosResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get Colegios by ID
+      tags:
+      - Colegios
+  /api/v3.5/Country:
+    get:
+      description: Gets all the Country
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.CountryResp'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get all Country
+      tags:
+      - Country
+    post:
+      description: Creates a new Country
+      parameters:
+      - description: New Country to be created
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateCountryReq'
+      responses:
+        "201":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.CountryResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Create Country
+      tags:
+      - Country
+  /api/v3.5/Country/{id}:
+    delete:
+      description: Delete a Country
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Delete Country
+      tags:
+      - Country
+    patch:
+      description: Updates a Country
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Country
+        in: body
+        name: User
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdateCountryReq'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Update Country
+      tags:
+      - Country
+  /api/v3.5/Country{id}:
+    get:
+      description: Gets a Country by ID
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.CountryResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get Country by ID
+      tags:
+      - Country
+  /api/v3.5/Gateways:
+    get:
+      description: Gets all the Gateways
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.GatewaysResp'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get all Gateways
+      tags:
+      - Gateways
+    post:
+      description: Creates a new Gateways
+      parameters:
+      - description: New colegio to be created
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateGatewaysReq'
+      responses:
+        "201":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.GatewaysResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Create Gateways
+      tags:
+      - colegion
+  /api/v3.5/Gateways/{id}:
+    delete:
+      description: Delete a Gateways
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Delete Gateways
+      tags:
+      - Gateways
+    get:
+      description: Gets a Gateways by ID
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.GatewaysResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get Gateways by ID
+      tags:
+      - Gateways
+  /api/v3.5/Gatewaysc:
+    get:
+      description: Gets all the Gatewaysc
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.GatewayscResp'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get all Gatewaysc
+      tags:
+      - Gatewaysc
+    post:
+      description: Creates a new Gatewaysc
+      parameters:
+      - description: New colegio to be created
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateGatewayscReq'
+      responses:
+        "201":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.GatewayscResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Create Gatewaysc
+      tags:
+      - colegion
+  /api/v3.5/Gatewaysc/{id}:
+    delete:
+      description: Delete a Gatewaysc
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Delete Gatewaysc
+      tags:
+      - Gatewaysc
+    get:
+      description: Gets a Gatewaysc by ID
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.GatewayscResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get Gatewaysc by ID
+      tags:
+      - Gatewaysc
+  /api/v3.5/colegios:
+    post:
+      description: Creates a new colegios
+      parameters:
+      - description: New colegio to be created
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateColegiosReq'
+      responses:
+        "201":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ColegiosResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Create colegios
+      tags:
+      - colegion
+  /api/v3.5/company:
+    get:
+      description: Gets all the company
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.CompanyResp'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get all company
+      tags:
+      - company
+    post:
+      description: Creates a new company
+      parameters:
+      - description: New company to be created
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateCompanyReq'
+      responses:
+        "201":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.CompanyResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Create company
+      tags:
+      - company
+  /api/v3.5/company/{id}:
+    delete:
+      description: Delete a company
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Delete company
+      tags:
+      - company
+    patch:
+      description: Updates a company
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: company
+        in: body
+        name: User
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdateCompanyReq'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Update company
+      tags:
+      - company
+  /api/v3.5/company{id}:
+    get:
+      description: Gets a company by ID
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.CompanyResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get company by ID
+      tags:
+      - company
+  /api/v3.5/comunas:
+    get:
+      description: Gets all the comunas
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.ComunasResp'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get all comunas
+      tags:
+      - comunas
+    post:
+      description: Creates a new comunas
+      parameters:
+      - description: New comunas to be created
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateComunasReq'
+      responses:
+        "201":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ComunasResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Create comunas
+      tags:
+      - comunas
+  /api/v3.5/comunas/{id}:
+    delete:
+      description: Delete a comunas
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Delete comunas
+      tags:
+      - comunas
+    patch:
+      description: Updates a comunas
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: comunas
+        in: body
+        name: User
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdateComunasReq'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Update comunas
+      tags:
+      - comunas
+  /api/v3.5/comunas{id}:
+    get:
+      description: Gets a comunas by ID
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ComunasResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get comunas by ID
+      tags:
+      - comunas
+  /api/v3.5/curso:
+    get:
+      description: Gets all the curso
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.CursoResp'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get all curso
+      tags:
+      - curso
+    post:
+      description: Creates a new curso
+      parameters:
+      - description: New colegio to be created
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateCursoReq'
+      responses:
+        "201":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.CursoResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Create curso
+      tags:
+      - colegion
+  /api/v3.5/curso/{id}:
+    delete:
+      description: Delete a curso
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Delete curso
+      tags:
+      - curso
+    get:
+      description: Gets a curso by ID
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.CursoResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get curso by ID
+      tags:
+      - curso
+  /api/v3.5/fmedica:
+    get:
+      description: Gets all the fmedica
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.FmedicaResp'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get all fmedica
+      tags:
+      - fmedica
+    post:
+      description: Creates a new fmedica
+      parameters:
+      - description: New colegio to be created
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateFmedicaReq'
+      responses:
+        "201":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.FmedicaResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Create fmedica
+      tags:
+      - colegion
+  /api/v3.5/fmedica/{id}:
+    delete:
+      description: Delete a fmedica
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Delete fmedica
+      tags:
+      - fmedica
+    get:
+      description: Gets a fmedica by ID
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.FmedicaResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get fmedica by ID
+      tags:
+      - fmedica
+    patch:
+      description: Updates a fmedica
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: fmedica
+        in: body
+        name: User
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdateFmedicaReq'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Update fmedica
+      tags:
+      - fmedica
+  /api/v3.5/ingreso:
+    get:
+      description: Gets all the ingreso
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.SaleResp'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get inf all ingreso
+      tags:
+      - ingreso
+    post:
+      description: Creates a new ingreso
+      parameters:
+      - description: New colegio to be created
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateIngresoReq'
+      responses:
+        "201":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.IngresoResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Create ingreso
+      tags:
+      - ingreso
+  /api/v3.5/ingreso/{id}:
+    delete:
+      description: Delete a ingreso
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Delete ingreso
+      tags:
+      - ingreso
+    get:
+      description: Gets a ingreso by ID
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.IngresoResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get ingreso by ID
+      tags:
+      - ingreso
+  /api/v3.5/installment:
+    get:
+      description: Gets all the installment
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.InstallmentResp'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get all installment
+      tags:
+      - installment
+    post:
+      description: Creates a new payment
+      parameters:
+      - description: New payment to be created
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreatePaymentReq'
+      responses:
+        "201":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.PaymentResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Create payment
+      tags:
+      - payment
+  /api/v3.5/installment/{id}:
+    delete:
+      description: Delete a installment
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Delete installment
+      tags:
+      - installment
+    get:
+      description: Gets a installment by ID
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.InstallmentResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get installment by ID
+      tags:
+      - installment
+    patch:
+      description: Updates a installment
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: installment
+        in: body
+        name: User
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdateInstallmentReq'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Update installment
+      tags:
+      - installment
+  /api/v3.5/pagos:
+    get:
+      description: Gets all the pagos
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.PagosResp'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get all pagos
+      tags:
+      - pagos
+    post:
+      description: Creates a new pagos
+      parameters:
+      - description: New pago to be created
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreatePagosReq'
+      responses:
+        "201":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.PagosResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Create pagos
+      tags:
+      - pagos
+  /api/v3.5/pagos/{id}:
+    delete:
+      description: Delete a pagos
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Delete pagos
+      tags:
+      - pagos
+    get:
+      description: Gets a pagos by ID
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.PagosResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get pagos by ID
+      tags:
+      - pagos
+  /api/v3.5/payment:
+    get:
+      description: Gets all the payment
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.PaymentResp'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get all payment
+      tags:
+      - payment
+  /api/v3.5/payment/{id}:
+    delete:
+      description: Delete a payment
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Delete payment
+      tags:
+      - payment
+    get:
+      description: Gets a payment by ID
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.PaymentResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get payment by ID
+      tags:
+      - payment
+    patch:
+      description: Updates a payment
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: payment
+        in: body
+        name: User
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdatePaymentReq'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Update payment
+      tags:
+      - payment
+  /api/v3.5/payment_installment:
+    get:
+      description: Gets all the payment_installment
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.PaymentInstallmentResp'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get all payment_installment
+      tags:
+      - payment_installment
+    post:
+      description: Creates a new payment installment
+      parameters:
+      - description: New payment installment to be created
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreatePaymentInstallmentReq'
+      responses:
+        "201":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.PaymentInstallmentResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Create payment installment
+      tags:
+      - payment_installment
+  /api/v3.5/payment_installment/{id}:
+    delete:
+      description: Delete a payment_installment
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Delete payment_installment
+      tags:
+      - payment_installment
+    get:
+      description: Gets a payment_installment by ID
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.PaymentInstallmentResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get payment_installment by ID
+      tags:
+      - payment_installment
+    patch:
+      description: Updates a payment_installment
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: payment_installment
+        in: body
+        name: User
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdatePaymentInstallmentReq'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Update payment_installment
+      tags:
+      - payment_installment
+  /api/v3.5/payment_installment/informe:
+    get:
+      description: Gets all the payment_installment
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.PaymentInstallmentResp'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get inf all payment_installment
+      tags:
+      - payment_installment
+  /api/v3.5/program:
+    get:
+      description: Gets all the program
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.ProgramsResp'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get all program
+      tags:
+      - program
+    post:
+      description: Creates a new program
+      parameters:
+      - description: New program to be created
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateProgramsReq'
+      responses:
+        "201":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ProgramsResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Create program
+      tags:
+      - program
+  /api/v3.5/program/{id}:
+    delete:
+      description: Delete a program
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Delete program
+      tags:
+      - program
+    get:
+      description: Gets a program by ID
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ProgramsResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get program by ID
+      tags:
+      - program
+    patch:
+      description: Updates a program
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: program
+        in: body
+        name: User
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdateProgramsReq'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Update program
+      tags:
+      - program
+  /api/v3.5/region:
+    get:
+      description: Gets all the region
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.RegionResp'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get all region
+      tags:
+      - region
+    post:
+      description: Creates a new region
+      parameters:
+      - description: New region to be created
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateRegionReq'
+      responses:
+        "201":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.RegionResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Create region
+      tags:
+      - region
+  /api/v3.5/region/{id}:
+    delete:
+      description: Delete a region
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Delete region
+      tags:
+      - region
+    get:
+      description: Gets a region by ID
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.RegionResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get region by ID
+      tags:
+      - region
+    patch:
+      description: Updates a region
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: region
+        in: body
+        name: User
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdateRegionReq'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Update region
+      tags:
+      - region
+  /api/v3.5/roles:
+    get:
+      description: Gets all the roles
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.RolesResp'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get all roles
+      tags:
+      - roles
+    post:
+      description: Creates a new roles
+      parameters:
+      - description: New roles to be created
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateRolesReq'
+      responses:
+        "201":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.RolesResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Create roles
+      tags:
+      - roles
+  /api/v3.5/roles/{id}:
+    delete:
+      description: Delete a roles
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Delete roles
+      tags:
+      - roles
+    get:
+      description: Gets a roles by ID
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.RolesResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get roles by ID
+      tags:
+      - roles
+    patch:
+      description: Updates a roles
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: roles
+        in: body
+        name: User
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdateRolesReq'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Update roles
+      tags:
+      - roles
+  /api/v3.5/sale:
+    get:
+      description: Gets all the sale
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.SaleResp'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get all sale
+      tags:
+      - sale
+    post:
+      description: Creates a new sale
+      parameters:
+      - description: New sale to be created
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateSaleReq'
+      responses:
+        "201":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.SaleResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Create sale
+      tags:
+      - sale
+  /api/v3.5/sale/{id}:
+    delete:
+      description: Delete a sale
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Delete sale
+      tags:
+      - sale
+    get:
+      description: Gets a sale by ID
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.SaleResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get sale by ID
+      tags:
+      - sale
+  /api/v3.5/upload:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Uploads a file to Backblaze B2 storage
+      parameters:
+      - description: File to upload
+        in: formData
+        name: file
+        required: true
+        type: file
+      responses:
+        "202":
+          description: Accepted
+          schema:
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Upload file to B2
+      tags:
+      - upload
+  /api/v3.5/users:
+    get:
+      description: Gets all the users
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.UsersResp'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get all users
+      tags:
+      - users
+    post:
+      description: Creates a new users
+      parameters:
+      - description: New users to be created
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateUsersReq'
+      responses:
+        "201":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.UsersResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Create users
+      tags:
+      - users
+  /api/v3.5/users/{id}:
+    delete:
+      description: Delete a users
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Delete users
+      tags:
+      - users
+    get:
+      description: Gets a users by ID
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.UsersResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get users by ID
+      tags:
+      - users
+    patch:
+      description: Updates a users
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: users
+        in: body
+        name: User
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdateUsersReq'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Update users
+      tags:
+      - users
+  /api/v3.5/voucher:
+    get:
+      description: Gets all the voucher
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.VoucherResp'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get all voucher
+      tags:
+      - voucher
+    post:
+      description: Creates a new voucher
+      parameters:
+      - description: New voucher to be created
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateVoucherReq'
+      responses:
+        "201":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.VoucherResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Create voucher
+      tags:
+      - voucher
+  /api/v3.5/voucher/{id}:
+    delete:
+      description: Delete a voucher
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Delete voucher
+      tags:
+      - voucher
+    get:
+      description: Gets a voucher by ID
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.VoucherResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get voucher by ID
+      tags:
+      - voucher
+    patch:
+      description: Updates a voucher
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: voucher
+        in: body
+        name: User
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdateVoucherReq'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Update voucher
+      tags:
+      - voucher
+  /health:
+    get:
+      description: Runs a Health Check
+      responses:
+        "200":
+          description: OK
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+        "503":
+          description: Service Unavailable
+          schema:
+            type: object
+      summary: Health Check
+      tags:
+      - Health
+  /v2.0/program:
+    post:
+      description: Creates a new program
+      parameters:
+      - description: New program to be created
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateProgramadReq'
+      responses:
+        "201":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ProgramadResp'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "408":
+          description: Request Timeout
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Create program
+      tags:
+      - program
+securityDefinitions:
+  Bearer:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

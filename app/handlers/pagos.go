@@ -29,8 +29,8 @@ func SetPagosRoutes(ctx context.Context, cfg config.Config, r *gin.Engine, p por
 // @Summary Create pagos
 // @Description Creates a new pagos
 // @Tags pagos
-// @Param user body models.CreatepagosReq true "New pago to be created"
-// @Success 201 {object} models.pagosResp "OK"
+// @Param user body models.CreatePagosReq true "New pago to be created"
+// @Success 201 {object} models.PagosResp "OK"
 // @Failure 400 {object} object
 // @Failure 408 {object} object
 // @Failure 500 {object} object
@@ -76,7 +76,7 @@ func createPagos(ctx context.Context, cfg config.Config, p ports.PagosService) g
 // @Summary Get all informe pagos
 // @Description Gets all the pagos
 // @Tags pagos
-// @Success 200 {array} models.pagosResp "OK"
+// @Success 200 {array} models.PagosResp "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
 // @Failure 408 {object} object
@@ -120,7 +120,7 @@ func getInfPagos(ctx context.Context, cfg config.Config, p ports.PagosService) g
 // @Summary Get all pagos
 // @Description Gets all the pagos
 // @Tags pagos
-// @Success 200 {array} models.pagosResp "OK"
+// @Success 200 {array} models.PagosResp "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
 // @Failure 408 {object} object
@@ -164,7 +164,7 @@ func getAllPagos(ctx context.Context, cfg config.Config, p ports.PagosService) g
 // @Description Gets a pagos by ID
 // @Tags pagos
 // @Param id path string true "ID"
-// @Success 200 {object} models.pagosResp "OK"
+// @Success 200 {object} models.PagosResp "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
 // @Failure 408 {object} object
@@ -192,7 +192,7 @@ func getPagosByID(ctx context.Context, cfg config.Config, p ports.PagosService) 
 // @Description Updates a pagos
 // @Tags pagos
 // @Param id path string true "ID"
-// @Param User body models.UpdatepagosReq true "pagos"
+// @Param User body models.UpdatePagosReq true "pagos"
 // @Success 200 "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object

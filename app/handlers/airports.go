@@ -116,7 +116,7 @@ func getAllAirports(p ports.AirportsService) gin.HandlerFunc {
 // @Failure 401 {object} object
 // @Failure 408 {object} object
 // @Failure 500 {object} object
-// @Router /api/v3.5/Airports [get]
+// @Router /api/v3.5/Airports/informe [get]
 func getInfAirports(p ports.AirportsService) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		// El ctx ya tiene timeout + schema
@@ -162,7 +162,7 @@ func getInfAirports(p ports.AirportsService) gin.HandlerFunc {
 // @Failure 401 {object} object
 // @Failure 408 {object} object
 // @Failure 500 {object} object
-// @Router /api/v3.5/Airports{id} [get]
+// @Router /api/v3.5/Airports:{id} [get]
 func getAirportsByID(p ports.AirportsService) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		ctx := c.Request.Context()

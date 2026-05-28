@@ -27,28 +27,31 @@ type api struct {
 }
 
 type svs struct {
-	company    ports.CompanyService
-	colegios   ports.ColegiosService
-	comunas    ports.ComunasService
-	curso      ports.CursoService
-	fmedica    ports.FmedicaService
-	gatewaysc  ports.GatewayscService
-	gateways   ports.GatewaysService
-	ingreso    ports.IngresoService
-	pagos      ports.PagosService
-	permission ports.PermissionService
-	programac  ports.ProgramacService
-	programad  ports.ProgramadService
-	quotes     ports.QuotesService
-	region     ports.RegionService
-	roles      ports.RolesService
-	sale       ports.SaleService
-	users      ports.UsersService
-	voucher    ports.VoucherService
-	airports   ports.AirportsService
-	country    ports.CountryService
-	programs   ports.ProgramsService
-	upload     ports.UploadService
+	company             ports.CompanyService
+	colegios            ports.ColegiosService
+	comunas             ports.ComunasService
+	curso               ports.CursoService
+	fmedica             ports.FmedicaService
+	gatewaysc           ports.GatewayscService
+	gateways            ports.GatewaysService
+	ingreso             ports.IngresoService
+	pagos               ports.PagosService
+	permission          ports.PermissionService
+	programac           ports.ProgramacService
+	programad           ports.ProgramadService
+	quotes              ports.QuotesService
+	region              ports.RegionService
+	roles               ports.RolesService
+	sale                ports.SaleService
+	users               ports.UsersService
+	voucher             ports.VoucherService
+	airports            ports.AirportsService
+	country             ports.CountryService
+	programs            ports.ProgramsService
+	upload              ports.UploadService
+	installments        ports.InstallmentsService
+	payments            ports.PaymentService
+	paymentInstallments ports.PaymentInstallmentService
 }
 
 // New creates a new API
@@ -76,6 +79,9 @@ func New(ctx context.Context, cfg config.Config) (a api) {
 	var airportsRepo ports.AirportsRepository
 	var countryRepo ports.CountryRepository
 	var programsRepo ports.ProgramsRepository
+	var installmentsRepo ports.InstallmentsRepository
+	var paymentsRepo ports.PaymentRepository
+	var paymentInstallmentsRepo ports.PaymentInstallmentRepository
 
 	//abre la base de datos
 	db, err := infrastructure.ConnectPostgresOrm(ctx, a.config.DSN)
@@ -104,6 +110,9 @@ func New(ctx context.Context, cfg config.Config) (a api) {
 	airportsRepo = postgres.NewAirportsRepository(ctx, db)
 	countryRepo = postgres.NewCountryRepository(ctx, db)
 	programsRepo = postgres.NewProgramsRepository(ctx, db)
+	installmentsRepo = postgres.NewInstallmentsRepository(ctx, db)
+	paymentsRepo = postgres.NewPaymentsRepository(ctx, db)
+	paymentInstallmentsRepo = postgres.NewPaymentInstallmentsRepository(ctx, db)
 
 	a.services.company = services.NewCompanyService(a.config, companyRepo)
 	a.services.colegios = services.NewColegiosService(a.config, colegiosRepo)
@@ -126,6 +135,9 @@ func New(ctx context.Context, cfg config.Config) (a api) {
 	a.services.airports = services.NewAirportsService(a.config, airportsRepo)
 	a.services.country = services.NewCountryService(a.config, countryRepo)
 	a.services.programs = services.NewProgramsService(a.config, programsRepo)
+	a.services.installments = services.NewInstallmentService(a.config, installmentsRepo)
+	a.services.payments = services.NewPaymentService(a.config, paymentsRepo)
+	a.services.paymentInstallments = services.NewPaymentInstallmentService(a.config, paymentInstallmentsRepo)
 
 	// Inicializar B2 Storage y Upload Service
 	if a.config.B2Endpoint != "" {
@@ -169,7 +181,6 @@ func (a *api) Run(ctx context.Context, cancel context.CancelFunc) func() error {
 		handlers.SetGatewaysRoutes(ctx, a.config, router, a.services.gateways)
 		handlers.SetIngresoRoutes(ctx, a.config, router, a.services.ingreso)
 		handlers.SetPagosRoutes(ctx, a.config, router, a.services.pagos)
-		handlers.SetPermissionRoutes(ctx, a.config, router, a.services.permission)
 		handlers.SetProgramacRoutes(ctx, a.config, router, a.services.programac)
 		handlers.SetProgramadRoutes(ctx, a.config, router, a.services.programad)
 		handlers.SetQuotesRoutes(ctx, a.config, router, a.services.quotes)
@@ -181,6 +192,9 @@ func (a *api) Run(ctx context.Context, cancel context.CancelFunc) func() error {
 		handlers.SetAirportsRoutes(ctx, a.config, router, a.services.airports)
 		handlers.SetCountryRoutes(ctx, a.config, router, a.services.country)
 		handlers.SetProgramsRoutes(ctx, a.config, router, a.services.programs)
+		handlers.SetInstallmentsRoutes(ctx, a.config, router, a.services.installments)
+		handlers.SetPaymentsRoutes(ctx, a.config, router, a.services.payments)
+		handlers.SetPaymentInstallmentsRoutes(ctx, a.config, router, a.services.paymentInstallments)
 
 		if a.services.upload != nil {
 			handlers.SetUploadRoutes(ctx, a.config, router, a.services.upload)

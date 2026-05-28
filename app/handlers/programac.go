@@ -30,8 +30,8 @@ func SetProgramacRoutes(ctx context.Context, cfg config.Config, r *gin.Engine, p
 // @Summary Create program
 // @Description Creates a new program
 // @Tags program
-// @Param user body models.CreateprogramReq true "New program to be created"
-// @Success 201 {object} models.programResp "OK"
+// @Param user body models.CreateProgramacReq true "New program to be created"
+// @Success 201 {object} models.ProgramacResp "OK"
 // @Failure 400 {object} object
 // @Failure 408 {object} object
 // @Failure 500 {object} object
@@ -77,7 +77,7 @@ func createProgramac(p ports.ProgramacService) gin.HandlerFunc {
 // @Summary Get all program
 // @Description Gets all the program
 // @Tags program
-// @Success 200 {array} models.programResp "OK"
+// @Success 200 {array} models.ProgramacResp "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
 // @Failure 408 {object} object
@@ -120,7 +120,7 @@ func getAllProgramac(p ports.ProgramacService) gin.HandlerFunc {
 // @Description Gets a program by ID
 // @Tags program
 // @Param id path string true "ID"
-// @Success 200 {object} models.programResp "OK"
+// @Success 200 {object} models.ProgramacResp "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
 // @Failure 408 {object} object
@@ -147,7 +147,7 @@ func getProgramacByID(p ports.ProgramacService) gin.HandlerFunc {
 // @Description Updates a program
 // @Tags program
 // @Param id path string true "ID"
-// @Param User body models.UpdateprogramReq true "program"
+// @Param User body models.UpdateProgramacReq true "program"
 // @Success 200 "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object

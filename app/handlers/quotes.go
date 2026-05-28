@@ -29,8 +29,8 @@ func SetQuotesRoutes(ctx context.Context, cfg config.Config, r *gin.Engine, p po
 // @Summary Create sale
 // @Description Creates a new sale
 // @Tags sale
-// @Param user body models.CreatesaleReq true "New sale to be created"
-// @Success 201 {object} models.saleResp "OK"
+// @Param user body models.CreateQuoteReq true "New sale to be created"
+// @Success 201 {object} models.QuoteResp "OK"
 // @Failure 400 {object} object
 // @Failure 408 {object} object
 // @Failure 500 {object} object
@@ -76,7 +76,7 @@ func createQuotes(p ports.QuotesService) gin.HandlerFunc {
 // @Summary Get inf all ingreso
 // @Description Gets all the ingreso
 // @Tags ingreso
-// @Success 200 {array} models.ingresoResp "OK"
+// @Success 200 {array} models.QuoteResp "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
 // @Failure 408 {object} object
@@ -121,7 +121,7 @@ func getInfQuotes(p ports.QuotesService) gin.HandlerFunc {
 // @Summary Get all sale
 // @Description Gets all the sale
 // @Tags sale
-// @Success 200 {array} models.saleResp "OK"
+// @Success 200 {array} models.QuoteResp "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
 // @Failure 408 {object} object
@@ -166,7 +166,7 @@ func getAllQuotes(p ports.QuotesService) gin.HandlerFunc {
 // @Description Gets a sale by ID
 // @Tags sale
 // @Param id path string true "ID"
-// @Success 200 {object} models.saleResp "OK"
+// @Success 200 {object} models.QuoteResp "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
 // @Failure 408 {object} object
@@ -194,7 +194,7 @@ func getQuotesByID(p ports.QuotesService) gin.HandlerFunc {
 // @Description Updates a sale
 // @Tags sale
 // @Param id path string true "ID"
-// @Param User body models.UpdatesaleReq true "sale"
+// @Param User body models.UpdateQuoteReq true "sale"
 // @Success 200 "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object

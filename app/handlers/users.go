@@ -29,8 +29,8 @@ func SetUsersRoutes(ctx context.Context, cfg config.Config, r *gin.Engine, p por
 // @Summary Create users
 // @Description Creates a new users
 // @Tags users
-// @Param user body models.CreateusersReq true "New users to be created"
-// @Success 201 {object} models.usersResp "OK"
+// @Param user body models.CreateUsersReq true "New users to be created"
+// @Success 201 {object} models.UsersResp "OK"
 // @Failure 400 {object} object
 // @Failure 408 {object} object
 // @Failure 500 {object} object
@@ -76,7 +76,7 @@ func createUsers(p ports.UsersService) gin.HandlerFunc {
 // @Summary Get all users
 // @Description Gets all the users
 // @Tags users
-// @Success 200 {array} models.usersResp "OK"
+// @Success 200 {array} models.UsersResp "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
 // @Failure 408 {object} object
@@ -122,7 +122,7 @@ func getAllUsers(p ports.UsersService) gin.HandlerFunc {
 // @Description Gets a users by ID
 // @Tags users
 // @Param id path string true "ID"
-// @Success 200 {object} models.usersResp "OK"
+// @Success 200 {object} models.UsersResp "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
 // @Failure 408 {object} object
@@ -150,7 +150,7 @@ func getUsersByID(p ports.UsersService) gin.HandlerFunc {
 // @Description Updates a users
 // @Tags users
 // @Param id path string true "ID"
-// @Param User body models.UpdateusersReq true "users"
+// @Param User body models.UpdateUsersReq true "users"
 // @Success 200 "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object

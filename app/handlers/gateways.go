@@ -145,25 +145,15 @@ func getGatewaysByID(p ports.GatewaysService) gin.HandlerFunc {
 	}
 }
 
-// @Summary Update Gateways
-// @Description Updates a Gateways
-// @Tags Gateways
-// @Param id path string true "ID"
-// @Param User body models.UpdateGatewaysReq true "Gateways"
-// @Success 200 "OK"
-// @Failure 400 {object} object
-// @Failure 401 {object} object
-// @Failure 408 {object} object
-// @Failure 500 {object} object
-// @Router /api/v3.5/users/{id} [patch]
 func updateGateways() gin.HandlerFunc {
 	return func(c *gin.Context) {
+		/*
+			result := util.NewMessageResponse("Registro ", "")
 
-		result := util.NewMessageResponse("Registro ", "")
-
-		response := util.NewSuccessResponse(result, http.StatusAccepted)
-		c.JSON(response.StatusCode, response)
+			response := util.NewSuccessResponse(result, http.StatusAccepted)
+			c.JSON(response.StatusCode, response) */
 	}
+
 }
 
 // @Summary Delete Gateways

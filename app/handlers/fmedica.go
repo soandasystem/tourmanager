@@ -28,8 +28,8 @@ func SetFmedicaRoutes(ctx context.Context, cfg config.Config, r *gin.Engine, p p
 // @Summary Create fmedica
 // @Description Creates a new fmedica
 // @Tags colegion
-// @Param user body models.CreatefmedicaReq true "New colegio to be created"
-// @Success 201 {object} models.fmedicaResp "OK"
+// @Param user body models.CreateFmedicaReq true "New colegio to be created"
+// @Success 201 {object} models.FmedicaResp "OK"
 // @Failure 400 {object} object
 // @Failure 408 {object} object
 // @Failure 500 {object} object
@@ -75,7 +75,7 @@ func createFicha(p ports.FmedicaService) gin.HandlerFunc {
 // @Summary Get all fmedica
 // @Description Gets all the fmedica
 // @Tags fmedica
-// @Success 200 {array} models.fmedicaResp "OK"
+// @Success 200 {array} models.FmedicaResp "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
 // @Failure 408 {object} object
@@ -119,7 +119,7 @@ func getAllFicha(p ports.FmedicaService) gin.HandlerFunc {
 // @Description Gets a fmedica by ID
 // @Tags fmedica
 // @Param id path string true "ID"
-// @Success 200 {object} models.fmedicaResp "OK"
+// @Success 200 {object} models.FmedicaResp "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
 // @Failure 408 {object} object
@@ -146,7 +146,7 @@ func getFichaByID(p ports.FmedicaService) gin.HandlerFunc {
 // @Description Updates a fmedica
 // @Tags fmedica
 // @Param id path string true "ID"
-// @Param User body models.UpdatefmedicaReq true "fmedica"
+// @Param User body models.UpdateFmedicaReq true "fmedica"
 // @Success 200 "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object

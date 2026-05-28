@@ -30,8 +30,8 @@ func SetCursoRoutes(ctx context.Context, cfg config.Config, r *gin.Engine, p por
 // @Summary Create curso
 // @Description Creates a new curso
 // @Tags colegion
-// @Param user body models.CreatecursoReq true "New colegio to be created"
-// @Success 201 {object} models.cursoResp "OK"
+// @Param user body models.CreateCursoReq true "New colegio to be created"
+// @Success 201 {object} models.CursoResp "OK"
 // @Failure 400 {object} object
 // @Failure 408 {object} object
 // @Failure 500 {object} object
@@ -77,7 +77,7 @@ func createCurso(p ports.CursoService) gin.HandlerFunc {
 // @Summary Get inf all curso
 // @Description Gets all the curso
 // @Tags curso
-// @Success 200 {array} models.cursoInf "OK"
+// @Success 200 {array} models.CursoInf "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
 // @Failure 408 {object} object
@@ -121,7 +121,7 @@ func getInfCurso(p ports.CursoService) gin.HandlerFunc {
 // @Summary Get all curso
 // @Description Gets all the curso
 // @Tags curso
-// @Success 200 {array} models.cursoResp "OK"
+// @Success 200 {array} models.CursoResp "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
 // @Failure 408 {object} object
@@ -166,7 +166,7 @@ func getAllCurso(p ports.CursoService) gin.HandlerFunc {
 // @Description Gets a curso by ID
 // @Tags curso
 // @Param id path string true "ID"
-// @Success 200 {object} models.cursoResp "OK"
+// @Success 200 {object} models.CursoResp "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
 // @Failure 408 {object} object
@@ -194,7 +194,7 @@ func getCursoByID(p ports.CursoService) gin.HandlerFunc {
 // @Description Updates a curso
 // @Tags curso
 // @Param id path string true "ID"
-// @Param User body models.UpdatecursoReq true "curso"
+// @Param User body models.UpdateCursoReq true "curso"
 // @Success 200 "OK"
 // @Failure 400 {object} object
 // @Failure 401 {object} object
