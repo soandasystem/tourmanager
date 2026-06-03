@@ -4,8 +4,8 @@ import "time"
 
 type PaymentInstallment struct {
 	ID            string    `json:"_id,omitempty"`
-	PaymentID     int64     `json:"payment_id"`
-	InstallmentID int64     `json:"installment_id"`
+	PaymentId     int64     `json:"payment_id"`
+	InstallmentId int64     `json:"installment_id"`
 	AppliedAmount float32   `json:"applied_amount"`
 	CreatedDate   time.Time `gorm:"autoCreateTime"`
 	UpdatedDate   time.Time `gorm:"autoUpdateTime"`
@@ -14,8 +14,8 @@ type PaymentInstallment struct {
 // Resp  response struct
 type PaymentInstallmentResp struct {
 	ID            string    `json:"id"`
-	PaymentID     int64     `json:"payment_id"`
-	InstallmentID int64     `json:"installment_id"`
+	PaymentId     int64     `json:"payment_id"`
+	InstallmentId int64     `json:"installment_id"`
 	AppliedAmount float32   `json:"applied_amount"`
 	CreatedDate   time.Time `gorm:"autoCreateTime"`
 	UpdatedDate   time.Time `gorm:"autoUpdateTime"`
@@ -33,8 +33,8 @@ type PaymentInstallmentListResponse struct {
 // Create---Req  request struct
 type CreatePaymentInstallmentReq struct {
 	ID            string    `gorm:"primaryKey;autoIncrement"`
-	PaymentID     int64     `json:"payment_id"`
-	InstallmentID int64     `json:"installment_id"`
+	PaymentId     int64     `json:"payment_id"`
+	InstallmentId int64     `json:"installment_id"`
 	AppliedAmount float32   `json:"applied_amount"`
 	CreatedDate   time.Time `gorm:"autoCreateTime"`
 	UpdatedDate   time.Time `gorm:"autoUpdateTime"`
@@ -46,8 +46,8 @@ func (CreatePaymentInstallmentReq) TableName() string {
 
 type UpdatePaymentInstallmentReq struct {
 	ID            string     `json:"-"`
-	PaymentID     *int64     `json:"payment_id"`
-	InstallmentID *int64     `json:"installment_id"`
+	PaymentId     *int64     `json:"payment_id"`
+	InstallmentId *int64     `json:"installment_id"`
 	AppliedAmount *float32   `json:"applied_amount"`
 	CreatedDate   *time.Time `gorm:"autoCreateTime"`
 	UpdatedDate   *time.Time `gorm:"autoUpdateTime"`
@@ -59,8 +59,8 @@ func (UpdatePaymentInstallmentReq) TableName() string {
 
 type PaymentInstallmentInf struct {
 	ID            int64     `json:"id"`
-	PaymentID     int64     `json:"payment_id"`
-	InstallmentID int64     `json:"installment_id"`
+	PaymentId     int64     `json:"payment_id"`
+	InstallmentId int64     `json:"installment_id"`
 	AppliedAmount float32   `json:"applied_amount"`
 	CreatedDate   time.Time `gorm:"autoCreateTime"`
 	UpdatedDate   time.Time `gorm:"autoUpdateTime"`
@@ -77,8 +77,8 @@ type PaymentInstallmentInfListResponse struct {
 
 type PaymentInstallmentReport struct {
 	ID            int64     `json:"id"`
-	PaymentID     int64     `json:"payment_id"`
-	InstallmentID int64     `json:"installment_id"`
+	PaymentId     int64     `json:"payment_id"`
+	InstallmentId int64     `json:"installment_id"`
 	AppliedAmount float32   `json:"applied_amount"`
 	CreatedDate   time.Time `gorm:"autoCreateTime"`
 	UpdatedDate   time.Time `gorm:"autoUpdateTime"`

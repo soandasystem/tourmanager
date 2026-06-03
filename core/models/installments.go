@@ -4,13 +4,15 @@ import "time"
 
 type Installment struct {
 	ID          string    `json:"_id,omitempty"`
-	PassengerID int64     `json:"passenger_id"`
+	PassengerId int64     `json:"passenger_id"`
 	QuotaNumber int       `json:"quota_number"`
 	DueDate     time.Time `json:"due_date"`
 	Amount      float32   `json:"amount"`
 	PaidAmount  float32   `json:"paid_amount"`
 	Balance     float32   `json:"balance"`
 	Status      string    `json:"status"`
+	CompanyId   int64     `json:"company_id"`
+	SaleId      int64     `json:"sale_id"`
 	CreatedDate time.Time `gorm:"autoCreateTime"`
 	UpdatedDate time.Time `gorm:"autoUpdateTime"`
 }
@@ -18,13 +20,15 @@ type Installment struct {
 // Resp  response struct
 type InstallmentResp struct {
 	ID          string    `json:"id"`
-	PassengerID int64     `json:"passenger_id"`
+	PassengerId int64     `json:"passenger_id"`
 	QuotaNumber int       `json:"quota_number"`
 	DueDate     time.Time `json:"due_date"`
 	Amount      float32   `json:"amount"`
 	PaidAmount  float32   `json:"paid_amount"`
 	Balance     float32   `json:"balance"`
 	Status      string    `json:"status"`
+	CompanyId   int64     `json:"company_id"`
+	SaleId      int64     `json:"sale_id"`
 	CreatedDate time.Time `gorm:"autoCreateTime"`
 	UpdatedDate time.Time `gorm:"autoUpdateTime"`
 }
@@ -41,13 +45,15 @@ type InstallmentListResponse struct {
 // Create---Req  request struct
 type CreateInstallmentReq struct {
 	ID          string    `gorm:"primaryKey;autoIncrement"`
-	PassengerID int64     `json:"passenger_id"`
+	PassengerId int64     `json:"passenger_id"`
 	QuotaNumber int       `json:"quota_number"`
 	DueDate     time.Time `json:"due_date"`
 	Amount      float32   `json:"amount"`
 	PaidAmount  float32   `json:"paid_amount"`
 	Balance     float32   `json:"balance"`
 	Status      string    `json:"status"`
+	CompanyId   int64     `json:"company_id"`
+	SaleId      int64     `json:"sale_id"`
 	CreatedDate time.Time `gorm:"autoCreateTime"`
 	UpdatedDate time.Time `gorm:"autoUpdateTime"`
 }
@@ -58,13 +64,15 @@ func (CreateInstallmentReq) TableName() string {
 
 type UpdateInstallmentReq struct {
 	ID          string     `json:"-"`
-	PassengerID *int64     `json:"passenger_id"`
+	PassengerId *int64     `json:"passenger_id"`
 	QuotaNumber *int       `json:"quota_number"`
 	DueDate     *time.Time `json:"due_date"`
 	Amount      *float32   `json:"amount"`
 	PaidAmount  *float32   `json:"paid_amount"`
 	Balance     *float32   `json:"balance"`
 	Status      *string    `json:"status"`
+	CompanyId   *int64     `json:"company_id"`
+	SaleId      *int64     `json:"sale_id"`
 	CreatedDate *time.Time `gorm:"autoCreateTime"`
 	UpdatedDate *time.Time `gorm:"autoUpdateTime"`
 }
@@ -75,13 +83,15 @@ func (UpdateInstallmentReq) TableName() string {
 
 type InstallmentInf struct {
 	ID          int64     `json:"id"`
-	PassengerID int64     `json:"passenger_id"`
+	PassengerId int64     `json:"passenger_id"`
 	QuotaNumber int       `json:"quota_number"`
 	DueDate     time.Time `json:"due_date"`
 	Amount      float32   `json:"amount"`
 	PaidAmount  float32   `json:"paid_amount"`
 	Balance     float32   `json:"balance"`
 	Status      string    `json:"status"`
+	CompanyId   int64     `json:"company_id"`
+	SaleId      int64     `json:"sale_id"`
 	CreatedDate time.Time `gorm:"autoCreateTime"`
 	UpdatedDate time.Time `gorm:"autoUpdateTime"`
 }
@@ -97,13 +107,15 @@ type InstallmentInfListResponse struct {
 
 type InstallmentReport struct {
 	ID          int64     `json:"id"`
-	PassengerID int64     `json:"passenger_id"`
+	PassengerId int64     `json:"passenger_id"`
 	QuotaNumber int       `json:"quota_number"`
 	DueDate     time.Time `json:"due_date"`
 	Amount      float32   `json:"amount"`
 	PaidAmount  float32   `json:"paid_amount"`
 	Balance     float32   `json:"balance"`
 	Status      string    `json:"status"`
+	CompanyId   int64     `json:"company_id"`
+	SaleId      int64     `json:"sale_id"`
 	CreatedDate time.Time `gorm:"autoCreateTime"`
 	UpdatedDate time.Time `gorm:"autoUpdateTime"`
 }

@@ -3,28 +3,44 @@ package models
 import "time"
 
 type Payments struct {
-	ID            string    `json:"_id,omitempty"`
-	PassengerID   int64     `json:"passenger_id"`
-	Amount        float32   `json:"amount"`
-	PaymentMethod string    `json:"payment_method"`
-	PaymentDate   time.Time `json:"payment_date"`
-	Reference     string    `json:"reference"`
-	Notes         string    `json:"notes"`
-	CreatedDate   time.Time `gorm:"autoCreateTime"`
-	UpdatedDate   time.Time `gorm:"autoUpdateTime"`
+	ID              string    `json:"_id,omitempty"`
+	PassengerId     int64     `json:"passenger_id"`
+	Amount          float32   `json:"amount"`
+	PaymentMethod   string    `json:"payment_method"`
+	PaymentDate     time.Time `json:"payment_date"`
+	Reference       string    `json:"reference"`
+	Notes           string    `json:"notes"`
+	TransactionRef  string    `json:"transaction_ref"`
+	TransactionType string    `json:"transaction_type"`
+	CardNumber      string    `json:"card_number"`
+	AuthCode        string    `json:"auth_code"`
+	AuthDate        time.Time `json:"auth_date"`
+	PeymentToken    string    `json:"peyment_token"`
+	CompanyId       int64     `json:"company_id"`
+	SaleId          int64     `json:"sale_id"`
+	CreatedDate     time.Time `gorm:"autoCreateTime"`
+	UpdatedDate     time.Time `gorm:"autoUpdateTime"`
 }
 
 // Resp  response struct
 type PaymentResp struct {
-	ID            string    `json:"id"`
-	PassengerID   int64     `json:"passenger_id"`
-	Amount        float32   `json:"amount"`
-	PaymentMethod string    `json:"payment_method"`
-	PaymentDate   time.Time `json:"payment_date"`
-	Reference     string    `json:"reference"`
-	Notes         string    `json:"notes"`
-	CreatedDate   time.Time `gorm:"autoCreateTime"`
-	UpdatedDate   time.Time `gorm:"autoUpdateTime"`
+	ID              string    `json:"id"`
+	PassengerId     int64     `json:"passenger_id"`
+	Amount          float32   `json:"amount"`
+	PaymentMethod   string    `json:"payment_method"`
+	PaymentDate     time.Time `json:"payment_date"`
+	Reference       string    `json:"reference"`
+	Notes           string    `json:"notes"`
+	TransactionRef  string    `json:"transaction_ref"`
+	TransactionType string    `json:"transaction_type"`
+	CardNumber      string    `json:"card_number"`
+	AuthCode        string    `json:"auth_code"`
+	AuthDate        time.Time `json:"auth_date"`
+	PeymentToken    string    `json:"peyment_token"`
+	CompanyId       int64     `json:"company_id"`
+	SaleId          int64     `json:"sale_id"`
+	CreatedDate     time.Time `gorm:"autoCreateTime"`
+	UpdatedDate     time.Time `gorm:"autoUpdateTime"`
 }
 
 func (PaymentResp) TableName() string {
@@ -38,15 +54,23 @@ type PaymentListResponse struct {
 
 // Create---Req  request struct
 type CreatePaymentReq struct {
-	ID            string    `gorm:"primaryKey;autoIncrement"`
-	PassengerID   int64     `json:"passenger_id"`
-	Amount        float32   `json:"amount"`
-	PaymentMethod string    `json:"payment_method"`
-	PaymentDate   time.Time `json:"payment_date"`
-	Reference     string    `json:"reference"`
-	Notes         string    `json:"notes"`
-	CreatedDate   time.Time `gorm:"autoCreateTime"`
-	UpdatedDate   time.Time `gorm:"autoUpdateTime"`
+	ID              string    `gorm:"primaryKey;autoIncrement"`
+	PassengerId     int64     `json:"passenger_id"`
+	Amount          float32   `json:"amount"`
+	PaymentMethod   string    `json:"payment_method"`
+	PaymentDate     time.Time `json:"payment_date"`
+	Reference       string    `json:"reference"`
+	Notes           string    `json:"notes"`
+	TransactionRef  string    `json:"transaction_ref"`
+	TransactionType string    `json:"transaction_type"`
+	CardNumber      string    `json:"card_number"`
+	AuthCode        string    `json:"auth_code"`
+	AuthDate        time.Time `json:"auth_date"`
+	PeymentToken    string    `json:"peyment_token"`
+	CompanyId       int64     `json:"company_id"`
+	SaleId          int64     `json:"sale_id"`
+	CreatedDate     time.Time `gorm:"autoCreateTime"`
+	UpdatedDate     time.Time `gorm:"autoUpdateTime"`
 }
 
 func (CreatePaymentReq) TableName() string {
@@ -54,15 +78,23 @@ func (CreatePaymentReq) TableName() string {
 }
 
 type UpdatePaymentReq struct {
-	ID            string     `json:"-"`
-	PassengerID   *int64     `json:"passenger_id"`
-	Amount        *float32   `json:"amount"`
-	PaymentMethod *string    `json:"payment_method"`
-	PaymentDate   *time.Time `json:"payment_date"`
-	Reference     *string    `json:"reference"`
-	Notes         *string    `json:"notes"`
-	CreatedDate   *time.Time `gorm:"autoCreateTime"`
-	UpdatedDate   *time.Time `gorm:"autoUpdateTime"`
+	ID              string     `json:"-"`
+	PassengerId     *int64     `json:"passenger_id"`
+	Amount          *float32   `json:"amount"`
+	PaymentMethod   *string    `json:"payment_method"`
+	PaymentDate     *time.Time `json:"payment_date"`
+	Reference       *string    `json:"reference"`
+	Notes           *string    `json:"notes"`
+	TransactionRef  *string    `json:"transaction_ref"`
+	TransactionType *string    `json:"transaction_type"`
+	CardNumber      *string    `json:"card_number"`
+	AuthCode        *string    `json:"auth_code"`
+	AuthDate        *time.Time `json:"auth_date"`
+	PeymentToken    *string    `json:"peyment_token"`
+	CompanyId       *int64     `json:"company_id"`
+	SaleId          *int64     `json:"sale_id"`
+	CreatedDate     *time.Time `gorm:"autoCreateTime"`
+	UpdatedDate     *time.Time `gorm:"autoUpdateTime"`
 }
 
 func (UpdatePaymentReq) TableName() string {
@@ -70,15 +102,23 @@ func (UpdatePaymentReq) TableName() string {
 }
 
 type PaymentInf struct {
-	ID            int64     `json:"id"`
-	PassengerID   int64     `json:"passenger_id"`
-	Amount        float32   `json:"amount"`
-	PaymentMethod string    `json:"payment_method"`
-	PaymentDate   time.Time `json:"payment_date"`
-	Reference     string    `json:"reference"`
-	Notes         string    `json:"notes"`
-	CreatedDate   time.Time `gorm:"autoCreateTime"`
-	UpdatedDate   time.Time `gorm:"autoUpdateTime"`
+	ID              int64     `json:"id"`
+	PassengerId     int64     `json:"passenger_id"`
+	Amount          float32   `json:"amount"`
+	PaymentMethod   string    `json:"payment_method"`
+	PaymentDate     time.Time `json:"payment_date"`
+	Reference       string    `json:"reference"`
+	Notes           string    `json:"notes"`
+	TransactionRef  string    `json:"transaction_ref"`
+	TransactionType string    `json:"transaction_type"`
+	CardNumber      string    `json:"card_number"`
+	AuthCode        string    `json:"auth_code"`
+	AuthDate        time.Time `json:"auth_date"`
+	PeymentToken    string    `json:"peyment_token"`
+	CompanyId       int64     `json:"company_id"`
+	SaleId          int64     `json:"sale_id"`
+	CreatedDate     time.Time `gorm:"autoCreateTime"`
+	UpdatedDate     time.Time `gorm:"autoUpdateTime"`
 }
 
 func (PaymentInf) TableName() string {
@@ -91,15 +131,23 @@ type PaymentInfListResponse struct {
 }
 
 type PaymentReport struct {
-	ID            int64     `json:"id"`
-	PassengerID   int64     `json:"passenger_id"`
-	Amount        float32   `json:"amount"`
-	PaymentMethod string    `json:"payment_method"`
-	PaymentDate   time.Time `json:"payment_date"`
-	Reference     string    `json:"reference"`
-	Notes         string    `json:"notes"`
-	CreatedDate   time.Time `gorm:"autoCreateTime"`
-	UpdatedDate   time.Time `gorm:"autoUpdateTime"`
+	ID              int64     `json:"id"`
+	PassengerId     int64     `json:"passenger_id"`
+	Amount          float32   `json:"amount"`
+	PaymentMethod   string    `json:"payment_method"`
+	PaymentDate     time.Time `json:"payment_date"`
+	Reference       string    `json:"reference"`
+	Notes           string    `json:"notes"`
+	TransactionRef  string    `json:"transaction_ref"`
+	TransactionType string    `json:"transaction_type"`
+	CardNumber      string    `json:"card_number"`
+	AuthCode        string    `json:"auth_code"`
+	AuthDate        time.Time `json:"auth_date"`
+	PeymentToken    string    `json:"peyment_token"`
+	CompanyId       int64     `json:"company_id"`
+	SaleId          int64     `json:"sale_id"`
+	CreatedDate     time.Time `gorm:"autoCreateTime"`
+	UpdatedDate     time.Time `gorm:"autoUpdateTime"`
 }
 
 func (PaymentReport) TableName() string {
