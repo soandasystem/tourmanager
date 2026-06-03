@@ -8,14 +8,14 @@ type Payments struct {
 	Amount          float32   `json:"amount"`
 	PaymentMethod   string    `json:"payment_method"`
 	PaymentDate     time.Time `json:"payment_date"`
-	Reference       string    `json:"reference"`
+	Identifier      string    `json:"identifier"`
 	Notes           string    `json:"notes"`
 	TransactionRef  string    `json:"transaction_ref"`
 	TransactionType string    `json:"transaction_type"`
 	CardNumber      string    `json:"card_number"`
 	AuthCode        string    `json:"auth_code"`
 	AuthDate        time.Time `json:"auth_date"`
-	PeymentToken    string    `json:"peyment_token"`
+	PaymentToken    string    `json:"payment_token"`
 	CompanyId       int64     `json:"company_id"`
 	SaleId          int64     `json:"sale_id"`
 	CreatedDate     time.Time `gorm:"autoCreateTime"`
@@ -29,14 +29,14 @@ type PaymentResp struct {
 	Amount          float32   `json:"amount"`
 	PaymentMethod   string    `json:"payment_method"`
 	PaymentDate     time.Time `json:"payment_date"`
-	Reference       string    `json:"reference"`
+	Identifier      string    `json:"identifier"`
 	Notes           string    `json:"notes"`
 	TransactionRef  string    `json:"transaction_ref"`
 	TransactionType string    `json:"transaction_type"`
 	CardNumber      string    `json:"card_number"`
 	AuthCode        string    `json:"auth_code"`
 	AuthDate        time.Time `json:"auth_date"`
-	PeymentToken    string    `json:"peyment_token"`
+	PaymentToken    string    `json:"payment_token"`
 	CompanyId       int64     `json:"company_id"`
 	SaleId          int64     `json:"sale_id"`
 	CreatedDate     time.Time `gorm:"autoCreateTime"`
@@ -59,14 +59,14 @@ type CreatePaymentReq struct {
 	Amount          float32   `json:"amount"`
 	PaymentMethod   string    `json:"payment_method"`
 	PaymentDate     time.Time `json:"payment_date"`
-	Reference       string    `json:"reference"`
+	Identifier      string    `json:"identifier"`
 	Notes           string    `json:"notes"`
 	TransactionRef  string    `json:"transaction_ref"`
 	TransactionType string    `json:"transaction_type"`
 	CardNumber      string    `json:"card_number"`
 	AuthCode        string    `json:"auth_code"`
 	AuthDate        time.Time `json:"auth_date"`
-	PeymentToken    string    `json:"peyment_token"`
+	PeymentToken    string    `json:"payment_token"`
 	CompanyId       int64     `json:"company_id"`
 	SaleId          int64     `json:"sale_id"`
 	CreatedDate     time.Time `gorm:"autoCreateTime"`
@@ -83,14 +83,14 @@ type UpdatePaymentReq struct {
 	Amount          *float32   `json:"amount"`
 	PaymentMethod   *string    `json:"payment_method"`
 	PaymentDate     *time.Time `json:"payment_date"`
-	Reference       *string    `json:"reference"`
+	Identifier      *string    `json:"identifier"`
 	Notes           *string    `json:"notes"`
 	TransactionRef  *string    `json:"transaction_ref"`
 	TransactionType *string    `json:"transaction_type"`
 	CardNumber      *string    `json:"card_number"`
 	AuthCode        *string    `json:"auth_code"`
 	AuthDate        *time.Time `json:"auth_date"`
-	PeymentToken    *string    `json:"peyment_token"`
+	PaymentToken    *string    `json:"payment_token"`
 	CompanyId       *int64     `json:"company_id"`
 	SaleId          *int64     `json:"sale_id"`
 	CreatedDate     *time.Time `gorm:"autoCreateTime"`
@@ -107,14 +107,14 @@ type PaymentInf struct {
 	Amount          float32   `json:"amount"`
 	PaymentMethod   string    `json:"payment_method"`
 	PaymentDate     time.Time `json:"payment_date"`
-	Reference       string    `json:"reference"`
+	Identifier      string    `json:"identifier"`
 	Notes           string    `json:"notes"`
 	TransactionRef  string    `json:"transaction_ref"`
 	TransactionType string    `json:"transaction_type"`
 	CardNumber      string    `json:"card_number"`
 	AuthCode        string    `json:"auth_code"`
 	AuthDate        time.Time `json:"auth_date"`
-	PeymentToken    string    `json:"peyment_token"`
+	PaymentToken    string    `json:"payment_token"`
 	CompanyId       int64     `json:"company_id"`
 	SaleId          int64     `json:"sale_id"`
 	CreatedDate     time.Time `gorm:"autoCreateTime"`
@@ -136,14 +136,14 @@ type PaymentReport struct {
 	Amount          float32   `json:"amount"`
 	PaymentMethod   string    `json:"payment_method"`
 	PaymentDate     time.Time `json:"payment_date"`
-	Reference       string    `json:"reference"`
+	Identifier      string    `json:"identifier"`
 	Notes           string    `json:"notes"`
 	TransactionRef  string    `json:"transaction_ref"`
 	TransactionType string    `json:"transaction_type"`
 	CardNumber      string    `json:"card_number"`
 	AuthCode        string    `json:"auth_code"`
 	AuthDate        time.Time `json:"auth_date"`
-	PeymentToken    string    `json:"peyment_token"`
+	PaymentToken    string    `json:"payment_token"`
 	CompanyId       int64     `json:"company_id"`
 	SaleId          int64     `json:"sale_id"`
 	CreatedDate     time.Time `gorm:"autoCreateTime"`
