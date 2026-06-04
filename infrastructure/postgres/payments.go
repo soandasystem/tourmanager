@@ -55,18 +55,19 @@ func (s *paymentsRepository) Create(ctx context.Context, payments interface{}) (
 		tx.Rollback()
 		return "", errors.New("el tipo de pagos no es correcto")
 	}
-	var existingPagos models.CreatePaymentReq
+	/*
+		var existingPagos models.CreatePaymentReq
 
-	if err := tx.Where("id = ?", u.ID).First(&existingPagos).Error; err == nil {
-		// Si no hay error, significa que se encontró un rol con ese nombre
-		tx.Rollback()
-		return "error", errors.New("El Ingreso con el identificador '" + u.ID + "' ya existe")
-	} else if !errors.Is(err, gorm.ErrRecordNotFound) {
-		tx.Rollback()
-		// Si el error no es de registro no encontrado, es un error inesperado
-		return "error", errors.New("Error al buscar pagos " + err.Error())
-	}
-
+		if err := tx.Where("id = ?", u.ID).First(&existingPagos).Error; err == nil {
+			// Si no hay error, significa que se encontró un rol con ese nombre
+			tx.Rollback()
+			return "error", errors.New("El Ingreso con el identificador '" + u.ID + "' ya existe")
+		} else if !errors.Is(err, gorm.ErrRecordNotFound) {
+			tx.Rollback()
+			// Si el error no es de registro no encontrado, es un error inesperado
+			return "error", errors.New("Error al buscar pagos " + err.Error())
+		}
+	*/
 	// Usamos el contexto y creamos el registro en la base de datos
 	if err := tx.WithContext(ctx).Create(&u).Error; err != nil {
 		tx.Rollback()

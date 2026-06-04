@@ -57,10 +57,10 @@ func (s *installmentsRepository) Create(ctx context.Context, installments interf
 	}
 	var existingInstallments models.CreateInstallmentReq
 
-	if err := tx.Where("id = ?", u.ID).First(&existingInstallments).Error; err == nil {
+	if err := tx.Where("passenger_id = ? and quota_number = ?", u.PassengerId, u.QuotaNumber).First(&existingInstallments).Error; err == nil {
 		// Si no hay error, significa que se encontró un rol con ese nombre
 		tx.Rollback()
-		return "error", errors.New("El Ingreso con el identificador '" + u.ID + "' ya existe")
+		return "error", errors.New("El Ingreso  ya existe")
 	} else if !errors.Is(err, gorm.ErrRecordNotFound) {
 		tx.Rollback()
 		// Si el error no es de registro no encontrado, es un error inesperado
