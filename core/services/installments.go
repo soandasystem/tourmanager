@@ -136,6 +136,33 @@ func (p *installmentsService) Update(ctx context.Context, ID string, installment
 	// Actualizar los campos solo si no son nil
 	// Actualizar la fecha de modificación
 	//dbPagos.UpdatedDate = time.Now().UTC()
+	if installment.PassengerId != nil {
+		dbInstallment.PassengerId = *&installment.PassengerId
+	}
+	if installment.QuotaNumber != nil {
+		dbInstallment.QuotaNumber = *&installment.QuotaNumber
+	}
+	if installment.DueDate != nil {
+		dbInstallment.DueDate = *&installment.DueDate
+	}
+	if installment.Amount != nil {
+		dbInstallment.Amount = *&installment.Amount
+	}
+	if installment.PaidAmount != nil {
+		dbInstallment.PaidAmount = *&installment.PaidAmount
+	}
+	if installment.Balance != nil {
+		dbInstallment.Balance = *&installment.Balance
+	}
+	if installment.Status != nil {
+		dbInstallment.Status = *&installment.Status
+	}
+	if installment.CompanyId != nil {
+		dbInstallment.CompanyId = *&installment.CompanyId
+	}
+	if installment.SaleId != nil {
+		dbInstallment.SaleId = *&installment.SaleId
+	}
 
 	// Llamar al repositorio para actualizar la entidad
 	err = p.repository.Update(ctx, ID, models.UpdateInstallmentReq(dbInstallment))
