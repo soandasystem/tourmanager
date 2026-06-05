@@ -150,7 +150,7 @@ func (s *installmentsRepository) Get(ctx context.Context, filter map[string]inte
 	}
 
 	// Ejecuta la consulta
-	if err := query.Table("pagos").Order("id ASC").Find(&registro).Error; err != nil {
+	if err := query.Order("id ASC").Find(&registro).Error; err != nil {
 		return nil, err
 	}
 
