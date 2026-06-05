@@ -109,7 +109,7 @@ func (p *installmentsService) GetByID(ctx context.Context, ID string) (resp mode
 }
 
 // get by id for update
-func (p *installmentsService) GetByIDu(ctx context.Context, ID string) (resp models.UpdateInstallmentReq, err error) {
+func (p *installmentsService) GetByIDu(ctx context.Context, ID string) (resp models.InstallmentResp, err error) {
 	installment, err := p.repository.GetByID(ctx, ID)
 
 	if err != nil {
@@ -118,10 +118,10 @@ func (p *installmentsService) GetByIDu(ctx context.Context, ID string) (resp mod
 
 	if installment == nil {
 		// Si no se encuentra el colegio (colegios es nil), devolver un valor en blanco y un error
-		return models.UpdateInstallmentReq{}, fmt.Errorf("pago con ID %s no encontrado", ID)
+		return models.InstallmentResp{}, fmt.Errorf("pago con ID %s no encontrado", ID)
 	}
 
-	resp = *installment.(*models.UpdateInstallmentReq)
+	resp = *installment.(*models.InstallmentResp)
 
 	return
 }
@@ -137,35 +137,35 @@ func (p *installmentsService) Update(ctx context.Context, ID string, installment
 	// Actualizar la fecha de modificación
 	//dbPagos.UpdatedDate = time.Now().UTC()
 	if installment.PassengerId != nil {
-		dbInstallment.PassengerId = *&installment.PassengerId
+		dbInstallment.PassengerId = *installment.PassengerId
 	}
 	if installment.QuotaNumber != nil {
-		dbInstallment.QuotaNumber = *&installment.QuotaNumber
+		dbInstallment.QuotaNumber = *installment.QuotaNumber
 	}
 	if installment.DueDate != nil {
-		dbInstallment.DueDate = *&installment.DueDate
+		dbInstallment.DueDate = *installment.DueDate
 	}
 	if installment.Amount != nil {
-		dbInstallment.Amount = *&installment.Amount
+		dbInstallment.Amount = *installment.Amount
 	}
 	if installment.PaidAmount != nil {
-		dbInstallment.PaidAmount = *&installment.PaidAmount
+		dbInstallment.PaidAmount = *installment.PaidAmount
 	}
 	if installment.Balance != nil {
-		dbInstallment.Balance = *&installment.Balance
+		dbInstallment.Balance = *installment.Balance
 	}
 	if installment.Status != nil {
-		dbInstallment.Status = *&installment.Status
+		dbInstallment.Status = *installment.Status
 	}
 	if installment.CompanyId != nil {
-		dbInstallment.CompanyId = *&installment.CompanyId
+		dbInstallment.CompanyId = *installment.CompanyId
 	}
 	if installment.SaleId != nil {
-		dbInstallment.SaleId = *&installment.SaleId
+		dbInstallment.SaleId = *installment.SaleId
 	}
 
 	// Llamar al repositorio para actualizar la entidad
-	err = p.repository.Update(ctx, ID, models.UpdateInstallmentReq(dbInstallment))
+	err = p.repository.Update(ctx, ID, models.Installment(dbInstallment))
 
 	return err
 }
