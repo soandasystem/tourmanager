@@ -218,14 +218,15 @@ func (SaleReport) TableName() string {
 }
 
 type SaleCursoReport struct {
-	ID                string `json:"id"`
-	SellerId          string `json:"seller_id"`
-	Identificador     string `json:"identificador"`
-	EstablecimientoId string `json:"establecimiento_id"`
-	ProgramId         string `json:"program_id"`
-	Curso             int    `json:"curso"`
-	Idcurso           string `json:"idcurso"`
-	TypeSale          string `json:"type_sale"`
+	ID                string         `json:"id"`
+	SellerId          string         `json:"seller_id"`
+	Identificador     string         `json:"identificador"`
+	EstablecimientoId string         `json:"establecimiento_id"`
+	Establecimiento   ColegiosReport `json:"establecimiento" gorm:"foreignKey:EstablecimientoId;references:ID"`
+	ProgramId         string         `json:"program_id"`
+	Curso             int            `json:"curso"`
+	Idcurso           string         `json:"idcurso"`
+	TypeSale          string         `json:"type_sale"`
 }
 
 func (SaleCursoReport) TableName() string {
