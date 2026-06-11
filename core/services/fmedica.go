@@ -88,95 +88,122 @@ func (p *fmedicaService) Update(ctx context.Context, ID string, ficha models.Upd
 	}
 	// Actualizar los campos solo si no son nil
 	// Actualizar la fecha de modificación
-	if ficha.Dato1 != nil {
-		dbFmedica.Dato1 = *ficha.Dato1
+	if ficha.SalesId != nil {
+		dbFmedica.SalesId = *ficha.SalesId
 	}
-	if ficha.Dato2 != nil {
-		dbFmedica.Dato2 = *ficha.Dato2
+	if ficha.CursoId != nil {
+		dbFmedica.CursoId = *ficha.CursoId
 	}
-	if ficha.Dato31 != nil {
-		dbFmedica.Dato31 = *ficha.Dato31
+	if ficha.CompanyId != nil {
+		dbFmedica.CompanyId = *ficha.CompanyId
 	}
-	if ficha.Dato32 != nil {
-		dbFmedica.Dato32 = *ficha.Dato1
+	if ficha.GrupoSanguineo != nil {
+		dbFmedica.GrupoSanguineo = *ficha.GrupoSanguineo
 	}
-	if ficha.Dato4 != nil {
-		dbFmedica.Dato4 = *ficha.Dato4
+	if ficha.Edad != nil {
+		dbFmedica.Edad = *ficha.Edad
 	}
-	if ficha.Dato5 != nil {
-		dbFmedica.Dato5 = *ficha.Dato5
+	if ficha.Peso != nil {
+		dbFmedica.Peso = *ficha.Peso
 	}
-	if ficha.Dato6 != nil {
-		dbFmedica.Dato6 = *ficha.Dato6
+	if ficha.Estatura != nil {
+		dbFmedica.Estatura = *ficha.Estatura
 	}
-	if ficha.Dato7 != nil {
-		dbFmedica.Dato7 = *ficha.Dato7
+	if ficha.Hipertension != nil {
+		dbFmedica.Hipertension = *ficha.Hipertension
 	}
-	if ficha.Dato8 != nil {
-		dbFmedica.Dato8 = *ficha.Dato8
+	if ficha.Diabetes != nil {
+		dbFmedica.Diabetes = *ficha.Diabetes
 	}
-	if ficha.Dato9 != nil {
-		dbFmedica.Dato9 = *ficha.Dato9
+	if ficha.Asma != nil {
+		dbFmedica.Asma = *ficha.Asma
 	}
-	if ficha.Dato91 != nil {
-		dbFmedica.Dato91 = *ficha.Dato91
+	if ficha.Epilepsia != nil {
+		dbFmedica.Epilepsia = *ficha.Epilepsia
 	}
-	if ficha.Dato92 != nil {
-		dbFmedica.Dato92 = *ficha.Dato92
+	if ficha.Arritmias != nil {
+		dbFmedica.Arritmias = *ficha.Arritmias
 	}
-	if ficha.Dato10 != nil {
-		dbFmedica.Dato10 = *ficha.Dato10
+	if ficha.EnfermedadesCardiacas != nil {
+		dbFmedica.EnfermedadesCardiacas = *ficha.EnfermedadesCardiacas
 	}
-	if ficha.Dato101 != nil {
-		dbFmedica.Dato101 = *ficha.Dato101
+	if ficha.EnfermedadesRespiratorias != nil {
+		dbFmedica.EnfermedadesRespiratorias = *ficha.EnfermedadesRespiratorias
 	}
-	if ficha.Dato11 != nil {
-		dbFmedica.Dato11 = *ficha.Dato11
+	if ficha.EnfermedadesRenales != nil {
+		dbFmedica.EnfermedadesRenales = *ficha.EnfermedadesRenales
 	}
-	if ficha.Dato111 != nil {
-		dbFmedica.Dato111 = *ficha.Dato111
+	if ficha.OtrasEnfermedades != nil {
+		dbFmedica.OtrasEnfermedades = *ficha.OtrasEnfermedades
 	}
-	if ficha.Dato12 != nil {
-		dbFmedica.Dato12 = *ficha.Dato12
+	if ficha.BajoTratamiento != nil {
+		dbFmedica.BajoTratamiento = *ficha.BajoTratamiento
 	}
-	if ficha.Dato13 != nil {
-		dbFmedica.Dato13 = *ficha.Dato13
+	if ficha.Diagnostico != nil {
+		dbFmedica.Diagnostico = *ficha.Diagnostico
 	}
-	if ficha.Dato141 != nil {
-		dbFmedica.Dato141 = *ficha.Dato141
+	if ficha.MedicamentosTratamiento != nil {
+		dbFmedica.MedicamentosTratamiento = *ficha.MedicamentosTratamiento
 	}
-	if ficha.Dato142 != nil {
-		dbFmedica.Dato142 = *ficha.Dato142
+	if ficha.DosisTratamiento != nil {
+		dbFmedica.DosisTratamiento = *ficha.DosisTratamiento
 	}
-	if ficha.Dato151 != nil {
-		dbFmedica.Dato151 = *ficha.Dato151
+	if ficha.AlergiaMedicamentos != nil {
+		dbFmedica.AlergiaMedicamentos = *ficha.AlergiaMedicamentos
 	}
-	if ficha.Dato152 != nil {
-		dbFmedica.Dato152 = *ficha.Dato152
+	if ficha.AlergiaAlimentos != nil {
+		dbFmedica.AlergiaAlimentos = *ficha.AlergiaAlimentos
 	}
-	if ficha.Dato161 != nil {
-		dbFmedica.Dato161 = *ficha.Dato161
+	if ficha.AlergiaInsectos != nil {
+		dbFmedica.AlergiaInsectos = *ficha.AlergiaInsectos
 	}
-	if ficha.Dato162 != nil {
-		dbFmedica.Dato162 = *ficha.Dato162
+	if ficha.AlergiaOtras != nil {
+		dbFmedica.AlergiaOtras = *ficha.AlergiaOtras
 	}
-	if ficha.Dato17 != nil {
-		dbFmedica.Dato17 = *ficha.Dato17
+	if ficha.DificultadMovilidad != nil {
+		dbFmedica.DificultadMovilidad = *ficha.DificultadMovilidad
 	}
-	if ficha.Dato18 != nil {
-		dbFmedica.Dato18 = *ficha.Dato18
+	if ficha.AsistenciaMovilidad != nil {
+		dbFmedica.AsistenciaMovilidad = *ficha.AsistenciaMovilidad
 	}
-	if ficha.Dato19 != nil {
-		dbFmedica.Dato19 = *ficha.Dato19
+	if ficha.AsistenciaEspecial != nil {
+		dbFmedica.AsistenciaEspecial = *ficha.AsistenciaEspecial
 	}
-	if ficha.Dato20 != nil {
-		dbFmedica.Dato20 = *ficha.Dato20
+	if ficha.Vegetariano != nil {
+		dbFmedica.Vegetariano = *ficha.Vegetariano
 	}
-	if ficha.Dato21 != nil {
-		dbFmedica.Dato21 = *ficha.Dato21
+	if ficha.Vegano != nil {
+		dbFmedica.Vegano = *ficha.Vegano
 	}
-	if ficha.Dato22 != nil {
-		dbFmedica.Dato22 = *ficha.Dato22
+	if ficha.Celiaco != nil {
+		dbFmedica.Celiaco = *ficha.Celiaco
+	}
+	if ficha.IntoleranciaLactosa != nil {
+		dbFmedica.IntoleranciaLactosa = *ficha.IntoleranciaLactosa
+	}
+	if ficha.DiabeticoAlim != nil {
+		dbFmedica.DiabeticoAlim = *ficha.DiabeticoAlim
+	}
+	if ficha.OtraRestriccionAlim != nil {
+		dbFmedica.OtraRestriccionAlim = *ficha.OtraRestriccionAlim
+	}
+	if ficha.ContactoNombre != nil {
+		dbFmedica.ContactoNombre = *ficha.ContactoNombre
+	}
+	if ficha.ContactoRelacion != nil {
+		dbFmedica.ContactoRelacion = *ficha.ContactoRelacion
+	}
+	if ficha.ContactoTelefono1 != nil {
+		dbFmedica.ContactoTelefono1 = *ficha.ContactoTelefono1
+	}
+	if ficha.ContactoTelefono2 != nil {
+		dbFmedica.ContactoTelefono2 = *ficha.ContactoTelefono2
+	}
+	if ficha.Observaciones != nil {
+		dbFmedica.Observaciones = *ficha.Observaciones
+	}
+	if ficha.Author != nil {
+		dbFmedica.Author = *ficha.Author
 	}
 
 	// Llamar al repositorio para actualizar la entidad
