@@ -5101,107 +5101,131 @@ const docTemplate = `{
         "models.CreateFmedicaReq": {
             "type": "object",
             "properties": {
+                "alergia_alimentos": {
+                    "type": "boolean"
+                },
+                "alergia_insectos": {
+                    "type": "boolean"
+                },
+                "alergia_medicamentos": {
+                    "type": "boolean"
+                },
+                "alergia_otras": {
+                    "type": "string"
+                },
+                "arritmias": {
+                    "type": "boolean"
+                },
+                "asistencia_especial": {
+                    "type": "string"
+                },
+                "asistencia_movilidad": {
+                    "type": "string"
+                },
+                "asma": {
+                    "type": "boolean"
+                },
+                "author": {
+                    "type": "string"
+                },
+                "bajo_tratamiento": {
+                    "type": "string"
+                },
+                "celiaco": {
+                    "type": "boolean"
+                },
                 "company_id": {
                     "type": "integer"
                 },
-                "dato1": {
+                "contacto_nombre": {
                     "type": "string"
                 },
-                "dato10": {
+                "contacto_relacion": {
                     "type": "string"
                 },
-                "dato101": {
+                "contacto_telefono1": {
                     "type": "string"
                 },
-                "dato11": {
+                "contacto_telefono2": {
                     "type": "string"
                 },
-                "dato111": {
+                "created_date": {
                     "type": "string"
                 },
-                "dato12": {
+                "curso_id": {
+                    "type": "integer"
+                },
+                "diabetes": {
+                    "type": "boolean"
+                },
+                "diabetico_alim": {
+                    "type": "boolean"
+                },
+                "diagnostico": {
                     "type": "string"
                 },
-                "dato13": {
+                "dificultad_movilidad": {
                     "type": "string"
                 },
-                "dato141": {
+                "dosis_tratamiento": {
                     "type": "string"
                 },
-                "dato142": {
+                "edad": {
+                    "type": "integer"
+                },
+                "enfermedades_cardiacas": {
+                    "type": "boolean"
+                },
+                "enfermedades_renales": {
+                    "type": "boolean"
+                },
+                "enfermedades_respiratorias": {
+                    "type": "boolean"
+                },
+                "epilepsia": {
+                    "type": "boolean"
+                },
+                "estatura": {
+                    "type": "number"
+                },
+                "grupo_sanguineo": {
                     "type": "string"
                 },
-                "dato151": {
-                    "type": "string"
-                },
-                "dato152": {
-                    "type": "string"
-                },
-                "dato161": {
-                    "type": "string"
-                },
-                "dato162": {
-                    "type": "string"
-                },
-                "dato17": {
-                    "type": "string"
-                },
-                "dato18": {
-                    "type": "string"
-                },
-                "dato19": {
-                    "type": "string"
-                },
-                "dato2": {
-                    "type": "string"
-                },
-                "dato20": {
-                    "type": "string"
-                },
-                "dato21": {
-                    "type": "string"
-                },
-                "dato22": {
-                    "type": "string"
-                },
-                "dato31": {
-                    "type": "string"
-                },
-                "dato32": {
-                    "type": "string"
-                },
-                "dato4": {
-                    "type": "string"
-                },
-                "dato5": {
-                    "type": "string"
-                },
-                "dato6": {
-                    "type": "string"
-                },
-                "dato7": {
-                    "type": "string"
-                },
-                "dato8": {
-                    "type": "string"
-                },
-                "dato9": {
-                    "type": "string"
-                },
-                "dato91": {
-                    "type": "string"
-                },
-                "dato92": {
-                    "type": "string"
+                "hipertension": {
+                    "type": "boolean"
                 },
                 "id": {
                     "type": "string"
                 },
-                "rutalumn": {
+                "intolerancia_lactosa": {
+                    "type": "boolean"
+                },
+                "medicamentos_tratamiento": {
                     "type": "string"
+                },
+                "observaciones": {
+                    "type": "string"
+                },
+                "otra_restriccion_alim": {
+                    "type": "string"
+                },
+                "otras_enfermedades": {
+                    "type": "string"
+                },
+                "peso": {
+                    "type": "number"
                 },
                 "sale_id": {
                     "type": "integer"
+                },
+                "updated_date": {
+                    "type": "string"
+                },
+                "vegano": {
+                    "type": "boolean"
+                },
+                "vegetariano": {
+                    "type": "boolean"
                 }
             }
         },
@@ -5342,6 +5366,9 @@ const docTemplate = `{
                 "balance": {
                     "type": "number"
                 },
+                "company_id": {
+                    "type": "integer"
+                },
                 "createdDate": {
                     "type": "string"
                 },
@@ -5358,6 +5385,9 @@ const docTemplate = `{
                     "type": "integer"
                 },
                 "quota_number": {
+                    "type": "integer"
+                },
+                "sale_id": {
                     "type": "integer"
                 },
                 "status": {
@@ -5471,10 +5501,25 @@ const docTemplate = `{
                 "amount": {
                     "type": "number"
                 },
+                "auth_code": {
+                    "type": "string"
+                },
+                "auth_date": {
+                    "type": "string"
+                },
+                "card_number": {
+                    "type": "string"
+                },
+                "company_id": {
+                    "type": "integer"
+                },
                 "createdDate": {
                     "type": "string"
                 },
                 "id": {
+                    "type": "string"
+                },
+                "identifier": {
                     "type": "string"
                 },
                 "notes": {
@@ -5489,7 +5534,16 @@ const docTemplate = `{
                 "payment_method": {
                     "type": "string"
                 },
-                "reference": {
+                "payment_token": {
+                    "type": "string"
+                },
+                "sale_id": {
+                    "type": "integer"
+                },
+                "transaction_ref": {
+                    "type": "string"
+                },
+                "transaction_type": {
                     "type": "string"
                 },
                 "updatedDate": {
@@ -6024,6 +6078,29 @@ const docTemplate = `{
                 }
             }
         },
+        "models.CursoReport": {
+            "type": "object",
+            "properties": {
+                "fechanac": {
+                    "type": "string"
+                },
+                "nombrealumno": {
+                    "type": "string"
+                },
+                "nombreapod": {
+                    "type": "string"
+                },
+                "pasaporte": {
+                    "type": "string"
+                },
+                "rutalumno": {
+                    "type": "string"
+                },
+                "rutapod": {
+                    "type": "string"
+                }
+            }
+        },
         "models.CursoResp": {
             "type": "object",
             "properties": {
@@ -6119,107 +6196,131 @@ const docTemplate = `{
         "models.FmedicaResp": {
             "type": "object",
             "properties": {
+                "alergia_alimentos": {
+                    "type": "boolean"
+                },
+                "alergia_insectos": {
+                    "type": "boolean"
+                },
+                "alergia_medicamentos": {
+                    "type": "boolean"
+                },
+                "alergia_otras": {
+                    "type": "string"
+                },
+                "arritmias": {
+                    "type": "boolean"
+                },
+                "asistencia_especial": {
+                    "type": "string"
+                },
+                "asistencia_movilidad": {
+                    "type": "string"
+                },
+                "asma": {
+                    "type": "boolean"
+                },
+                "author": {
+                    "type": "string"
+                },
+                "bajo_tratamiento": {
+                    "type": "string"
+                },
+                "celiaco": {
+                    "type": "boolean"
+                },
                 "company_id": {
                     "type": "integer"
                 },
-                "dato1": {
+                "contacto_nombre": {
                     "type": "string"
                 },
-                "dato10": {
+                "contacto_relacion": {
                     "type": "string"
                 },
-                "dato101": {
+                "contacto_telefono1": {
                     "type": "string"
                 },
-                "dato11": {
+                "contacto_telefono2": {
                     "type": "string"
                 },
-                "dato111": {
+                "created_date": {
                     "type": "string"
                 },
-                "dato12": {
+                "curso_id": {
+                    "type": "integer"
+                },
+                "diabetes": {
+                    "type": "boolean"
+                },
+                "diabetico_alim": {
+                    "type": "boolean"
+                },
+                "diagnostico": {
                     "type": "string"
                 },
-                "dato13": {
+                "dificultad_movilidad": {
                     "type": "string"
                 },
-                "dato141": {
+                "dosis_tratamiento": {
                     "type": "string"
                 },
-                "dato142": {
+                "edad": {
+                    "type": "integer"
+                },
+                "enfermedades_cardiacas": {
+                    "type": "boolean"
+                },
+                "enfermedades_renales": {
+                    "type": "boolean"
+                },
+                "enfermedades_respiratorias": {
+                    "type": "boolean"
+                },
+                "epilepsia": {
+                    "type": "boolean"
+                },
+                "estatura": {
+                    "type": "number"
+                },
+                "grupo_sanguineo": {
                     "type": "string"
                 },
-                "dato151": {
-                    "type": "string"
-                },
-                "dato152": {
-                    "type": "string"
-                },
-                "dato161": {
-                    "type": "string"
-                },
-                "dato162": {
-                    "type": "string"
-                },
-                "dato17": {
-                    "type": "string"
-                },
-                "dato18": {
-                    "type": "string"
-                },
-                "dato19": {
-                    "type": "string"
-                },
-                "dato2": {
-                    "type": "string"
-                },
-                "dato20": {
-                    "type": "string"
-                },
-                "dato21": {
-                    "type": "string"
-                },
-                "dato22": {
-                    "type": "string"
-                },
-                "dato31": {
-                    "type": "string"
-                },
-                "dato32": {
-                    "type": "string"
-                },
-                "dato4": {
-                    "type": "string"
-                },
-                "dato5": {
-                    "type": "string"
-                },
-                "dato6": {
-                    "type": "string"
-                },
-                "dato7": {
-                    "type": "string"
-                },
-                "dato8": {
-                    "type": "string"
-                },
-                "dato9": {
-                    "type": "string"
-                },
-                "dato91": {
-                    "type": "string"
-                },
-                "dato92": {
-                    "type": "string"
+                "hipertension": {
+                    "type": "boolean"
                 },
                 "id": {
                     "type": "string"
                 },
-                "rutalumn": {
+                "intolerancia_lactosa": {
+                    "type": "boolean"
+                },
+                "medicamentos_tratamiento": {
                     "type": "string"
+                },
+                "observaciones": {
+                    "type": "string"
+                },
+                "otra_restriccion_alim": {
+                    "type": "string"
+                },
+                "otras_enfermedades": {
+                    "type": "string"
+                },
+                "peso": {
+                    "type": "number"
                 },
                 "sale_id": {
                     "type": "integer"
+                },
+                "updated_date": {
+                    "type": "string"
+                },
+                "vegano": {
+                    "type": "boolean"
+                },
+                "vegetariano": {
+                    "type": "boolean"
                 }
             }
         },
@@ -6448,6 +6549,9 @@ const docTemplate = `{
                 "balance": {
                     "type": "number"
                 },
+                "company_id": {
+                    "type": "integer"
+                },
                 "createdDate": {
                     "type": "string"
                 },
@@ -6464,6 +6568,9 @@ const docTemplate = `{
                     "type": "integer"
                 },
                 "quota_number": {
+                    "type": "integer"
+                },
+                "sale_id": {
                     "type": "integer"
                 },
                 "status": {
@@ -6577,10 +6684,28 @@ const docTemplate = `{
                 "amount": {
                     "type": "number"
                 },
+                "auth_code": {
+                    "type": "string"
+                },
+                "auth_date": {
+                    "type": "string"
+                },
+                "card_number": {
+                    "type": "string"
+                },
+                "company_id": {
+                    "type": "integer"
+                },
                 "createdDate": {
                     "type": "string"
                 },
+                "curso": {
+                    "$ref": "#/definitions/models.CursoReport"
+                },
                 "id": {
+                    "type": "string"
+                },
+                "identifier": {
                     "type": "string"
                 },
                 "notes": {
@@ -6595,7 +6720,19 @@ const docTemplate = `{
                 "payment_method": {
                     "type": "string"
                 },
-                "reference": {
+                "payment_token": {
+                    "type": "string"
+                },
+                "sale": {
+                    "$ref": "#/definitions/models.SaleCursoReport"
+                },
+                "sale_id": {
+                    "type": "integer"
+                },
+                "transaction_ref": {
+                    "type": "string"
+                },
+                "transaction_type": {
                     "type": "string"
                 },
                 "updatedDate": {
@@ -6892,6 +7029,9 @@ const docTemplate = `{
             "properties": {
                 "curso": {
                     "type": "integer"
+                },
+                "establecimiento": {
+                    "$ref": "#/definitions/models.ColegiosReport"
                 },
                 "establecimiento_id": {
                     "type": "string"
@@ -7332,104 +7472,128 @@ const docTemplate = `{
         "models.UpdateFmedicaReq": {
             "type": "object",
             "properties": {
+                "alergia_alimentos": {
+                    "type": "boolean"
+                },
+                "alergia_insectos": {
+                    "type": "boolean"
+                },
+                "alergia_medicamentos": {
+                    "type": "boolean"
+                },
+                "alergia_otras": {
+                    "type": "string"
+                },
+                "arritmias": {
+                    "type": "boolean"
+                },
+                "asistencia_especial": {
+                    "type": "string"
+                },
+                "asistencia_movilidad": {
+                    "type": "string"
+                },
+                "asma": {
+                    "type": "boolean"
+                },
+                "author": {
+                    "type": "string"
+                },
+                "bajo_tratamiento": {
+                    "type": "string"
+                },
+                "celiaco": {
+                    "type": "boolean"
+                },
                 "company_id": {
                     "type": "integer"
                 },
-                "dato1": {
+                "contacto_nombre": {
                     "type": "string"
                 },
-                "dato10": {
+                "contacto_relacion": {
                     "type": "string"
                 },
-                "dato101": {
+                "contacto_telefono1": {
                     "type": "string"
                 },
-                "dato11": {
+                "contacto_telefono2": {
                     "type": "string"
                 },
-                "dato111": {
+                "created_date": {
                     "type": "string"
                 },
-                "dato12": {
+                "curso_id": {
+                    "type": "integer"
+                },
+                "diabetes": {
+                    "type": "boolean"
+                },
+                "diabetico_alim": {
+                    "type": "boolean"
+                },
+                "diagnostico": {
                     "type": "string"
                 },
-                "dato13": {
+                "dificultad_movilidad": {
                     "type": "string"
                 },
-                "dato141": {
+                "dosis_tratamiento": {
                     "type": "string"
                 },
-                "dato142": {
+                "edad": {
+                    "type": "integer"
+                },
+                "enfermedades_cardiacas": {
+                    "type": "boolean"
+                },
+                "enfermedades_renales": {
+                    "type": "boolean"
+                },
+                "enfermedades_respiratorias": {
+                    "type": "boolean"
+                },
+                "epilepsia": {
+                    "type": "boolean"
+                },
+                "estatura": {
+                    "type": "number"
+                },
+                "grupo_sanguineo": {
                     "type": "string"
                 },
-                "dato151": {
+                "hipertension": {
+                    "type": "boolean"
+                },
+                "intolerancia_lactosa": {
+                    "type": "boolean"
+                },
+                "medicamentos_tratamiento": {
                     "type": "string"
                 },
-                "dato152": {
+                "observaciones": {
                     "type": "string"
                 },
-                "dato161": {
+                "otra_restriccion_alim": {
                     "type": "string"
                 },
-                "dato162": {
+                "otras_enfermedades": {
                     "type": "string"
                 },
-                "dato17": {
-                    "type": "string"
-                },
-                "dato18": {
-                    "type": "string"
-                },
-                "dato19": {
-                    "type": "string"
-                },
-                "dato2": {
-                    "type": "string"
-                },
-                "dato20": {
-                    "type": "string"
-                },
-                "dato21": {
-                    "type": "string"
-                },
-                "dato22": {
-                    "type": "string"
-                },
-                "dato31": {
-                    "type": "string"
-                },
-                "dato32": {
-                    "type": "string"
-                },
-                "dato4": {
-                    "type": "string"
-                },
-                "dato5": {
-                    "type": "string"
-                },
-                "dato6": {
-                    "type": "string"
-                },
-                "dato7": {
-                    "type": "string"
-                },
-                "dato8": {
-                    "type": "string"
-                },
-                "dato9": {
-                    "type": "string"
-                },
-                "dato91": {
-                    "type": "string"
-                },
-                "dato92": {
-                    "type": "string"
-                },
-                "rutalumn": {
-                    "type": "string"
+                "peso": {
+                    "type": "number"
                 },
                 "sale_id": {
                     "type": "integer"
+                },
+                "updated_date": {
+                    "type": "string"
+                },
+                "vegano": {
+                    "type": "boolean"
+                },
+                "vegetariano": {
+                    "type": "boolean"
                 }
             }
         },
@@ -7533,6 +7697,9 @@ const docTemplate = `{
                 "balance": {
                     "type": "number"
                 },
+                "company_id": {
+                    "type": "integer"
+                },
                 "createdDate": {
                     "type": "string"
                 },
@@ -7546,6 +7713,9 @@ const docTemplate = `{
                     "type": "integer"
                 },
                 "quota_number": {
+                    "type": "integer"
+                },
+                "sale_id": {
                     "type": "integer"
                 },
                 "status": {
@@ -7653,7 +7823,22 @@ const docTemplate = `{
                 "amount": {
                     "type": "number"
                 },
+                "auth_code": {
+                    "type": "string"
+                },
+                "auth_date": {
+                    "type": "string"
+                },
+                "card_number": {
+                    "type": "string"
+                },
+                "company_id": {
+                    "type": "integer"
+                },
                 "createdDate": {
+                    "type": "string"
+                },
+                "identifier": {
                     "type": "string"
                 },
                 "notes": {
@@ -7668,7 +7853,16 @@ const docTemplate = `{
                 "payment_method": {
                     "type": "string"
                 },
-                "reference": {
+                "payment_token": {
+                    "type": "string"
+                },
+                "sale_id": {
+                    "type": "integer"
+                },
+                "transaction_ref": {
+                    "type": "string"
+                },
+                "transaction_type": {
                     "type": "string"
                 },
                 "updatedDate": {
