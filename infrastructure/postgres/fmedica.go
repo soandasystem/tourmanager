@@ -58,10 +58,10 @@ func (s *fmedicaRepository) Create(ctx context.Context, ficha interface{}) (stri
 
 	var existingFicha models.CreateFmedicaReq
 
-	if err := tx.Where("rutalumn = ?", u.Rutalumn).First(&existingFicha).Error; err == nil {
+	if err := tx.Where("curso_id = ?", u.CursoId).Where("company_id = ?", u.CompanyId).Where("sale_id = ?", u.SalesId).First(&existingFicha).Error; err == nil {
 		// Si no hay error, significa que se encontró un rol con ese nombre
 		tx.Rollback()
-		return "error", errors.New("El Ficha medica del alumno '" + u.Rutalumn + "' ya existe")
+		return "error", errors.New("El Ficha medica del alumno  ya existe")
 	} else if !errors.Is(err, gorm.ErrRecordNotFound) {
 		tx.Rollback()
 		// Si el error no es de registro no encontrado, es un error inesperado
