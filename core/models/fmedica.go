@@ -4,7 +4,7 @@ import "time"
 
 type Fmedicas struct {
 	ID                        string    `json:"_id,omitempty"`
-	SalesId                   int64     `json:"sale_id"`
+	SaleId                    int64     `json:"sale_id"`
 	CursoId                   int64     `json:"curso_id"`
 	CompanyId                 int64     `json:"company_id"`
 	GrupoSanguineo            string    `json:"grupo_sanguineo"`
@@ -50,7 +50,7 @@ type Fmedicas struct {
 // Resp  response struct
 type FmedicaResp struct {
 	ID                        string    `json:"id"`
-	SalesId                   int64     `json:"sale_id"`
+	SaleId                    int64     `json:"sale_id"`
 	CursoId                   int64     `json:"curso_id"`
 	CompanyId                 int64     `json:"company_id"`
 	GrupoSanguineo            string    `json:"grupo_sanguineo"`
@@ -105,7 +105,7 @@ type FmedicaListResponse struct {
 // Create---Req  request struct
 type CreateFmedicaReq struct {
 	ID                        string    `gorm:"primaryKey;autoIncrement"`
-	SalesId                   int64     `json:"sale_id"`
+	SaleId                    int64     `json:"sale_id"`
 	CursoId                   int64     `json:"curso_id"`
 	CompanyId                 int64     `json:"company_id"`
 	GrupoSanguineo            string    `json:"grupo_sanguineo"`
@@ -154,7 +154,7 @@ func (CreateFmedicaReq) TableName() string {
 
 type UpdateFmedicaReq struct {
 	ID                        string     `json:"-"`
-	SalesId                   *int64     `json:"sale_id"`
+	SaleId                    *int64     `json:"sale_id"`
 	CursoId                   *int64     `json:"curso_id"`
 	CompanyId                 *int64     `json:"company_id"`
 	GrupoSanguineo            *string    `json:"grupo_sanguineo"`
