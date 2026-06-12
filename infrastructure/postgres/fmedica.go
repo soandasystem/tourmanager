@@ -58,7 +58,7 @@ func (s *fmedicaRepository) Create(ctx context.Context, ficha interface{}) (stri
 
 	var existingFicha models.CreateFmedicaReq
 
-	if err := tx.Where("curso_id = ?", u.CursoId).Where("company_id = ?", u.CompanyId).Where("sale_id = ?", u.SalesId).First(&existingFicha).Error; err == nil {
+	if err := tx.Where("curso_id = ?", u.CursoId).Where("company_id = ?", u.CompanyId).Where("sale_id = ?", u.SaleId).First(&existingFicha).Error; err == nil {
 		// Si no hay error, significa que se encontró un rol con ese nombre
 		tx.Rollback()
 		return "error", errors.New("El Ficha medica del alumno  ya existe")

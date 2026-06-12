@@ -88,8 +88,8 @@ func (p *fmedicaService) Update(ctx context.Context, ID string, ficha models.Upd
 	}
 	// Actualizar los campos solo si no son nil
 	// Actualizar la fecha de modificación
-	if ficha.SalesId != nil {
-		dbFmedica.SalesId = *ficha.SalesId
+	if ficha.SaleId != nil {
+		dbFmedica.SaleId = *ficha.SaleId
 	}
 	if ficha.CursoId != nil {
 		dbFmedica.CursoId = *ficha.CursoId
