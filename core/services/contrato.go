@@ -21,12 +21,13 @@ import (
 )
 
 type contratoService struct {
-	config config.Config
+	config  config.Config
+	storage ports.UploadStorage
 }
 
 // NewContratoService crea una nueva instancia del servicio de contratos
-func NewContratoService(cfg config.Config) ports.ContratoService {
-	return &contratoService{config: cfg}
+func NewContratoService(cfg config.Config, storage ports.UploadStorage) ports.ContratoService {
+	return &contratoService{config: cfg, storage: storage}
 }
 
 // GenerarContrato descarga el template DOCX, reemplaza los placeholders {{campo}}

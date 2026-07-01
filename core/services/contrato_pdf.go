@@ -11,6 +11,7 @@ import (
 	_ "image/png"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"github.com/go-pdf/fpdf"
 
@@ -19,7 +20,7 @@ import (
 
 // FirmarContrato lee los datos del contrato guardados en Fase 1,
 // genera un PDF completo con todos los campos y la firma incrustada.
-func (s *contratoService) FirmarContrato(_ context.Context, req models.ContratoFirmaReq) (models.ContratoPDFResp, error) {
+func (s *contratoService) FirmarContrato(ctx context.Context, req models.ContratoFirmaReq) (models.ContratoPDFResp, error) {
 	// 1. Verificar que el directorio de sesión existe
 	tempDir := filepath.Join(os.TempDir(), "contratos", req.SessionID)
 	dataPath := filepath.Join(tempDir, "data.json")
@@ -43,13 +44,38 @@ func (s *contratoService) FirmarContrato(_ context.Context, req models.ContratoF
 	defer os.Remove(firmaPath)
 
 	// 4. Generar el PDF
-	pdfPath := filepath.Join(tempDir, "contrato.pdf")
+	pdfName := "contrato.pdf"
+	if req.FileNameFirma != "" {
+		pdfName = req.FileNameFirma
+		if !strings.HasSuffix(strings.ToLower(pdfName), ".pdf") {
+			pdfName += ".pdf"
+		}
+	}
+	pdfPath := filepath.Join(tempDir, pdfName)
 	if err := generateContratoPDF(pdfPath, contratoData, firmaPath); err != nil {
 		return models.ContratoPDFResp{}, fmt.Errorf("error generando PDF: %w", err)
 	}
 
+	var finalPDFUrl string
+	if s.storage != nil {
+		f, err := os.Open(pdfPath)
+		if err != nil {
+			return models.ContratoPDFResp{}, fmt.Errorf("error abriendo pdf para subir: %w", err)
+		}
+		defer f.Close()
+
+		objectKey := fmt.Sprintf("contratos_firmados/%s/%s", req.SessionID, pdfName)
+		url, err := s.storage.Upload(ctx, f, objectKey, "application/pdf")
+		if err != nil {
+			return models.ContratoPDFResp{}, fmt.Errorf("error subiendo PDF a B2: %w", err)
+		}
+		finalPDFUrl = url
+	} else {
+		finalPDFUrl = pdfPath
+	}
+
 	return models.ContratoPDFResp{
-		PDFFile: pdfPath,
+		PDFFile: finalPDFUrl,
 		Message: "Contrato PDF generado y firmado correctamente",
 	}, nil
 }

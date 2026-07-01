@@ -139,11 +139,10 @@ func New(ctx context.Context, cfg config.Config) (a api) {
 	a.services.installments = services.NewInstallmentService(a.config, installmentsRepo)
 	a.services.payments = services.NewPaymentService(a.config, paymentsRepo)
 	a.services.paymentInstallments = services.NewPaymentInstallmentService(a.config, paymentInstallmentsRepo)
-	a.services.contrato = services.NewContratoService(a.config)
-
 	// Inicializar B2 Storage y Upload Service
+	var b2Storage ports.UploadStorage
 	if a.config.B2Endpoint != "" {
-		b2Storage := b2.NewB2Storage(
+		b2Storage = b2.NewB2Storage(
 			ctx,
 			a.config.B2KeyID,
 			a.config.B2Application,
@@ -153,6 +152,8 @@ func New(ctx context.Context, cfg config.Config) (a api) {
 		)
 		a.services.upload = services.NewUploadService(a.config, b2Storage)
 	}
+
+	a.services.contrato = services.NewContratoService(a.config, b2Storage)
 
 	return a
 }
