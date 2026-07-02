@@ -10,7 +10,8 @@ import (
 	"tourmanager/core/ports"
 
 	"github.com/antoniomarfa/hexatools/wrappers"
-	"github.com/google/uuid"
+	//	"github.com/google/uuid"
+	gonanoid "github.com/matoous/go-nanoid/v2"
 )
 
 // rolesService adapter of an user service
@@ -35,8 +36,9 @@ func (p *companyService) Create(ctx context.Context, company models.CreateCompan
 	company.UpdatedDate = now
 
 	var str string = company.Razonsocial
-	prefix := str[0:3]          // Esto obtiene los caracteres desde la posición 0 hasta la 2 (inclusive)
-	uuidStr := uuid.NewString() // UUID como string
+	prefix := str[0:3] // Esto obtiene los caracteres desde la posición 0 hasta la 2 (inclusive)
+	//	uuidStr := uuid.NewString() // UUID como string
+	uuidStr, _ := gonanoid.New()
 
 	prefixedID := prefix + "_" + uuidStr
 	company.Identificador = prefixedID
