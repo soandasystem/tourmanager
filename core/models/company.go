@@ -36,6 +36,7 @@ type Company struct {
 	Maxsales            int       `json:"maxsales"`
 	Terminoscondiciones int       `json:"terminoscondiciones"`
 	Politicasdeuso      int       `json:"politicasdeuso"`
+	Subdominio          string    `json:"subdominio"`
 	CreatedDate         time.Time `gorm:"autoCreateTime"`
 	UpdatedDate         time.Time `gorm:"autoUpdateTime"`
 }
@@ -73,6 +74,7 @@ type CompanyResp struct {
 	Maxsales            int       `json:"maxsales"`
 	Terminoscondiciones int       `json:"terminoscondiciones"`
 	Politicasdeuso      int       `json:"politicasdeuso"`
+	Subdominio          string    `json:"subdominio"`
 	CreatedDate         time.Time `gorm:"autoCreateTime"`
 	UpdatedDate         time.Time `gorm:"autoUpdateTime"`
 }
@@ -119,6 +121,7 @@ type CreateCompanyReq struct {
 	Maxsales            int       `json:"maxsales"`
 	Terminoscondiciones int       `json:"terminoscondiciones"`
 	Politicasdeuso      int       `json:"politicasdeuso"`
+	Subdominio          string    `json:"subdominio"`
 	CreatedDate         time.Time `gorm:"autoCreateTime"`
 	UpdatedDate         time.Time `gorm:"autoUpdateTime"`
 }
@@ -159,6 +162,7 @@ type UpdateCompanyReq struct {
 	Maxsales            *int       `json:"maxsales"`
 	Terminoscondiciones *int       `json:"terminoscondiciones"`
 	Politicasdeuso      *int       `json:"politicasdeuso"`
+	Subdominio          *string    `json:"subdominio"`
 	CreatedDate         time.Time  `gorm:"autoCreateTime"`
 	UpdatedDate         time.Time  `gorm:"autoUpdateTime"`
 }

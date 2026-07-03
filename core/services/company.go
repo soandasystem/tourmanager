@@ -210,6 +210,10 @@ func (p *companyService) Update(ctx context.Context, ID string, company models.U
 		dbCompany.Politicasdeuso = *company.Politicasdeuso
 	}
 
+	if company.Subdominio != nil {
+		dbCompany.Subdominio = *company.Subdominio
+	}
+
 	// Actualizar la fecha de modificación
 	dbCompany.UpdatedDate = time.Now().UTC()
 
