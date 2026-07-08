@@ -40,7 +40,7 @@ func (s *contratoService) GenerarContrato(ctx context.Context, req models.Contra
 	// Construir la URL completa (garantizar que no haya doble slash si B2Endpoint termina en /)
 	baseURL := strings.TrimRight(s.config.B2Endpoint, "/")
 	templateURL := fmt.Sprintf("%s/%s", baseURL, req.TemplateFilename)
-
+	fmt.Println("ulr template ", templateURL)
 	// 1. Descargar el template DOCX desde B2
 	docxBytes, err := downloadFile(ctx, templateURL)
 	if err != nil {
