@@ -18,32 +18,47 @@ import (
 	"tourmanager/core/models"
 )
 
-// FirmarContrato lee los datos del contrato guardados en Fase 1,
+// FirmarContrato descarga el data.json del contrato guardado en B2 (Fase 1),
 // genera un PDF completo con todos los campos y la firma incrustada.
 func (s *contratoService) FirmarContrato(ctx context.Context, req models.ContratoFirmaReq) (models.ContratoPDFResp, error) {
-	// 1. Verificar que el directorio de sesión existe
-	tempDir := filepath.Join(os.TempDir(), "contratos", req.SessionID)
-	dataPath := filepath.Join(tempDir, "data.json")
+	// 1. Construir la URL del data.json a partir de la docx_url
+	// La docx_url tiene forma: .../temp/<sessionID>/contrato-<uuid>.docx
+	// El data.json está en:  .../temp/<sessionID>/data.json
+	if req.DocxURL == "" {
+		return models.ContratoPDFResp{}, fmt.Errorf("docx_url es requerido")
+	}
+	lastSlash := strings.LastIndex(req.DocxURL, "/")
+	if lastSlash < 0 {
+		return models.ContratoPDFResp{}, fmt.Errorf("docx_url con formato inválido")
+	}
+	dataURL := req.DocxURL[:lastSlash+1] + "data.json"
 
-	dataBytes, err := os.ReadFile(dataPath)
+	// 2. Descargar el data.json desde B2
+	dataBytes, err := downloadFile(ctx, dataURL)
 	if err != nil {
 		return models.ContratoPDFResp{}, fmt.Errorf("sesión no encontrada o expirada (%s): %w", req.SessionID, err)
 	}
 
-	// 2. Deserializar los datos del contrato
+	// 3. Deserializar los datos del contrato
 	var contratoData models.ContratoReq
 	if err := json.Unmarshal(dataBytes, &contratoData); err != nil {
 		return models.ContratoPDFResp{}, fmt.Errorf("error leyendo datos del contrato: %w", err)
 	}
 
-	// 3. Decodificar la firma base64 y guardarla como imagen temporal
+	// 4. Crear directorio temporal para la firma y el PDF (independiente del disco de Fase 1)
+	tempDir, err := os.MkdirTemp("", fmt.Sprintf("contrato-firma-%s-", req.SessionID))
+	if err != nil {
+		return models.ContratoPDFResp{}, fmt.Errorf("error creando directorio temporal: %w", err)
+	}
+	defer os.RemoveAll(tempDir)
+
+	// 5. Decodificar la firma base64 y guardarla como imagen temporal
 	firmaPath, err := saveFirmaImage(tempDir, req.FirmaBase64)
 	if err != nil {
 		return models.ContratoPDFResp{}, fmt.Errorf("error procesando firma: %w", err)
 	}
-	defer os.Remove(firmaPath)
 
-	// 4. Generar el PDF
+	// 6. Generar el PDF
 	pdfName := "contrato.pdf"
 	if req.FileNameFirma != "" {
 		pdfName = req.FileNameFirma
@@ -56,6 +71,7 @@ func (s *contratoService) FirmarContrato(ctx context.Context, req models.Contrat
 		return models.ContratoPDFResp{}, fmt.Errorf("error generando PDF: %w", err)
 	}
 
+	// 7. Subir el PDF a B2
 	var finalPDFUrl string
 	if s.storage != nil {
 		f, err := os.Open(pdfPath)

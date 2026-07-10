@@ -54,6 +54,6 @@ func (s *b2Storage) Upload(ctx context.Context, file io.Reader, objectKey string
 		return "", fmt.Errorf("error al subir a B2: %w", err)
 	}
 
-	publicURL := fmt.Sprintf("%s/%s/%s", s.endpoint, s.bucket, objectKey)
+	publicURL := fmt.Sprintf("%s/uploads/%s", s.endpoint, objectKey)
 	return publicURL, nil
 }

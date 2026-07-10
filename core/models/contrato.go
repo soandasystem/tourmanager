@@ -37,14 +37,15 @@ type ContratoReq struct {
 // ContratoTempResp respuesta de Fase 1 — DOCX temporal generado
 type ContratoTempResp struct {
 	SessionID string `json:"session_id"` // UUID de sesión para referenciar en Fase 2
-	TempFile  string `json:"temp_file"`  // Ruta del DOCX temporal
+	DocxURL   string `json:"docx_url"`   // URL pública del DOCX en B2 (carpeta temp/)
 	Message   string `json:"message"`
 }
 
-// ContratoFirmaReq request de Fase 2 — firma en base64 + session_id
+// ContratoFirmaReq request de Fase 2 — firma en base64 + session_id + url del docx
 type ContratoFirmaReq struct {
-	SessionID     string `json:"session_id"`       // UUID devuelto en Fase 1
-	FirmaBase64   string `json:"firma_base64"`     // Imagen de la firma en base64 (PNG o JPEG)
+	SessionID     string `json:"session_id"`      // UUID devuelto en Fase 1
+	DocxURL       string `json:"docx_url"`        // URL del DOCX en B2 devuelta en Fase 1
+	FirmaBase64   string `json:"firma_base64"`    // Imagen de la firma en base64 (PNG o JPEG)
 	FileNameFirma string `json:"file_name_firma"` // Nombre a colocar cuando cree el pdf y antes de subirlo
 }
 

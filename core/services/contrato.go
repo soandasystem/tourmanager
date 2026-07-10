@@ -71,34 +71,45 @@ func (s *contratoService) GenerarContrato(ctx context.Context, req models.Contra
 		return models.ContratoTempResp{}, fmt.Errorf("error creando directorio temporal: %w", err)
 	}
 
-	// 5. Guardar DOCX
-	docxPath := filepath.Join(tempDir, "contrato.docx")
+	// 5. Guardar DOCX con UUID en el nombre para evitar colisiones
+	docxName := fmt.Sprintf("contrato-%s.docx", uuid.New().String())
+	docxPath := filepath.Join(tempDir, docxName)
 
 	if err := os.WriteFile(docxPath, processedBytes, 0644); err != nil {
 		return models.ContratoTempResp{}, fmt.Errorf("error guardando DOCX temporal: %w", err)
 	}
 
-	// 6. Guardar JSON
-	dataPath := filepath.Join(tempDir, "data.json")
+	// 6. Subir el DOCX y el data.json a B2 en carpeta temp/
+	var docxURL string
+	if s.storage != nil {
+		// 6a. Subir el DOCX
+		f, err := os.Open(docxPath)
+		if err != nil {
+			return models.ContratoTempResp{}, fmt.Errorf("error abriendo DOCX para subir: %w", err)
+		}
+		defer f.Close()
 
-	dataBytes, err := json.Marshal(req)
-	if err != nil {
-		return models.ContratoTempResp{}, fmt.Errorf("error serializando datos del contrato: %w", err)
+		objectKey := fmt.Sprintf("temp/%s/%s", sessionID, docxName)
+		docxURL, err = s.storage.Upload(ctx, f, objectKey, "application/vnd.openxmlformats-officedocument.wordprocessingml.document")
+		if err != nil {
+			return models.ContratoTempResp{}, fmt.Errorf("error subiendo DOCX a B2: %w", err)
+		}
+
+		// 6b. Subir data.json (para que Fase 2 no dependa del disco local)
+		dataBytes, err := encodeJSON(req)
+		if err != nil {
+			return models.ContratoTempResp{}, fmt.Errorf("error serializando datos del contrato: %w", err)
+		}
+		dataKey := fmt.Sprintf("temp/%s/data.json", sessionID)
+		_, err = s.storage.Upload(ctx, bytes.NewReader(dataBytes), dataKey, "application/json")
+		if err != nil {
+			return models.ContratoTempResp{}, fmt.Errorf("error subiendo data.json a B2: %w", err)
+		}
 	}
-
-	if err := os.WriteFile(dataPath, dataBytes, 0644); err != nil {
-		return models.ContratoTempResp{}, fmt.Errorf("error guardando datos del contrato: %w", err)
-	}
-
-	// 7. Devolver la URL relativa del documento
-	documentURL := fmt.Sprintf(
-		"/api/contratos/temp/%s",
-		sessionID,
-	)
 
 	return models.ContratoTempResp{
 		SessionID: sessionID,
-		TempFile:  documentURL,
+		DocxURL:   docxURL,
 		Message:   "Contrato temporal generado correctamente",
 	}, nil
 }
@@ -279,4 +290,9 @@ func applyReplacements(content []byte, replacements map[string]string) []byte {
 		text = strings.ReplaceAll(text, placeholder, value)
 	}
 	return []byte(text)
+}
+
+// encodeJSON serializa el ContratoReq a JSON (helper para subir data.json a B2)
+func encodeJSON(v any) ([]byte, error) {
+	return json.Marshal(v)
 }
