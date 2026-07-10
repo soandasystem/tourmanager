@@ -37,6 +37,78 @@ func (s *contratoService) GenerarContrato(ctx context.Context, req models.Contra
 		return models.ContratoTempResp{}, fmt.Errorf("el nombre del archivo template (template_filename) es requerido")
 	}
 
+	// Construir la URL completa del template
+	baseURL := strings.TrimRight(s.config.B2Endpoint, "/")
+	templateURL := fmt.Sprintf("%s/%s", baseURL, req.TemplateFilename)
+
+	fmt.Println("URL template:", templateURL)
+
+	// 1. Descargar el template DOCX desde B2
+	docxBytes, err := downloadFile(ctx, templateURL)
+	if err != nil {
+		return models.ContratoTempResp{}, fmt.Errorf("error descargando template: %w", err)
+	}
+
+	// 2. Construir el mapa de reemplazos
+	replacements := buildReplacements(req)
+
+	// 3. Procesar el DOCX
+	processedBytes, err := processDocx(docxBytes, replacements)
+	if err != nil {
+		return models.ContratoTempResp{}, fmt.Errorf("error procesando DOCX: %w", err)
+	}
+
+	// 4. Crear directorio temporal
+	sessionID := uuid.New().String()
+
+	tempDir := filepath.Join(
+		os.TempDir(),
+		"contratos",
+		sessionID,
+	)
+
+	if err := os.MkdirAll(tempDir, 0755); err != nil {
+		return models.ContratoTempResp{}, fmt.Errorf("error creando directorio temporal: %w", err)
+	}
+
+	// 5. Guardar DOCX
+	docxPath := filepath.Join(tempDir, "contrato.docx")
+
+	if err := os.WriteFile(docxPath, processedBytes, 0644); err != nil {
+		return models.ContratoTempResp{}, fmt.Errorf("error guardando DOCX temporal: %w", err)
+	}
+
+	// 6. Guardar JSON
+	dataPath := filepath.Join(tempDir, "data.json")
+
+	dataBytes, err := json.Marshal(req)
+	if err != nil {
+		return models.ContratoTempResp{}, fmt.Errorf("error serializando datos del contrato: %w", err)
+	}
+
+	if err := os.WriteFile(dataPath, dataBytes, 0644); err != nil {
+		return models.ContratoTempResp{}, fmt.Errorf("error guardando datos del contrato: %w", err)
+	}
+
+	// 7. Devolver la URL relativa del documento
+	documentURL := fmt.Sprintf(
+		"/api/contratos/temp/%s",
+		sessionID,
+	)
+
+	return models.ContratoTempResp{
+		SessionID: sessionID,
+		TempFile:  documentURL,
+		Message:   "Contrato temporal generado correctamente",
+	}, nil
+}
+
+/*
+func (s *contratoService) GenerarContrato(ctx context.Context, req models.ContratoReq) (models.ContratoTempResp, error) {
+	if req.TemplateFilename == "" {
+		return models.ContratoTempResp{}, fmt.Errorf("el nombre del archivo template (template_filename) es requerido")
+	}
+
 	// Construir la URL completa (garantizar que no haya doble slash si B2Endpoint termina en /)
 	baseURL := strings.TrimRight(s.config.B2Endpoint, "/")
 	templateURL := fmt.Sprintf("%s/%s", baseURL, req.TemplateFilename)
@@ -85,6 +157,7 @@ func (s *contratoService) GenerarContrato(ctx context.Context, req models.Contra
 		Message:   "Contrato temporal generado correctamente",
 	}, nil
 }
+*/
 
 // downloadFile realiza un HTTP GET y retorna el contenido como bytes
 func downloadFile(ctx context.Context, url string) ([]byte, error) {
