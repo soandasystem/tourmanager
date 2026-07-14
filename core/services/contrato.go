@@ -37,16 +37,47 @@ func (s *contratoService) GenerarContrato(ctx context.Context, req models.Contra
 		return models.ContratoTempResp{}, fmt.Errorf("el nombre del archivo template (template_filename) es requerido")
 	}
 
-	// Construir la URL completa del template usando la URL pública de descarga
-	baseURL := strings.TrimRight(s.config.B2PublicURL, "/")
-	templateURL := fmt.Sprintf("%s/%s", baseURL, req.TemplateFilename)
+	// Sanear TemplateFilename: si llega como URL completa, extraer solo el path relativo
+	// desde "uploads/" en adelante (ej: "uploads/contrato_ge_DEM_xxx.docx")
+	filename := req.TemplateFilename
+	for _, prefix := range []string{
+		strings.TrimRight(s.config.B2PublicURL, "/") + "/",
+		strings.TrimRight(s.config.B2S3PublicURL, "/") + "/",
+	} {
+		if prefix != "/" && strings.HasPrefix(filename, prefix) {
+			filename = strings.TrimPrefix(filename, prefix)
+			break
+		}
+	}
+	filename = strings.TrimLeft(filename, "/")
 
-	fmt.Println("URL template:", templateURL)
+	// Construir URLs candidatas para descargar el template
+	// Se intenta primero la Friendly URL (B2_PUBLIC_URL) y luego la S3 URL (B2_S3_PUBLIC_URL)
+	var candidateURLs []string
+	if u := strings.TrimRight(s.config.B2PublicURL, "/"); u != "" {
+		candidateURLs = append(candidateURLs, fmt.Sprintf("%s/%s", u, filename))
+	}
+	if u := strings.TrimRight(s.config.B2S3PublicURL, "/"); u != "" {
+		candidateURLs = append(candidateURLs, fmt.Sprintf("%s/%s", u, filename))
+	}
+	if len(candidateURLs) == 0 {
+		return models.ContratoTempResp{}, fmt.Errorf("no hay URLs de descarga configuradas (B2_PUBLIC_URL / B2_S3_PUBLIC_URL)")
+	}
 
-	// 1. Descargar el template DOCX desde B2
-	docxBytes, err := downloadFile(ctx, templateURL)
-	if err != nil {
-		return models.ContratoTempResp{}, fmt.Errorf("error descargando template: %w", err)
+	// 1. Descargar el template DOCX desde B2 (probando cada URL candidata)
+	var docxBytes []byte
+	var lastErr error
+	for _, templateURL := range candidateURLs {
+		fmt.Println("URL template (intentando):", templateURL)
+		docxBytes, lastErr = downloadFile(ctx, templateURL)
+		if lastErr == nil {
+			fmt.Println("Template descargado correctamente desde:", templateURL)
+			break
+		}
+		fmt.Printf("Fallo descargando desde %s: %v\n", templateURL, lastErr)
+	}
+	if lastErr != nil {
+		return models.ContratoTempResp{}, fmt.Errorf("error descargando template: %w", lastErr)
 	}
 
 	// 2. Construir el mapa de reemplazos
@@ -185,7 +216,7 @@ func downloadFile(ctx context.Context, url string) ([]byte, error) {
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("respuesta inesperada del servidor: %s", resp.Status)
+		return nil, fmt.Errorf("respuesta inesperada del servidor: %s (URL: %s)", resp.Status, url)
 	}
 
 	return io.ReadAll(resp.Body)
