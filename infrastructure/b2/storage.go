@@ -1,6 +1,7 @@
 package b2
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"io"
@@ -14,6 +15,7 @@ import (
 
 	"tourmanager/core/ports"
 )
+
 
 type b2Storage struct {
 	client    *s3.Client
@@ -46,13 +48,22 @@ func NewB2Storage(ctx context.Context, keyID, applicationKey, bucket, region, en
 }
 
 func (s *b2Storage) Upload(ctx context.Context, file io.Reader, objectKey string, contentType string) (string, error) {
-	_, err := s.client.PutObject(ctx, &s3.PutObjectInput{
-		Bucket:      aws.String(s.bucket),
-		Key:         aws.String(objectKey),
-		Body:        file,
-		ContentType: aws.String(contentType),
-	})
+	// B2 no soporta chunked transfer encoding: se debe enviar Content-Length explícito.
+	// Leemos todo en memoria para conocer el tamaño antes de llamar a PutObject.
+	data, err := io.ReadAll(file)
+	if err != nil {
+		return "", fmt.Errorf("error leyendo contenido para subir: %w", err)
+	}
 
+	contentLength := int64(len(data))
+
+	_, err = s.client.PutObject(ctx, &s3.PutObjectInput{
+		Bucket:        aws.String(s.bucket),
+		Key:           aws.String(objectKey),
+		Body:          bytes.NewReader(data),
+		ContentType:   aws.String(contentType),
+		ContentLength: &contentLength,
+	})
 	if err != nil {
 		return "", fmt.Errorf("error al subir a B2: %w", err)
 	}
@@ -60,3 +71,4 @@ func (s *b2Storage) Upload(ctx context.Context, file io.Reader, objectKey string
 	publicURL := fmt.Sprintf("%s/%s", s.publicURL, objectKey)
 	return publicURL, nil
 }
+
