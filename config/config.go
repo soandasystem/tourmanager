@@ -37,6 +37,7 @@ type config struct {
 	B2Endpoint    string // Endpoint S3-compatible para subir (ej: https://s3.us-east-005.backblazeb2.com)
 	B2PublicURL   string // URL pública Friendly para descargar (ej: https://f005.backblazeb2.com/file/<bucket>)
 	B2S3PublicURL string // URL pública S3 para descargar (ej: https://<bucket>.s3.us-east-005.backblazeb2.com)
+	B2UploadsPath string // Subdirectorio de templates en el bucket (ej: uploads)
 }
 
 // ReadConfig from the project´s JSON config files.
@@ -98,5 +99,6 @@ func ReadConfig(version, env string, port int, database, dsn string) (Config, er
 	c.config.B2Endpoint = os.Getenv("B2_ENDPOINT")
 	c.config.B2PublicURL = os.Getenv("B2_PUBLIC_URL")
 	c.config.B2S3PublicURL = os.Getenv("B2_S3_PUBLIC_URL")
+	//	c.config.B2UploadsPath = os.Getenv("B2_UPLOADS_PATH")
 	return c, nil
 }

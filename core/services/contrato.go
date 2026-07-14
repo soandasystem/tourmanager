@@ -38,7 +38,6 @@ func (s *contratoService) GenerarContrato(ctx context.Context, req models.Contra
 	}
 
 	// Sanear TemplateFilename: si llega como URL completa, extraer solo el path relativo
-	// desde "uploads/" en adelante (ej: "uploads/contrato_ge_DEM_xxx.docx")
 	filename := req.TemplateFilename
 	for _, prefix := range []string{
 		strings.TrimRight(s.config.B2PublicURL, "/") + "/",
@@ -50,6 +49,12 @@ func (s *contratoService) GenerarContrato(ctx context.Context, req models.Contra
 		}
 	}
 	filename = strings.TrimLeft(filename, "/")
+
+	// Si el filename no incluye ya el subdirectorio de uploads, agregarlo
+	uploadsPath := "uploads" // strings.Trim("uploads", "/")
+	if uploadsPath != "" && !strings.HasPrefix(filename, uploadsPath+"/") {
+		filename = uploadsPath + "/" + filename
+	}
 
 	// Construir URLs candidatas para descargar el template
 	// Se intenta primero la Friendly URL (B2_PUBLIC_URL) y luego la S3 URL (B2_S3_PUBLIC_URL)
