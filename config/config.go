@@ -34,7 +34,8 @@ type config struct {
 	B2Application string
 	B2Bucket      string
 	B2Region      string
-	B2Endpoint    string
+	B2Endpoint    string // Endpoint S3-compatible para subir (ej: https://s3.us-east-005.backblazeb2.com)
+	B2PublicURL   string // URL pública para descargar / construir links (ej: https://f005.backblazeb2.com/file/<bucket>)
 }
 
 // ReadConfig from the project´s JSON config files.
@@ -94,5 +95,6 @@ func ReadConfig(version, env string, port int, database, dsn string) (Config, er
 	c.config.B2Bucket = os.Getenv("B2_BUCKET")
 	c.config.B2Region = os.Getenv("B2_REGION")
 	c.config.B2Endpoint = os.Getenv("B2_ENDPOINT")
+	c.config.B2PublicURL = os.Getenv("B2_PUBLIC_URL")
 	return c, nil
 }

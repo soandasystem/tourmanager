@@ -149,6 +149,7 @@ func New(ctx context.Context, cfg config.Config) (a api) {
 			a.config.B2Bucket,
 			a.config.B2Region,
 			a.config.B2Endpoint,
+			a.config.B2PublicURL,
 		)
 		a.services.upload = services.NewUploadService(a.config, b2Storage)
 	}

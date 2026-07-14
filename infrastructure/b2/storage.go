@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"log"
+	"strings"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/config"
@@ -15,12 +16,13 @@ import (
 )
 
 type b2Storage struct {
-	client   *s3.Client
-	bucket   string
-	endpoint string
+	client    *s3.Client
+	bucket    string
+	endpoint  string
+	publicURL string // URL pública de descarga, ej: https://f005.backblazeb2.com/file/<bucket>
 }
 
-func NewB2Storage(ctx context.Context, keyID, applicationKey, bucket, region, endpoint string) ports.UploadStorage {
+func NewB2Storage(ctx context.Context, keyID, applicationKey, bucket, region, endpoint, publicURL string) ports.UploadStorage {
 	cfg, err := config.LoadDefaultConfig(ctx,
 		config.WithCredentialsProvider(credentials.NewStaticCredentialsProvider(keyID, applicationKey, "")),
 		config.WithRegion(region),
@@ -36,9 +38,10 @@ func NewB2Storage(ctx context.Context, keyID, applicationKey, bucket, region, en
 	})
 
 	return &b2Storage{
-		client:   client,
-		bucket:   bucket,
-		endpoint: endpoint,
+		client:    client,
+		bucket:    bucket,
+		endpoint:  endpoint,
+		publicURL: strings.TrimRight(publicURL, "/"),
 	}
 }
 
@@ -54,6 +57,6 @@ func (s *b2Storage) Upload(ctx context.Context, file io.Reader, objectKey string
 		return "", fmt.Errorf("error al subir a B2: %w", err)
 	}
 
-	publicURL := fmt.Sprintf("%s/uploads/%s", s.endpoint, objectKey)
+	publicURL := fmt.Sprintf("%s/%s", s.publicURL, objectKey)
 	return publicURL, nil
 }

@@ -37,8 +37,8 @@ func (s *contratoService) GenerarContrato(ctx context.Context, req models.Contra
 		return models.ContratoTempResp{}, fmt.Errorf("el nombre del archivo template (template_filename) es requerido")
 	}
 
-	// Construir la URL completa del template
-	baseURL := strings.TrimRight(s.config.B2Endpoint, "/")
+	// Construir la URL completa del template usando la URL pública de descarga
+	baseURL := strings.TrimRight(s.config.B2PublicURL, "/")
 	templateURL := fmt.Sprintf("%s/%s", baseURL, req.TemplateFilename)
 
 	fmt.Println("URL template:", templateURL)
