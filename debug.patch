@@ -1,0 +1,10 @@
+--- core/services/contrato.go
++++ core/services/contrato.go
+@@ -107,6 +107,7 @@
+ 	if err != nil {
+ 		return models.ContratoTempResp{}, fmt.Errorf("error procesando DOCX: %w", err)
+ 	}
++	fmt.Printf("DEBUG: processedBytes length = %d\n", len(processedBytes))
+ 
+ 	// 4. Crear directorio temporal
+ 	sessionID := uuid.New().String()

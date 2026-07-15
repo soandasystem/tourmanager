@@ -272,14 +272,8 @@ func processDocx(docxBytes []byte, replacements map[string]string) ([]byte, erro
 
 	// Reemplazar cada placeholder
 	for placeholder, value := range replacements {
-		// Limpiamos el "${" y "}" para que la librería go-docx lo encuentre como "{campo}"
-		cleanKey := strings.TrimPrefix(placeholder, "${")
-		cleanKey = strings.TrimSuffix(cleanKey, "}")
-
-		err := doc.Replace(cleanKey, value)
-		if err != nil {
-			fmt.Printf("error reemplazando placeholder %s: %v\n", placeholder, err)
-		}
+		fmt.Println("placeholder: ", placeholder, " value: ", value)
+		_ = doc.Replace(placeholder, value)
 	}
 
 	// Escribir el DOCX modificado a un buffer
