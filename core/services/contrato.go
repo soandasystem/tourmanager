@@ -1,7 +1,6 @@
 package services
 
 import (
-	"archive/zip"
 	"bytes"
 	"context"
 	"encoding/json"
@@ -14,6 +13,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
+	"github.com/lukasjarosch/go-docx"
 
 	"tourmanager/config"
 	"tourmanager/core/models"
@@ -262,70 +262,25 @@ func buildReplacements(req models.ContratoReq) map[string]string {
 	}
 }
 
-// processDocx lee el DOCX como ZIP, reemplaza placeholders en los archivos XML
-// relevantes (document.xml, header*.xml, footer*.xml) y retorna el DOCX modificado.
+// processDocx reemplaza placeholders en el DOCX usando github.com/lukasjarosch/go-docx.
 func processDocx(docxBytes []byte, replacements map[string]string) ([]byte, error) {
-	// Abrir el ZIP en memoria
-	reader, err := zip.NewReader(bytes.NewReader(docxBytes), int64(len(docxBytes)))
+	doc, err := docx.OpenBytes(docxBytes)
 	if err != nil {
-		return nil, fmt.Errorf("error abriendo DOCX como ZIP: %w", err)
+		return nil, fmt.Errorf("error abriendo DOCX: %w", err)
 	}
 
-	// Buffer de salida para el nuevo ZIP
+	// Reemplazar cada placeholder
+	for placeholder, value := range replacements {
+		_ = doc.Replace(placeholder, value)
+	}
+
+	// Escribir el DOCX modificado a un buffer
 	var outBuf bytes.Buffer
-	writer := zip.NewWriter(&outBuf)
-
-	for _, f := range reader.File {
-		rc, err := f.Open()
-		if err != nil {
-			return nil, fmt.Errorf("error leyendo archivo ZIP %s: %w", f.Name, err)
-		}
-
-		content, err := io.ReadAll(rc)
-		rc.Close()
-		if err != nil {
-			return nil, fmt.Errorf("error leyendo contenido de %s: %w", f.Name, err)
-		}
-
-		// Aplicar reemplazos solo en los archivos XML del contenido del documento
-		if isContentFile(f.Name) {
-			content = applyReplacements(content, replacements)
-		}
-
-		// Escribir el archivo (modificado o no) al nuevo ZIP
-		w, err := writer.CreateHeader(&f.FileHeader)
-		if err != nil {
-			return nil, fmt.Errorf("error creando entrada ZIP %s: %w", f.Name, err)
-		}
-		if _, err := w.Write(content); err != nil {
-			return nil, fmt.Errorf("error escribiendo contenido ZIP %s: %w", f.Name, err)
-		}
-	}
-
-	if err := writer.Close(); err != nil {
-		return nil, fmt.Errorf("error cerrando ZIP: %w", err)
+	if err := doc.Write(&outBuf); err != nil {
+		return nil, fmt.Errorf("error escribiendo DOCX: %w", err)
 	}
 
 	return outBuf.Bytes(), nil
-}
-
-// isContentFile retorna true si el archivo XML del DOCX contiene texto editable
-func isContentFile(name string) bool {
-	name = strings.ToLower(name)
-	return strings.Contains(name, "word/document") ||
-		strings.Contains(name, "word/header") ||
-		strings.Contains(name, "word/footer") ||
-		strings.Contains(name, "word/endnotes") ||
-		strings.Contains(name, "word/footnotes")
-}
-
-// applyReplacements reemplaza cada placeholder en el contenido XML
-func applyReplacements(content []byte, replacements map[string]string) []byte {
-	text := string(content)
-	for placeholder, value := range replacements {
-		text = strings.ReplaceAll(text, placeholder, value)
-	}
-	return []byte(text)
 }
 
 // encodeJSON serializa el ContratoReq a JSON (helper para subir data.json a B2)
