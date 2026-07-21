@@ -1,0 +1,39 @@
+Inyección Dinámica de Firma en SaaS (Múltiples Plantillas)
+Tienes toda la razón. En un entorno SaaS donde cada cliente sube su propio .docx, no podemos depender de que exista un archivo word/media/image1.png. Los documentos variarán enormemente, tendrán otras imágenes, o no tendrán ninguna.
+
+Dado que en la Fase 1 (GenerarContrato) usamos go-docx para reemplazar texto y en la Fase 2 (FirmarContrato) tenemos el Base64 de la firma y queremos ubicarla exactamente donde el cliente indicó, tenemos dos enfoques viables y profesionales usando la misma API de Aspose Cloud que ya integramos.
+
+Opciones para que los clientes definan dónde va la firma
+Opción 1: Usar un "Marcador" (Bookmark) en el Word (Recomendada)
+En Microsoft Word, el cliente no escribe {firma}. En su lugar, pone el cursor donde quiere la firma y va a Insertar -> Marcador (Bookmark), y le pone de nombre Firma.
+
+Cómo lo resolvemos en Go (Fase 2):
+
+Subimos el DOCX a Aspose.
+Llamamos al endpoint de Aspose: POST /words/{nombre}/bookmarks/Firma/drawingObjects enviando la imagen Base64. Aspose insertará la imagen mágicamente en esa posición exacta.
+Convertimos a PDF con Aspose.
+Ventajas: Es la forma más limpia y estándar. Cero manipulación de XML por nuestra cuenta.
+
+Opción 2: Usar Campos de Combinación de Correspondencia (Mail Merge)
+El cliente inserta un campo de combinación de correspondencia llamado Image:firma en su Word (se ve como «Image:firma»).
+
+Cómo lo resolvemos en Go (Fase 2):
+
+Subimos el DOCX a Aspose.
+Ejecutamos el motor de MailMerge de Aspose Cloud, pasándole un pequeño JSON con la firma en Base64. Aspose sabe que el prefijo Image: significa que debe renderizar una imagen.
+Convertimos a PDF.
+Opción 3: Mantener el texto {firma} y usar búsqueda (Complejo)
+Si obligatoriamente quieres que el cliente siga escribiendo {firma} como texto plano, la única forma segura de reemplazar ese texto por una imagen es:
+
+Usar Aspose para buscar el texto {firma} y extraer su NodePath.
+Borrar el texto {firma}.
+Insertar la imagen en ese NodePath. Nota: Aspose Cloud tiene limitaciones para buscar y reemplazar texto plano directamente por imágenes de un solo paso.
+Open Questions
+IMPORTANT
+
+¿Qué instrucción prefieres darle a tus clientes SaaS?
+
+A) Opción 1: "Por favor inserten un Marcador (Bookmark) llamado Firma donde quieran la firma". B) Opción 2: "Por favor inserten un Campo de Combinación llamado Image:firma".
+
+En cuanto me confirmes cuál método se adapta mejor a tu producto, modificaré el código de Aspose en util/convert.pdf.go y core/services/contrato_pdf.go para implementar esa lógica dinámicamente, sin importar cuántas imágenes tenga el Word.
+
