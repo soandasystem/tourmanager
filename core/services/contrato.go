@@ -228,58 +228,68 @@ func downloadFile(ctx context.Context, url string) ([]byte, error) {
 	return io.ReadAll(resp.Body)
 }
 
-// buildReplacements construye el mapa de {{campo}} → valor a partir del ContratoReq
+// buildReplacements construye el mapa de {campo} → valor a partir del ContratoReq.
+// Las claves deben ser nombres sin delimitadores; la librería go-docx agrega {}
+// automáticamente y busca {campo} dentro del DOCX.
 func buildReplacements(req models.ContratoReq) map[string]string {
 	return map[string]string{
-		"[[vtaDia]]":       req.VtaDia,
-		"[[vtaMes]]":       req.VtaMes,
-		"[[vtaAgno]]":      req.VtaAgno,
-		"[[rute]]":         req.Rute,
-		"[[rsocial]]":      req.RSocial,
-		"[[nfantasia]]":    req.NFantasia,
-		"[[rlegal]]":       req.RLegal,
-		"[[nlegal]]":       req.NLegal,
-		"[[edireccion]]":   req.EDireccion,
-		"[[colegio]]":      req.Colegio,
-		"[[comuna]]":       req.Comuna,
-		"[[idcurso]]":      req.IdCurso,
-		"[[programa]]":     req.Programa,
-		"[[reserva]]":      req.Reserva,
-		"[[nombreapod]]":   req.NombreApod,
-		"[[nombrealumno]]": req.NombreAlumno,
-		"[[rutapod]]":      req.RutApod,
-		"[[correoapod]]":   req.CorreoApod,
-		"[[fonoapod]]":     req.FonoApod,
-		"[[observacion]]":  req.Observacion,
-		"[[vprograma]]":    req.VPrograma,
-		"[[tc]]":           req.Tc,
-		"[[liberados]]":    req.Liberados,
-		"[[fsalida]]":      req.FSalida,
-		"[[fsalidames]]":   req.FSalidaMes,
-		"[[fsalidaaño]]":   req.FSalidaAgno,
-		"[[fsalidadia]]":   req.FSalidaDia,
-		"[[fpago]]":        req.FPago,
-		"[[type_sale]]":    req.TypeSale,
+		"vtaDia":       req.VtaDia,
+		"vtaMes":       req.VtaMes,
+		"vtaAgno":      req.VtaAgno,
+		"rute":         req.Rute,
+		"rsocial":      req.RSocial,
+		"nfantasia":    req.NFantasia,
+		"rlegal":       req.RLegal,
+		"nlegal":       req.NLegal,
+		"edireccion":   req.EDireccion,
+		"colegio":      req.Colegio,
+		"comuna":       req.Comuna,
+		"idcurso":      req.IdCurso,
+		"programa":     req.Programa,
+		"reserva":      req.Reserva,
+		"nombreapod":   req.NombreApod,
+		"nombrealumno": req.NombreAlumno,
+		"rutapod":      req.RutApod,
+		"correoapod":   req.CorreoApod,
+		"fonoapod":     req.FonoApod,
+		"observacion":  req.Observacion,
+		"vprograma":    req.VPrograma,
+		"tc":           req.Tc,
+		"liberados":    req.Liberados,
+		"fsalida":      req.FSalida,
+		"fsalidames":   req.FSalidaMes,
+		"fsalidaaño":   req.FSalidaAgno,
+		"fsalidadia":   req.FSalidaDia,
+		"fpago":        req.FPago,
+		"type_sale":    req.TypeSale,
 	}
 }
 
 // processDocx reemplaza placeholders en el DOCX usando github.com/lukasjarosch/go-docx.
+// IMPORTANTE: El template DOCX debe usar {campo} como delimitadores (ej: {colegio}, {vtaMes}).
+// La librería go-docx usa { } como delimitadores por defecto.
 func processDocx(docxBytes []byte, replacements map[string]string) ([]byte, error) {
 	doc, err := docx.OpenBytes(docxBytes)
 	if err != nil {
 		return nil, fmt.Errorf("error abriendo DOCX: %w", err)
 	}
 
-	// Reemplazar cada placeholder
-	for placeholder, value := range replacements {
-		// Limpiamos el "${" y "}" para que la librería go-docx lo encuentre como "{campo}"
-		cleanKey := strings.TrimPrefix(placeholder, "${")
-		cleanKey = strings.TrimSuffix(cleanKey, "}")
+	// DEBUG: listar los placeholders detectados por la librería en el documento
+	placeholderList, _ := doc.GetPlaceHoldersList()
+	fmt.Printf("DEBUG: Placeholders encontrados en el DOCX: %v\n", placeholderList)
 
-		err := doc.Replace(cleanKey, value)
-		if err != nil {
-			fmt.Printf("error reemplazando placeholder %s: %v\n", placeholder, err)
-		}
+	// Construir el mapa de placeholders para go-docx
+	docxPlaceholders := make(docx.PlaceholderMap)
+	for k, v := range replacements {
+		docxPlaceholders[k] = v
+	}
+
+	// Realizar todos los reemplazos de una sola vez
+	// (Llamar a doc.Replace() repetidamente rompe el estado interno de la librería)
+	if err := doc.ReplaceAll(docxPlaceholders); err != nil {
+		fmt.Printf("WARN: Error durante el reemplazo masivo de placeholders: %v\n", err)
+	} else {
+		fmt.Printf("OK: Reemplazos aplicados correctamente usando ReplaceAll.\n")
 	}
 
 	// Escribir el DOCX modificado a un buffer
