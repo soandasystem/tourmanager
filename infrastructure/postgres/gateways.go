@@ -38,7 +38,7 @@ func (s *gatewaysRepository) Create(ctx context.Context, gateways interface{}) (
 
 	var existingReg models.CreateGatewaysReq
 
-	err := DB.Where("gateway_id = ?", g.GatewayId).First(&existingReg).Error
+	err := DB.Where("gateway_id = ? and company_id = ?", g.GatewayId, g.CompanyId).First(&existingReg).Error
 	if err == nil {
 		// Si no hay error, significa que se encontró un rol con ese nombre
 		return "error", errors.New("la pasarela con el codigo '" + strconv.FormatInt(g.GatewayId, 10) + "' ya existe")
