@@ -155,3 +155,4 @@ type PaymentReport struct {
 func (PaymentReport) TableName() string {
 	return "payments" // Nombre de la tabla en la base de datos
 }
+

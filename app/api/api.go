@@ -53,6 +53,7 @@ type svs struct {
 	payments            ports.PaymentService
 	paymentInstallments ports.PaymentInstallmentService
 	contrato            ports.ContratoService
+	flow                ports.FlowService
 }
 
 // New creates a new API
@@ -139,6 +140,7 @@ func New(ctx context.Context, cfg config.Config) (a api) {
 	a.services.installments = services.NewInstallmentService(a.config, installmentsRepo)
 	a.services.payments = services.NewPaymentService(a.config, paymentsRepo)
 	a.services.paymentInstallments = services.NewPaymentInstallmentService(a.config, paymentInstallmentsRepo)
+	a.services.flow = services.NewFlowService(a.config, gatewaysRepo, cursoRepo)
 	// Inicializar B2 Storage y Upload Service
 	var b2Storage ports.UploadStorage
 	if a.config.B2Endpoint != "" {
@@ -200,6 +202,7 @@ func (a *api) Run(ctx context.Context, cancel context.CancelFunc) func() error {
 		handlers.SetPaymentsRoutes(ctx, a.config, router, a.services.payments)
 		handlers.SetPaymentInstallmentsRoutes(ctx, a.config, router, a.services.paymentInstallments)
 		handlers.SetContratoRoutes(ctx, a.config, router, a.services.contrato)
+		handlers.SetFlowRoutes(ctx, a.config, router, a.services.flow)
 
 		if a.services.upload != nil {
 			handlers.SetUploadRoutes(ctx, a.config, router, a.services.upload)

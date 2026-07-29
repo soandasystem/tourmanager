@@ -41,6 +41,7 @@ type config struct {
 
 	AsposeClientID     string
 	AsposeClientSecret string
+	FlowAPIURL         string
 }
 
 // ReadConfig from the project´s JSON config files.
@@ -104,6 +105,10 @@ func ReadConfig(version, env string, port int, database, dsn string) (Config, er
 	c.config.B2S3PublicURL = os.Getenv("B2_S3_PUBLIC_URL")
 	c.config.AsposeClientID = os.Getenv("ASPOSE_CLIENT_ID")
 	c.config.AsposeClientSecret = os.Getenv("ASPOSE_CLIENT_SECRET")
+	c.config.FlowAPIURL = os.Getenv("FLOW_API_URL")
+	if c.config.FlowAPIURL == "" {
+		c.config.FlowAPIURL = "https://sandbox.flow.cl/api"
+	}
 	//	c.config.B2UploadsPath = os.Getenv("B2_UPLOADS_PATH")
 	return c, nil
 }
