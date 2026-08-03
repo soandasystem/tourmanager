@@ -140,7 +140,7 @@ func New(ctx context.Context, cfg config.Config) (a api) {
 	a.services.installments = services.NewInstallmentService(a.config, installmentsRepo)
 	a.services.payments = services.NewPaymentService(a.config, paymentsRepo)
 	a.services.paymentInstallments = services.NewPaymentInstallmentService(a.config, paymentInstallmentsRepo)
-	a.services.flow = services.NewFlowService(a.config, gatewaysRepo, cursoRepo)
+	a.services.flow = services.NewFlowService(a.config, gatewaysRepo, saleRepo, cursoRepo, paymentsRepo)
 	// Inicializar B2 Storage y Upload Service
 	var b2Storage ports.UploadStorage
 	if a.config.B2Endpoint != "" {

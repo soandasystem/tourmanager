@@ -15,21 +15,39 @@ import (
 type flowService struct {
 	config       config.Config
 	gatewaysRepo ports.GatewaysRepository
+	salesRepo    ports.SaleRepository
 	cursoRepo    ports.CursoRepository
+	paymentRepo  ports.PaymentRepository
 }
 
 // NewFlowService creates a new flow service
-func NewFlowService(cfg config.Config, gatewaysRepo ports.GatewaysRepository, cursoRepo ports.CursoRepository) ports.FlowService {
+func NewFlowService(cfg config.Config, gatewaysRepo ports.GatewaysRepository, salesRepo ports.SaleRepository, cursoRepo ports.CursoRepository, paymentRepo ports.PaymentRepository) ports.FlowService {
 	return &flowService{
 		config:       cfg,
 		gatewaysRepo: gatewaysRepo,
+		salesRepo:    salesRepo,
 		cursoRepo:    cursoRepo,
+		paymentRepo:  paymentRepo,
 	}
 }
 
 func (s *flowService) InitPayment(ctx context.Context, req models.InitFlowPaymentReq) (models.InitFlowPaymentResp, error) {
-	// 1. Get Course (to get email)
-	cursoFilter := map[string]interface{}{"sale_id": req.SaleID}
+	// 1. Buscar la venta
+	saleFilter := map[string]interface{}{"id": req.SaleID}
+	saleResult, err := s.salesRepo.Get(ctx, saleFilter, nil, nil)
+	if err != nil {
+		return models.InitFlowPaymentResp{}, fmt.Errorf("error fetching sale: %v", err)
+	}
+	if len(saleResult) == 0 {
+		return models.InitFlowPaymentResp{}, fmt.Errorf("sale not found")
+	}
+	saleList, ok := saleResult[0].(models.SaleListResponse)
+	if !ok || len(saleList.Items) == 0 {
+		return models.InitFlowPaymentResp{}, fmt.Errorf("sale no encontrado en response")
+	}
+
+	// 2. Buscar el curso
+	cursoFilter := map[string]interface{}{"id": req.CursoID}
 	cursoResult, err := s.cursoRepo.Get(ctx, cursoFilter, nil, nil)
 	if err != nil {
 		return models.InitFlowPaymentResp{}, fmt.Errorf("error fetching curso: %v", err)
@@ -63,7 +81,7 @@ func (s *flowService) InitPayment(ctx context.Context, req models.InitFlowPaymen
 
 	// 3. Prepare Flow params
 	optionalData := map[string]string{
-		"venta":  req.SaleID,
+		"venta":  strconv.FormatInt(req.SaleID, 10),
 		"alumno": req.UserRut,
 	}
 	optionalJSON, _ := json.Marshal(optionalData)
@@ -76,7 +94,7 @@ func (s *flowService) InitPayment(ctx context.Context, req models.InitFlowPaymen
 		"email":           curso.Correo,
 		"paymentMethod":   "9",
 		"urlConfirmation": "https://flowresponse.onrender.com/token", // Webhook
-		"urlReturn":       "https://tu-dominio.com/api/returnFlow", // Return URL
+		"urlReturn":       "https://tu-dominio.com/api/returnFlow",   // Return URL
 		"optional":        string(optionalJSON),
 	}
 

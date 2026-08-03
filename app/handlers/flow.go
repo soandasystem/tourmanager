@@ -16,7 +16,7 @@ import (
 
 // SetFlowRoutes creates flow payment routes
 func SetFlowRoutes(ctx context.Context, cfg config.Config, r *gin.Engine, s ports.FlowService) {
-	r.POST("/api/v3.5/gateways/flow/init", initFlowPayment(ctx, cfg, s))
+	r.POST("/api/v3.5/flow/init", initFlowPayment(ctx, cfg, s))
 }
 
 // @Summary Init Flow Payment

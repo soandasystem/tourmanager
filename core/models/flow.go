@@ -6,8 +6,9 @@ type InitFlowPaymentReq struct {
 	ValorCuota    int    `json:"valorcuota"`
 	NroCuotas     int    `json:"nrocuotas"`
 	FechaInicial  string `json:"fechainicial"`
-	CompanyID     string `json:"company_id"`
-	SaleID        string `json:"sale_id"`
+	CompanyID     int64  `json:"company_id"`
+	SaleID        int64  `json:"sale_id"`
+	CursoID       int64  `json:"curso_id"`
 	UserRut       string `json:"user_rut"`
 }
 
